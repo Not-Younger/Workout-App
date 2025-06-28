@@ -30,7 +30,7 @@ struct ContentView: View {
             }
             Tab("Workout", systemImage: "plus", value: 3) {
                 NavigationStack {
-                    
+                    WorkoutTab()
                 }
                 .environment(VM)
             }
