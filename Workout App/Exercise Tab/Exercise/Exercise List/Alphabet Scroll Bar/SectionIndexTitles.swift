@@ -37,7 +37,7 @@ struct SectionIndexTitles: View {
                 }
         )
         .animation(.spring(), value: selectedLetter) // Apply animation when selectedLetter changes.
-        .padding(.trailing, 3)
+        .padding(.trailing, 5)
         .background(Color(.systemBackground).opacity(0.001)) // Transparent background.
     }
     

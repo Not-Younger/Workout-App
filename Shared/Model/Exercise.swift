@@ -16,13 +16,15 @@ class Exercise: Alphabetizable {
     var exerciseDescription: String?
     var imageString: String?
     var muscleType: MuscleType
+    var secondaryMuscleTypes: [MuscleType]
     var equipmentType: EquipmentType
     
-    init(name: String, exerciseDescription: String? = nil, imageString: String? = nil, muscleType: MuscleType, equipmentType: EquipmentType) {
+    init(name: String, exerciseDescription: String? = nil, imageString: String? = nil, muscleType: MuscleType, secondaryMuscleTypes: [MuscleType] = [], equipmentType: EquipmentType) {
         self.name = name
         self.exerciseDescription = exerciseDescription
         self.imageString = imageString
         self.muscleType = muscleType
+        self.secondaryMuscleTypes = secondaryMuscleTypes
         self.equipmentType = equipmentType
     }
 }

@@ -25,5 +25,6 @@ extension ContentView {
         // Exercise Tab
         var equipmentType: EquipmentType?
         var muscleType: MuscleType?
+        var sortType: ExerciseSortType = .nameAscending
     }
 }

@@ -13,9 +13,6 @@ struct ContentView: View {
     @Query private var exercises: [Exercise]
     @State private var VM = ContentView.ViewModel()
     
-    @State private var searchString: String = ""
-    @State private var isSearchFocused: Bool = false
-    
     var body: some View {
         @Bindable var VM = VM
         TabView(selection: $VM.selectedTab) {
@@ -39,14 +36,7 @@ struct ContentView: View {
             }
             Tab("Exercises", systemImage: "dumbbell", value: 4) {
                 NavigationStack(path: $VM.workoutPath) {
-                    VStack {
-                        ExerciseFilterView(equipmentType: $VM.equipmentType, muscleType: $VM.muscleType)
-                            .padding(.horizontal)
-                        ExerciseListView(searchString: searchString)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(.secondarySystemBackground))
-                    .searchable(text: $searchString, isPresented: $isSearchFocused, prompt: "Find an exercise...")
+                    ExerciseTab()
                 }
                 .environment(VM)
             }
@@ -79,6 +69,8 @@ struct ContentView: View {
         container.mainContext.insert(exercise)
     }
     
-    return ContentView()
-            .modelContainer(container)
+    return NavigationStack {
+        ContentView()
+    }
+    .modelContainer(container)
 }
