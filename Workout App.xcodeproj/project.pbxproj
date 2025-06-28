@@ -39,6 +39,7 @@
 		C40A14722E1040DF0069F35C /* ExerciseTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14712E1040DF0069F35C /* ExerciseTab.swift */; };
 		C40A14752E1045730069F35C /* WorkoutTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14742E1045730069F35C /* WorkoutTab.swift */; };
 		C40A14782E10458F0069F35C /* HistoryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14772E10458F0069F35C /* HistoryTab.swift */; };
+		C40A147A2E1047230069F35C /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14792E1047230069F35C /* WorkoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		C40A14712E1040DF0069F35C /* ExerciseTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTab.swift; sourceTree = "<group>"; };
 		C40A14742E1045730069F35C /* WorkoutTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTab.swift; sourceTree = "<group>"; };
 		C40A14772E10458F0069F35C /* HistoryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTab.swift; sourceTree = "<group>"; };
+		C40A14792E1047230069F35C /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				C40A14742E1045730069F35C /* WorkoutTab.swift */,
+				C40A14792E1047230069F35C /* WorkoutView.swift */,
 			);
 			path = "Workout Tab";
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				C40A14572E0F858A0069F35C /* SectionIndexTitles.swift in Sources */,
 				C40A142C2E0EB4E30069F35C /* EquipmentTypeFilterRowView.swift in Sources */,
 				C40A14702E103E5F0069F35C /* ExerciseSortType.swift in Sources */,
+				C40A147A2E1047230069F35C /* WorkoutView.swift in Sources */,
 				C40A14262E0EB1650069F35C /* ExerciseFilterView.swift in Sources */,
 				C40A14552E0F85850069F35C /* CollectionDisplayMode.swift in Sources */,
 				C40A14322E0EB9CC0069F35C /* MuscleIconView.swift in Sources */,

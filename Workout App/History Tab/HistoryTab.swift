@@ -20,6 +20,9 @@ struct HistoryTab: View {
             }
         }
         .navigationTitle("History")
+        .onAppear {
+            print("Found \(completedWorkouts.count) completed workouts.")
+        }
     }
 }
 

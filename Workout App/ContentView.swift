@@ -24,18 +24,18 @@ struct ContentView: View {
             }
             Tab("History", systemImage: "clock.fill", value: 2) {
                 NavigationStack {
-                    
+                    HistoryTab()
                 }
                 .environment(VM)
             }
             Tab("Workout", systemImage: "plus", value: 3) {
-                NavigationStack {
-                    WorkoutTab()
+                NavigationStack(path: $VM.workoutPath) {
+                    WorkoutTab(modelContext: modelContext, VM: VM)
                 }
                 .environment(VM)
             }
             Tab("Exercises", systemImage: "dumbbell", value: 4) {
-                NavigationStack(path: $VM.workoutPath) {
+                NavigationStack(path: $VM.exercisePath) {
                     ExerciseTab()
                 }
                 .environment(VM)
@@ -62,15 +62,14 @@ struct ContentView: View {
 }
 
 #Preview {
+    let workoutConfig = ModelConfiguration(for: Workout.self, isStoredInMemoryOnly: true)
     let exerciseConfig = ModelConfiguration(for: Exercise.self, isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Exercise.self, configurations: exerciseConfig)
+    let container = try! ModelContainer(for: Workout.self, Exercise.self, configurations: workoutConfig, exerciseConfig)
     
     for exercise in DEFAULT_EXERCISES {
         container.mainContext.insert(exercise)
     }
     
-    return NavigationStack {
-        ContentView()
-    }
-    .modelContainer(container)
+    return ContentView()
+            .modelContainer(container)
 }

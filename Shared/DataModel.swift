@@ -14,7 +14,7 @@ actor DataModel {
     private init() {}
     
     nonisolated lazy var modelContainer: ModelContainer = {
-        let schema = Schema([Exercise.self])
+        let schema = Schema([Workout.self, Exercise.self])
         let config = ModelConfiguration("Workout App", schema: schema)
         let modelContainer: ModelContainer
         do {

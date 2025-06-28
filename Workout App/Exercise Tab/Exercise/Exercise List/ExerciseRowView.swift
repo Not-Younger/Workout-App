@@ -24,7 +24,7 @@ struct ExerciseRowView: View {
             }
             Spacer()
             Button {
-                VM.workoutPath.append(exercise)
+                VM.exercisePath.append(exercise)
             } label: {
                 Image(systemName: "chart.line.text.clipboard")
             }
