@@ -40,7 +40,7 @@ struct AddWorkoutExerciseView: View {
                     HStack(spacing: 5) {
                         Button("Superset") {
                             var currentExerciseIndex = workout.exercises.count
-                            var currentSupersetIndex = getMaxSuperSetNumber()
+                            let currentSupersetIndex = getMaxSuperSetNumber()
                             for exercise in selectedExercises {
                                 let workoutExercise = WorkoutExercise(
                                     order: currentExerciseIndex,
