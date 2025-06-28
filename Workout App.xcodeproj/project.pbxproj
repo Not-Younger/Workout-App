@@ -47,6 +47,9 @@
 		C40A14882E106D410069F35C /* WorkoutExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14872E106D410069F35C /* WorkoutExercise.swift */; };
 		C40A148A2E106E3D0069F35C /* WorkoutExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14892E106E3D0069F35C /* WorkoutExerciseListView.swift */; };
 		C40A148D2E106FDC0069F35C /* AddWorkoutExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A148C2E106FDC0069F35C /* AddWorkoutExerciseView.swift */; };
+		C40A148F2E107C820069F35C /* DefaultSuperSetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A148E2E107C820069F35C /* DefaultSuperSetColors.swift */; };
+		C40A14922E107CEA0069F35C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14912E107CEA0069F35C /* Color+Extension.swift */; };
+		C40A14942E107D140069F35C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14932E107D140069F35C /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +94,9 @@
 		C40A14872E106D410069F35C /* WorkoutExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExercise.swift; sourceTree = "<group>"; };
 		C40A14892E106E3D0069F35C /* WorkoutExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseListView.swift; sourceTree = "<group>"; };
 		C40A148C2E106FDC0069F35C /* AddWorkoutExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutExerciseView.swift; sourceTree = "<group>"; };
+		C40A148E2E107C820069F35C /* DefaultSuperSetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSuperSetColors.swift; sourceTree = "<group>"; };
+		C40A14912E107CEA0069F35C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		C40A14932E107D140069F35C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,9 +153,10 @@
 		C40A13F52E0D7B030069F35C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C40A14902E107CE50069F35C /* Extension */,
 				C40A147D2E10648B0069F35C /* Helpers */,
 				C40A14072E0E060D0069F35C /* Enum */,
-				C40A13FB2E0D7D010069F35C /* Exercises */,
+				C40A13FB2E0D7D010069F35C /* Default Models */,
 				C40A13F72E0D7B180069F35C /* Model */,
 				C40A13F62E0D7B080069F35C /* DataModel.swift */,
 			);
@@ -167,12 +174,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C40A13FB2E0D7D010069F35C /* Exercises */ = {
+		C40A13FB2E0D7D010069F35C /* Default Models */ = {
 			isa = PBXGroup;
 			children = (
 				C40A13FC2E0D7D180069F35C /* DefaultExercises.swift */,
+				C40A148E2E107C820069F35C /* DefaultSuperSetColors.swift */,
 			);
-			path = Exercises;
+			path = "Default Models";
 			sourceTree = "<group>";
 		};
 		C40A14002E0D7F6B0069F35C /* Exercise */ = {
@@ -303,6 +311,15 @@
 			path = "Add Exercise";
 			sourceTree = "<group>";
 		};
+		C40A14902E107CE50069F35C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C40A14932E107D140069F35C /* UIColor+Extension.swift */,
+				C40A14912E107CEA0069F35C /* Color+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -381,10 +398,12 @@
 				C40A14532E0F85800069F35C /* Alphabetizable.swift in Sources */,
 				C40A146D2E103DBD0069F35C /* Workout.swift in Sources */,
 				C40A14572E0F858A0069F35C /* SectionIndexTitles.swift in Sources */,
+				C40A14922E107CEA0069F35C /* Color+Extension.swift in Sources */,
 				C40A142C2E0EB4E30069F35C /* EquipmentTypeFilterRowView.swift in Sources */,
 				C40A14702E103E5F0069F35C /* ExerciseSortType.swift in Sources */,
 				C40A147A2E1047230069F35C /* WorkoutView.swift in Sources */,
 				C40A14262E0EB1650069F35C /* ExerciseFilterView.swift in Sources */,
+				C40A14942E107D140069F35C /* UIColor+Extension.swift in Sources */,
 				C40A14552E0F85850069F35C /* CollectionDisplayMode.swift in Sources */,
 				C40A14862E106C420069F35C /* ExerciseSet.swift in Sources */,
 				C40A14322E0EB9CC0069F35C /* MuscleIconView.swift in Sources */,
@@ -396,6 +415,7 @@
 				C40A140D2E0E0C340069F35C /* ContentView-VM.swift in Sources */,
 				C40A13FA2E0D7BCD0069F35C /* DataModel.swift in Sources */,
 				C40A13F12E0D7AC00069F35C /* Workout_AppApp.swift in Sources */,
+				C40A148F2E107C820069F35C /* DefaultSuperSetColors.swift in Sources */,
 				C40A148D2E106FDC0069F35C /* AddWorkoutExerciseView.swift in Sources */,
 				C40A147F2E10649B0069F35C /* GlobalHelpers.swift in Sources */,
 				C40A148A2E106E3D0069F35C /* WorkoutExerciseListView.swift in Sources */,

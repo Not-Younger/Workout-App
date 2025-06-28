@@ -40,13 +40,17 @@ struct AddWorkoutExerciseView: View {
                     HStack(spacing: 5) {
                         Button("Superset") {
                             var currentExerciseIndex = workout.exercises.count
+                            var currentSupersetIndex = getMaxSuperSetNumber()
                             for exercise in selectedExercises {
                                 let workoutExercise = WorkoutExercise(
                                     order: currentExerciseIndex,
+                                    supersetNumber: currentSupersetIndex,
                                     workout: workout,
                                     exercise: exercise)
                                 workout.exercises.append(workoutExercise)
-                                print(workoutExercise.order)
+                                print("Superset number: \(workoutExercise.supersetNumber ?? -1)")
+                                print("Order: \(workoutExercise.order)")
+                                currentExerciseIndex += 1
                             }
                             dismiss()
                         }
@@ -71,6 +75,16 @@ struct AddWorkoutExerciseView: View {
                 }
             }
         }
+    }
+    
+    func getMaxSuperSetNumber() -> Int {
+        var maxSupersetNumber = 0
+        for exercise in workout.exercises {
+            if let supersetNumber = exercise.supersetNumber {
+                maxSupersetNumber = max(supersetNumber, maxSupersetNumber)
+            }
+        }
+        return maxSupersetNumber + 1
     }
 }
 
