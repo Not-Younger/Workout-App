@@ -17,6 +17,10 @@ struct WorkoutView: View {
     var body: some View {
         List {
             WorkoutHeaderView(workout: workout)
+            
+            
+            
+            WorkoutAddCancelButtonsView(workout: workout)
         }
         .listStyle(.inset)
         .fontDesign(.rounded)

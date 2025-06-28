@@ -14,7 +14,7 @@ struct WorkoutHeaderView: View {
     @State private var timer: Timer?
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 5) {
             TextField("Workout Name", text: $workout.name)
                 .font(.title2.bold())
             Group {
