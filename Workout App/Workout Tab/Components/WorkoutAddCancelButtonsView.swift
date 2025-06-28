@@ -13,12 +13,13 @@ struct WorkoutAddCancelButtonsView: View {
     @Environment(ContentView.ViewModel.self) private var VM: ContentView.ViewModel
     
     @Bindable var workout: Workout
+    @State private var isAddingExercises: Bool = true
     @State private var isShowingCancelWorkoutAlert: Bool = false
     
     var body: some View {
         VStack(spacing: 20) {
             Button {
-                
+                isAddingExercises = true
             } label: {
                 Text("Add Exercises")
                     .fontDesign(.rounded)
@@ -28,6 +29,9 @@ struct WorkoutAddCancelButtonsView: View {
             }
             .buttonStyle(BorderedProminentButtonStyle())
             .tint(.primary)
+            .sheet(isPresented: $isAddingExercises) {
+                AddWorkoutExerciseView(workout: workout)
+            }
             Button {
                 isShowingCancelWorkoutAlert = true
             } label: {

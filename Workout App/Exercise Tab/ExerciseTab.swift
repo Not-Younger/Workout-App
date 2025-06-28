@@ -12,13 +12,14 @@ struct ExerciseTab: View {
     
     @State private var searchString: String = ""
     @State private var isSearchFocused: Bool = false
+    @State private var selectedExercises: [Exercise] = []
     
     var body: some View {
         @Bindable var VM = VM
         VStack {
             ExerciseFilterView(equipmentType: $VM.equipmentType, muscleType: $VM.muscleType, sortType: $VM.sortType)
                 .padding(.horizontal)
-            ExerciseListView(searchString: searchString, equipmentType: VM.equipmentType, muscleType: VM.muscleType, sortType: VM.sortType)
+            ExerciseListView(selectedExercises: $selectedExercises,searchString: searchString, equipmentType: VM.equipmentType, muscleType: VM.muscleType, sortType: VM.sortType)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.secondarySystemBackground))

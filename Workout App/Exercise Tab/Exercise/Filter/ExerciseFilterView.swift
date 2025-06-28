@@ -28,7 +28,7 @@ struct ExerciseFilterView: View {
                 }
             }
             .buttonStyle(BorderedProminentButtonStyle())
-            .tint(equipmentType == nil ? Color(.systemGray5) : Color.primary)
+            .tint(getEquipmentLabelBackgroundColor(equipmentType))
             .foregroundStyle(getEquipmentLabelFontColor(equipmentType))
             .sheet(isPresented: $isShowingEquipmentFilter) {
                 EquipmentTypeFilterView(equipmentType: $equipmentType)
@@ -43,7 +43,7 @@ struct ExerciseFilterView: View {
                 }
             }
             .buttonStyle(BorderedProminentButtonStyle())
-            .tint(muscleType == nil ? Color(.systemGray5) : Color.primary)
+            .tint(getMuscleLabelBackgroundColor(muscleType))
             .foregroundStyle(getMuscleLabelFontColor(muscleType))
             .sheet(isPresented: $isShowingMuscleFilter) {
                 MuscleTypeFilterView(muscleType: $muscleType)
@@ -83,7 +83,7 @@ struct ExerciseFilterView: View {
             }
             .menuStyle(.automatic)
             .buttonStyle(BorderedProminentButtonStyle())
-            .tint(sortType == .nameAscending ? Color(.systemGray5) : Color.primary)
+            .tint(getSortLabelBackgroundColor(sortType))
             .foregroundStyle(getSortLabelFontColor(sortType))
             
         }
@@ -94,12 +94,58 @@ struct ExerciseFilterView: View {
         (colorScheme == .dark) == (equipmentType == nil) ? .white : .black
     }
     
+    func getEquipmentLabelBackgroundColor(_ equipmentType: EquipmentType? = nil) -> Color {
+        if colorScheme == .dark {
+            if equipmentType != nil {
+                return .white
+            } else {
+                return Color(.systemGray4)
+            }
+        } else {
+            if equipmentType != nil {
+                return .black
+            } else {
+                return Color(.systemGray5)
+            }
+        }
+    }
+    
     func getMuscleLabelFontColor(_ muscleType: MuscleType? = nil) -> Color {
         (colorScheme == .dark) == (muscleType == nil) ? .white : .black
     }
+    func getMuscleLabelBackgroundColor(_ muscleType: MuscleType? = nil) -> Color {
+        if colorScheme == .dark {
+            if muscleType != nil {
+                return .white
+            } else {
+                return Color(.systemGray4)
+            }
+        } else {
+            if muscleType != nil {
+                return .black
+            } else {
+                return Color(.systemGray5)
+            }
+        }
+    }
     
-    func getSortLabelFontColor(_ sortType: ExerciseSortType? = nil) -> Color {
+    func getSortLabelFontColor(_ sortType: ExerciseSortType) -> Color {
         (colorScheme == .dark) == (sortType == .nameAscending) ? .white : .black
+    }
+    func getSortLabelBackgroundColor(_ sortType: ExerciseSortType? = nil) -> Color {
+        if colorScheme == .dark {
+            if sortType != .nameAscending {
+                return .white
+            } else {
+                return Color(.systemGray4)
+            }
+        } else {
+            if sortType != .nameAscending {
+                return .black
+            } else {
+                return Color(.systemGray5)
+            }
+        }
     }
 }
 

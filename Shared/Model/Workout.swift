@@ -15,6 +15,8 @@ class Workout {
     var note: String?
     var date: Date
     var finishDate: Date?
+    
+    @Relationship(deleteRule: .cascade) var exercises: [WorkoutExercise] = []
 
     init(id: UUID = .init(),
          name: String = "New Workout",

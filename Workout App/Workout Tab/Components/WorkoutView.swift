@@ -18,7 +18,7 @@ struct WorkoutView: View {
         List {
             WorkoutHeaderView(workout: workout)
             
-            
+            WorkoutExerciseListView(workout: workout)
             
             WorkoutAddCancelButtonsView(workout: workout)
         }
@@ -48,8 +48,17 @@ struct WorkoutView: View {
 
 #Preview {
     @Previewable @State var VM = ContentView.ViewModel()
-    NavigationStack {
+    let workoutConfig = ModelConfiguration(for: Workout.self, isStoredInMemoryOnly: true)
+    let exerciseConfig = ModelConfiguration(for: Exercise.self, isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Workout.self, Exercise.self, configurations: workoutConfig, exerciseConfig)
+    
+    for exercise in DEFAULT_EXERCISES {
+        container.mainContext.insert(exercise)
+    }
+
+    return NavigationStack {
         WorkoutView(workout: Workout())
     }
+    .modelContainer(container)
     .environment(VM)
 }

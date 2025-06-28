@@ -10,10 +10,21 @@ import SwiftData
 
 struct ExerciseListView: View {
     @Query private var exercises: [Exercise]
+    @Binding var selectedExercises: [Exercise]
     let searchString: String
     let equipmentType: EquipmentType?
     let muscleType: MuscleType?
     let sortType: ExerciseSortType
+    let selectable: Bool
+    
+    init(selectedExercises: Binding<[Exercise]>, searchString: String, equipmentType: EquipmentType?, muscleType: MuscleType?, sortType: ExerciseSortType, selectable: Bool = false) {
+        _selectedExercises = selectedExercises
+        self.searchString = searchString
+        self.equipmentType = equipmentType
+        self.muscleType = muscleType
+        self.sortType = sortType
+        self.selectable = selectable
+    }
 
     private let alphabet = (65...90).map { String(UnicodeScalar($0)) }
 
@@ -28,7 +39,7 @@ struct ExerciseListView: View {
             sectionHeaderFont: .headline.bold(),
             sectionHeaderForegroundColor: .primary,
             resultAnchor: .top) { exercise in
-               ExerciseRowView(exercise: exercise)
+                ExerciseRowView(selectedExercises: $selectedExercises, exercise: exercise, selectable: selectable)
         }
         .listStyle(.plain)
         .scrollIndicators(.hidden)
@@ -74,5 +85,6 @@ struct ExerciseListView: View {
 
 
 #Preview {
-    ExerciseListView(searchString: "", equipmentType: nil, muscleType: nil, sortType: .nameAscending)
+    @Previewable @State var selectedExercises: [Exercise] = []
+    ExerciseListView(selectedExercises: $selectedExercises, searchString: "", equipmentType: nil, muscleType: nil, sortType: .nameAscending)
 }
