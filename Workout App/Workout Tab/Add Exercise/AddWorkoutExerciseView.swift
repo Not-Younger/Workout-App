@@ -39,11 +39,30 @@ struct AddWorkoutExerciseView: View {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     HStack(spacing: 5) {
                         Button("Superset") {
-                            
+                            var currentExerciseIndex = workout.exercises.count
+                            for exercise in selectedExercises {
+                                let workoutExercise = WorkoutExercise(
+                                    order: currentExerciseIndex,
+                                    workout: workout,
+                                    exercise: exercise)
+                                workout.exercises.append(workoutExercise)
+                                print(workoutExercise.order)
+                            }
+                            dismiss()
                         }
                         .disabled(selectedExercises.count < 2)
                         Button("Add") {
-                            
+                            var currentExerciseIndex = workout.exercises.count
+                            for exercise in selectedExercises {
+                                let workoutExercise = WorkoutExercise(
+                                    order: currentExerciseIndex,
+                                    workout: workout,
+                                    exercise: exercise)
+                                workout.exercises.append(workoutExercise)
+                                print(workoutExercise.order)
+                                currentExerciseIndex += 1
+                            }
+                            dismiss()
                         }
                         .bold()
                         .disabled(selectedExercises.isEmpty)
