@@ -40,6 +40,8 @@
 		C40A14752E1045730069F35C /* WorkoutTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14742E1045730069F35C /* WorkoutTab.swift */; };
 		C40A14782E10458F0069F35C /* HistoryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14772E10458F0069F35C /* HistoryTab.swift */; };
 		C40A147A2E1047230069F35C /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14792E1047230069F35C /* WorkoutView.swift */; };
+		C40A147F2E10649B0069F35C /* GlobalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A147E2E10649B0069F35C /* GlobalHelpers.swift */; };
+		C40A14822E1066200069F35C /* WorkoutHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14812E1066200069F35C /* WorkoutHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		C40A14742E1045730069F35C /* WorkoutTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTab.swift; sourceTree = "<group>"; };
 		C40A14772E10458F0069F35C /* HistoryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTab.swift; sourceTree = "<group>"; };
 		C40A14792E1047230069F35C /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		C40A147E2E10649B0069F35C /* GlobalHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHelpers.swift; sourceTree = "<group>"; };
+		C40A14812E1066200069F35C /* WorkoutHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 		C40A13F52E0D7B030069F35C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C40A147D2E10648B0069F35C /* Helpers */,
 				C40A14072E0E060D0069F35C /* Enum */,
 				C40A13FB2E0D7D010069F35C /* Exercises */,
 				C40A13F72E0D7B180069F35C /* Model */,
@@ -244,6 +249,7 @@
 		C40A14732E1045660069F35C /* Workout Tab */ = {
 			isa = PBXGroup;
 			children = (
+				C40A14802E10660E0069F35C /* Components */,
 				C40A14742E1045730069F35C /* WorkoutTab.swift */,
 				C40A14792E1047230069F35C /* WorkoutView.swift */,
 			);
@@ -256,6 +262,22 @@
 				C40A14772E10458F0069F35C /* HistoryTab.swift */,
 			);
 			path = "History Tab";
+			sourceTree = "<group>";
+		};
+		C40A147D2E10648B0069F35C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C40A147E2E10649B0069F35C /* GlobalHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C40A14802E10660E0069F35C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C40A14812E1066200069F35C /* WorkoutHeaderView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,12 +365,14 @@
 				C40A14552E0F85850069F35C /* CollectionDisplayMode.swift in Sources */,
 				C40A14322E0EB9CC0069F35C /* MuscleIconView.swift in Sources */,
 				C40A14782E10458F0069F35C /* HistoryTab.swift in Sources */,
+				C40A14822E1066200069F35C /* WorkoutHeaderView.swift in Sources */,
 				C40A14302E0EB97D0069F35C /* MuscleTypeFilterRowView.swift in Sources */,
 				C40A13FD2E0D7D180069F35C /* DefaultExercises.swift in Sources */,
 				C40A13F02E0D7AC00069F35C /* ContentView.swift in Sources */,
 				C40A140D2E0E0C340069F35C /* ContentView-VM.swift in Sources */,
 				C40A13FA2E0D7BCD0069F35C /* DataModel.swift in Sources */,
 				C40A13F12E0D7AC00069F35C /* Workout_AppApp.swift in Sources */,
+				C40A147F2E10649B0069F35C /* GlobalHelpers.swift in Sources */,
 				C40A14282E0EB2C10069F35C /* EquipmentTypeFilterView.swift in Sources */,
 				C40A14242E0E1DC50069F35C /* EquipmentType.swift in Sources */,
 				C40A14042E0E03480069F35C /* ExerciseRowView.swift in Sources */,

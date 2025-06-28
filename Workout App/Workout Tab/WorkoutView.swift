@@ -16,35 +16,36 @@ struct WorkoutView: View {
     
     var body: some View {
         List {
-            TextField("Workout Name", text: $workout.name)
+            WorkoutHeaderView(workout: workout)
         }
+        .listStyle(.inset)
+        .fontDesign(.rounded)
         .toolbar {
-            ToolbarItemGroup(placement: .topBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.down")
-                }
-            }
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button {
                     
                 } label: {
                     Image(systemName: "timer")
                 }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .tint(.secondary)
                 Button("Finish") {
                     workout.finishDate = Date()
                     VM.currentWorkout = nil
                     print("Finished workout: \(workout.name) at \(workout.finishDate!)")
                     dismiss()
                 }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .tint(.primary)
             }
         }
     }
 }
 
-//#Preview {
-//    NavigationStack {
-//        WorkoutView(workout: Workout())
-//    }
-//}
+#Preview {
+    @Previewable @State var VM = ContentView.ViewModel()
+    NavigationStack {
+        WorkoutView(workout: Workout())
+    }
+    .environment(VM)
+}
