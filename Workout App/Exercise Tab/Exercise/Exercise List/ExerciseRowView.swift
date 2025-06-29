@@ -60,6 +60,6 @@ struct ExerciseRowView: View {
 
 #Preview {
     @Previewable @State var selectedExercises: [Exercise] = []
-    let exercise = Exercise(name: "Bench Press (Barbell)", exerciseDescription: "A compound chest exercise where you press a barbell upward from a lying position to target the pectorals, triceps, and shoulders.", muscleType: .chest, equipmentType: .barbell)
+    let exercise = Exercise(name: "Bench Press (Barbell)", exerciseDescription: "A compound chest exercise where you press a barbell upward from a lying position to target the pectorals, triceps, and shoulders.", muscleType: .chest, equipmentType: .barbell, exerciseType: .weightedReps)
     ExerciseRowView(selectedExercises: $selectedExercises, exercise: exercise, selectable: false)
 }

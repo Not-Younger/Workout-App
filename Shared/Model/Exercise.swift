@@ -18,15 +18,17 @@ class Exercise: Alphabetizable {
     var muscleType: MuscleType
     var secondaryMuscleTypes: [MuscleType]
     var equipmentType: EquipmentType
+    var exerciseType: ExerciseType
     
     @Relationship(deleteRule: .cascade) var sets: [ExerciseSet] = []
     
-    init(name: String, exerciseDescription: String? = nil, imageString: String? = nil, muscleType: MuscleType, secondaryMuscleTypes: [MuscleType] = [], equipmentType: EquipmentType) {
+    init(name: String, exerciseDescription: String? = nil, imageString: String? = nil, muscleType: MuscleType, secondaryMuscleTypes: [MuscleType] = [], equipmentType: EquipmentType, exerciseType: ExerciseType) {
         self.name = name
         self.exerciseDescription = exerciseDescription
         self.imageString = imageString
         self.muscleType = muscleType
         self.secondaryMuscleTypes = secondaryMuscleTypes
         self.equipmentType = equipmentType
+        self.exerciseType = exerciseType
     }
 }

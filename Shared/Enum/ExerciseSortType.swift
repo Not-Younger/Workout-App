@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ExerciseSortType: String, CaseIterable {
+enum ExerciseSortType: String, CaseIterable, Codable {
     case nameAscending
     case nameDescending
     case frequencyAscending

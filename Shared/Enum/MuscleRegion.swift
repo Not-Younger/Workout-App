@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MuscleRegion: String, CaseIterable {
+enum MuscleRegion: String, CaseIterable, Codable {
     case upperBody = "Upper Body"
     case lowerBody = "Lower Body"
     case core = "Core"

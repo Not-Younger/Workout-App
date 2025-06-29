@@ -17,10 +17,12 @@ struct WorkoutView: View {
     var body: some View {
         List {
             WorkoutHeaderView(workout: workout)
+                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
             
             WorkoutExerciseListView(workout: workout)
             
             WorkoutAddCancelButtonsView(workout: workout)
+                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         }
         .listStyle(.inset)
         .fontDesign(.rounded)

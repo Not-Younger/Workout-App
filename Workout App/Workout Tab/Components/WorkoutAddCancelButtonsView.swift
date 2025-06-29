@@ -13,7 +13,7 @@ struct WorkoutAddCancelButtonsView: View {
     @Environment(ContentView.ViewModel.self) private var VM: ContentView.ViewModel
     
     @Bindable var workout: Workout
-    @State private var isAddingExercises: Bool = true
+    @State private var isAddingExercises: Bool = false
     @State private var isShowingCancelWorkoutAlert: Bool = false
     
     var body: some View {

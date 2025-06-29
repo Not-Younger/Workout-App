@@ -20,6 +20,7 @@ class ExerciseSet {
     var duration: TimeInterval?  // For time-based exercises
     var type: SetType
     var order: Int  // Order in the exercise
+    
 
     @Relationship(deleteRule: .nullify) var exercise: Exercise
     @Relationship(deleteRule: .nullify) var workoutExercise: WorkoutExercise
