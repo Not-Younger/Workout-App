@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WorkoutHeaderView: View {
+    @Environment(\.editMode) private var editMode
     @Bindable var workout: Workout
     
     @State private var elapsedTime: TimeInterval = 0
@@ -15,8 +16,26 @@ struct WorkoutHeaderView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            TextField("Workout Name", text: $workout.name)
-                .font(.title2.bold())
+            HStack {
+                TextField("Workout Name", text: $workout.name)
+                    .font(.title2.bold())
+                Button {
+                    withAnimation {
+                        if editMode?.wrappedValue == .active {
+                            editMode?.wrappedValue = .inactive
+                        } else {
+                            editMode?.wrappedValue = .active
+                        }
+                    }
+                } label: {
+                    if editMode?.wrappedValue == .active {
+                        Text("Done")
+                    } else {
+                        Text("Edit")
+                    }
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
             Group {
                 HStack {
                     Image(systemName: "calendar")

@@ -56,6 +56,7 @@
 		C40A14A02E10AE9B0069F35C /* WeightUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A149F2E10AE9B0069F35C /* WeightUnitType.swift */; };
 		C40A14A22E10AF020069F35C /* DistanceUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14A12E10AF020069F35C /* DistanceUnitType.swift */; };
 		C40A14A42E10AFF30069F35C /* HeightUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14A32E10AFF30069F35C /* HeightUnitType.swift */; };
+		C40A14A62E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		C40A149F2E10AE9B0069F35C /* WeightUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUnitType.swift; sourceTree = "<group>"; };
 		C40A14A12E10AF020069F35C /* DistanceUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUnitType.swift; sourceTree = "<group>"; };
 		C40A14A32E10AFF30069F35C /* HeightUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightUnitType.swift; sourceTree = "<group>"; };
+		C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseRowSetsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +344,7 @@
 			children = (
 				C40A149A2E10AC0B0069F35C /* WorkoutExerciseRowView.swift */,
 				C40A149D2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift */,
+				C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */,
 			);
 			path = "Workout Exercise Row";
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C40A14A62E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift in Sources */,
 				C40A140B2E0E07EC0069F35C /* MuscleRegion.swift in Sources */,
 				C40A140F2E0E0F770069F35C /* ExerciseDetailView.swift in Sources */,
 				C40A14532E0F85800069F35C /* Alphabetizable.swift in Sources */,

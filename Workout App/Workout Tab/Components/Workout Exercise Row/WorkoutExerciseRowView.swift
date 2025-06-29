@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WorkoutExerciseRowView: View {
+    @Environment(\.editMode) private var editMode
     @Bindable var workoutExercise: WorkoutExercise
     
     var body: some View {
@@ -22,8 +23,11 @@ struct WorkoutExerciseRowView: View {
                         .fontWeight(.bold)
                     Spacer()
                 }
-                WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise)
-                
+                if editMode?.wrappedValue == .inactive {
+                    WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise)
+                    
+                    WorkoutExerciseRowSetsView(workoutExercise: workoutExercise)
+                }
             }
             RoundedRectangle(cornerRadius: 8)
                 .frame(width: 5)
