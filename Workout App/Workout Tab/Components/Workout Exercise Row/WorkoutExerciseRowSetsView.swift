@@ -20,7 +20,7 @@ struct WorkoutExerciseRowSetsView: View {
             Text("Add Set")
                 
         }
-        
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

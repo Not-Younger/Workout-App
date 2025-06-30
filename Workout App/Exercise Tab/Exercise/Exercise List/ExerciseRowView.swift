@@ -33,7 +33,11 @@ struct ExerciseRowView: View {
             }
             Spacer()
             Button {
-                VM.exercisePath.append(exercise)
+                if selectable {
+                    VM.workoutExercisePath.append(exercise)
+                } else {
+                    VM.exercisePath.append(exercise)
+                }
             } label: {
                 Image(systemName: "chart.line.text.clipboard")
             }

@@ -9,22 +9,29 @@ import SwiftData
 import SwiftUI
 
 struct WorkoutView: View {
+    @Environment(\.editMode) private var editMode
     @Environment(\.dismiss) private var dismiss
     @Environment(ContentView.ViewModel.self) private var VM: ContentView.ViewModel
     
     @Bindable var workout: Workout
     
     var body: some View {
-        List {
-            WorkoutHeaderView(workout: workout)
-                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-            
-            WorkoutExerciseListView(workout: workout)
-            
-            WorkoutAddCancelButtonsView(workout: workout)
-                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+        GeometryReader { geometry in
+            List {
+                if editMode?.wrappedValue == .inactive {
+                    WorkoutHeaderView(workout: workout)
+                        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                }
+                
+                WorkoutExerciseListView(workout: workout)
+                
+                if editMode?.wrappedValue == .inactive {
+                    WorkoutAddCancelButtonsView(workout: workout)
+                        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                }
+            }
+            .listStyle(.inset)
         }
-        .listStyle(.inset)
         .fontDesign(.rounded)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {

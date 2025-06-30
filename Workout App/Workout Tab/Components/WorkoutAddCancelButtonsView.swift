@@ -17,6 +17,7 @@ struct WorkoutAddCancelButtonsView: View {
     @State private var isShowingCancelWorkoutAlert: Bool = false
     
     var body: some View {
+        @Bindable var VM = VM
         VStack(spacing: 20) {
             Button {
                 isAddingExercises = true
@@ -30,7 +31,9 @@ struct WorkoutAddCancelButtonsView: View {
             .buttonStyle(BorderedProminentButtonStyle())
             .tint(.primary)
             .sheet(isPresented: $isAddingExercises) {
-                AddWorkoutExerciseView(workout: workout)
+                NavigationStack(path: $VM.workoutExercisePath) {
+                    AddWorkoutExerciseView(workout: workout)
+                }
             }
             Button {
                 isShowingCancelWorkoutAlert = true

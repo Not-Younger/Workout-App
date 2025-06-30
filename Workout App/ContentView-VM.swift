@@ -23,6 +23,7 @@ extension ContentView {
         
         // Workout Tab
         var workoutPath = NavigationPath()
+        var workoutExercisePath = NavigationPath()
         var currentWorkout: Workout?
         var skipSwiftDataCurrentWorkout = false // For when overwritting existing workout and starting one quickly before Swift Data actually deletes it (save isn't working idk)
         

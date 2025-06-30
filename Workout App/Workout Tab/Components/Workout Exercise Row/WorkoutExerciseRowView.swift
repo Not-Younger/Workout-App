@@ -23,6 +23,22 @@ struct WorkoutExerciseRowView: View {
                         .fontWeight(.bold)
                     Spacer()
                 }
+//                .onLongPressGesture(
+//                minimumDuration: 0,
+//                maximumDistance: 10,
+//                perform: {
+//                    withAnimation {
+//                        if editMode?.wrappedValue == .active {
+//                            editMode?.wrappedValue = .inactive
+//                        } else {
+//                            editMode?.wrappedValue = .active
+//                        }
+//                    }
+//                },
+//                onPressingChanged: { pressing in
+//                    
+//                })
+                
                 if editMode?.wrappedValue == .inactive {
                     WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise)
                     

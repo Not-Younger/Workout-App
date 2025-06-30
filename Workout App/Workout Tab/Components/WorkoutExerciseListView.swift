@@ -16,23 +16,10 @@ struct WorkoutExerciseListView: View {
     var body: some View {
         ForEach(workout.exercises) { workoutExercise in
             WorkoutExerciseRowView(workoutExercise: workoutExercise)
-                .onLongPressGesture(minimumDuration: 0, maximumDistance: 100, pressing: { pressing in
-                    self.hasPressed = pressing
-                    if pressing {print("pressing")}
-                    if !pressing {print("not presing")}
-                }, perform: {
-                    withAnimation {
-                        if editMode?.wrappedValue == .active {
-                            editMode?.wrappedValue = .inactive
-                        } else {
-                            editMode?.wrappedValue = .active
-                        }
-                    }
-                })
+                .moveDisabled(editMode?.wrappedValue == .inactive)
         }
-        .onMove { indices, newOffset in
-            workout.exercises.move(fromOffsets: indices, toOffset: newOffset)
-        }
+        .onMove(perform: move)
+        .animation(nil, value: editMode?.wrappedValue)
     }
     
     func move(from source: IndexSet, to destination: Int) {
