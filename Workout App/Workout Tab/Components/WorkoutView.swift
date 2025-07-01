@@ -18,10 +18,8 @@ struct WorkoutView: View {
     var body: some View {
         GeometryReader { geometry in
             List {
-                if editMode?.wrappedValue == .inactive {
-                    WorkoutHeaderView(workout: workout)
-                        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                }
+                WorkoutHeaderView(workout: workout)
+                    .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                 
                 WorkoutExerciseListView(workout: workout)
                 

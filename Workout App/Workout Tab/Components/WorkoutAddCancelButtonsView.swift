@@ -33,6 +33,9 @@ struct WorkoutAddCancelButtonsView: View {
             .sheet(isPresented: $isAddingExercises) {
                 NavigationStack(path: $VM.workoutExercisePath) {
                     AddWorkoutExerciseView(workout: workout)
+                        .navigationDestination(for: Exercise.self) { exercise in
+                            ExerciseDetailView(exercise: exercise)
+                        }
                 }
             }
             Button {

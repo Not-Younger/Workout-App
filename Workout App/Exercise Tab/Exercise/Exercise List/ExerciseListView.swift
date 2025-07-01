@@ -43,9 +43,6 @@ struct ExerciseListView: View {
         }
         .listStyle(.plain)
         .scrollIndicators(.hidden)
-        .navigationDestination(for: Exercise.self) { exercise in
-            ExerciseDetailView(exercise: exercise)
-        }
     }
     
     func matchesSearchString(_ exercise: Exercise) -> Bool {

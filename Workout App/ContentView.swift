@@ -31,12 +31,18 @@ struct ContentView: View {
             Tab("Workout", systemImage: "plus", value: 3) {
                 NavigationStack(path: $VM.workoutPath) {
                     WorkoutTab(modelContext: modelContext, VM: VM)
+                        .navigationDestination(for: Workout.self) { workout in
+                            WorkoutView(workout: workout)
+                        }
                 }
                 .environment(VM)
             }
             Tab("Exercises", systemImage: "dumbbell", value: 4) {
                 NavigationStack(path: $VM.exercisePath) {
                     ExerciseTab()
+                        .navigationDestination(for: Exercise.self) { exercise in
+                            ExerciseDetailView(exercise: exercise)
+                        }
                 }
                 .environment(VM)
             }

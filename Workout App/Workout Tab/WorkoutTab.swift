@@ -70,9 +70,6 @@ struct WorkoutTab: View {
                 }
             }
         }
-        .navigationDestination(for: Workout.self) { workout in
-            WorkoutView(workout: workout)
-        }
     }
 }
 
