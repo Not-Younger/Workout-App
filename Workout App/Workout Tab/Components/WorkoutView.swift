@@ -18,16 +18,17 @@ struct WorkoutView: View {
         GeometryReader { geometry in
             List {
                 WorkoutHeaderView(workout: workout)
-                    .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 
                 WorkoutExerciseListView(workout: workout)
                 
                 if editMode?.wrappedValue == .inactive {
                     WorkoutAddCancelButtonsView(workout: workout)
-                        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                        .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 }
             }
             .listStyle(.inset)
+            .scrollIndicators(.hidden)
         }
         .fontDesign(.rounded)
         .toolbar {

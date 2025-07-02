@@ -12,7 +12,7 @@ struct WorkoutExerciseRowView: View {
     @Bindable var workoutExercise: WorkoutExercise
     
     var body: some View {
-        HStack {
+        HStack(spacing: 5) {
             RoundedRectangle(cornerRadius: 8)
                 .frame(width: 5)
                 .foregroundStyle(workoutExercise.superSetColor)
@@ -23,21 +23,6 @@ struct WorkoutExerciseRowView: View {
                         .fontWeight(.bold)
                     Spacer()
                 }
-//                .onLongPressGesture(
-//                minimumDuration: 0,
-//                maximumDistance: 10,
-//                perform: {
-//                    withAnimation {
-//                        if editMode?.wrappedValue == .active {
-//                            editMode?.wrappedValue = .inactive
-//                        } else {
-//                            editMode?.wrappedValue = .active
-//                        }
-//                    }
-//                },
-//                onPressingChanged: { pressing in
-//                    
-//                })
                 
                 if editMode?.wrappedValue == .inactive {
                     WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise)

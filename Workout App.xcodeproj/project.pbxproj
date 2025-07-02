@@ -57,6 +57,7 @@
 		C40A14A42E10AFF30069F35C /* HeightUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14A32E10AFF30069F35C /* HeightUnitType.swift */; };
 		C40A14A62E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */; };
 		C4CC23E42E14B190002E2511 /* NavigationPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC23E32E14B190002E2511 /* NavigationPaths.swift */; };
+		C4CC23FE2E15FA00002E2511 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC23FD2E15FA00002E2511 /* CustomEditButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		C40A14A32E10AFF30069F35C /* HeightUnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightUnitType.swift; sourceTree = "<group>"; };
 		C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseRowSetsView.swift; sourceTree = "<group>"; };
 		C4CC23E32E14B190002E2511 /* NavigationPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPaths.swift; sourceTree = "<group>"; };
+		C4CC23FD2E15FA00002E2511 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 				C40A14892E106E3D0069F35C /* WorkoutExerciseListView.swift */,
 				C40A149B2E10AC0B0069F35C /* Workout Exercise Row */,
 				C40A14832E10692F0069F35C /* WorkoutAddCancelButtonsView.swift */,
+				C4CC23FD2E15FA00002E2511 /* CustomEditButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				C40A14022E0D7F810069F35C /* ExerciseListView.swift in Sources */,
 				C40A14062E0E05300069F35C /* ExerciseIconView.swift in Sources */,
 				C40A142E2E0EB91E0069F35C /* MuscleTypeFilterView.swift in Sources */,
+				C4CC23FE2E15FA00002E2511 /* CustomEditButton.swift in Sources */,
 				C40A14492E0EBAE10069F35C /* FilterButtonLabel.swift in Sources */,
 				C40A14722E1040DF0069F35C /* ExerciseTab.swift in Sources */,
 				C40A142A2E0EB3920069F35C /* EquipmentIconView.swift in Sources */,

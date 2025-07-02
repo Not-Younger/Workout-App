@@ -13,29 +13,18 @@ struct WorkoutHeaderView: View {
     
     @State private var elapsedTime: TimeInterval = 0
     @State private var timer: Timer?
+    @State private var note: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
                 TextField("Workout Name", text: $workout.name)
                     .font(.title2.bold())
-                Button {
-                    withAnimation {
-                        if editMode?.wrappedValue == .active {
-                            editMode?.wrappedValue = .inactive
-                        } else {
-                            editMode?.wrappedValue = .active
-                        }
-                    }
-                } label: {
-                    if editMode?.wrappedValue == .active {
-                        Text("Done")
-                    } else {
-                        Text("Edit")
-                    }
+                if !workout.exercises.isEmpty {
+                    CustomEditButton()
                 }
-                .buttonStyle(PlainButtonStyle())
             }
+            .padding(.bottom, 10)
             Group {
                 HStack {
                     Image(systemName: "calendar")
@@ -45,6 +34,14 @@ struct WorkoutHeaderView: View {
                     Image(systemName: "clock")
                     Text(formatElapsedTime(elapsedTime))
                         .monospacedDigit()
+                }
+                HStack(alignment: .top) {
+                    Image(systemName: "text.document.fill")
+                    TextField("Note", text: $note, axis: .vertical)
+                        .scrollDisabled(true)
+                        .onChange(of: note) { _, newValue in
+                            workout.note = newValue.isEmpty ? nil : newValue
+                        }
                 }
             }
             .font(.subheadline)
