@@ -55,11 +55,9 @@ struct WorkoutExerciseRowView: View {
 }
 
 #Preview {
-    @Previewable @State var VM = ContentView.ViewModel()
     let workout = Workout(name: "Test Workout")
     let exercise = DEFAULT_EXERCISES[0]
     let workoutExercise = WorkoutExercise(order: 0, supersetNumber: nil, sets: [], workout: workout, exercise: exercise)
     
     WorkoutExerciseRowView(workoutExercise: workoutExercise)
-        .environment(VM)
 }

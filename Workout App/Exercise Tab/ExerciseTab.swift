@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ExerciseTab: View {
-    @Environment(ContentView.ViewModel.self) private var VM: ContentView.ViewModel
-    
     @State private var searchString: String = ""
     @State private var isSearchFocused: Bool = false
     @State private var selectedExercises: [Exercise] = []
     
+    @State private var equipmentType: EquipmentType?
+    @State private var muscleType: MuscleType?
+    @State private var sortType: ExerciseSortType = .nameAscending
+    
     var body: some View {
-        @Bindable var VM = VM
         VStack {
-            ExerciseFilterView(equipmentType: $VM.equipmentType, muscleType: $VM.muscleType, sortType: $VM.sortType)
+            ExerciseFilterView(equipmentType: $equipmentType, muscleType: $muscleType, sortType: $sortType)
                 .padding(.horizontal)
-            ExerciseListView(selectedExercises: $selectedExercises,searchString: searchString, equipmentType: VM.equipmentType, muscleType: VM.muscleType, sortType: VM.sortType)
+            ExerciseListView(selectedExercises: $selectedExercises, searchString: searchString, equipmentType: equipmentType, muscleType: muscleType, sortType: sortType)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.secondarySystemBackground))
@@ -28,9 +29,7 @@ struct ExerciseTab: View {
 }
 
 #Preview {
-    @Previewable @State var VM = ContentView.ViewModel()
     return NavigationStack {
         ExerciseTab()
     }
-    .environment(VM)
 }

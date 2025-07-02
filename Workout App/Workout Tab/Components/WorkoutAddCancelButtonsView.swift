@@ -10,14 +10,14 @@ import SwiftUI
 struct WorkoutAddCancelButtonsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    @Environment(ContentView.ViewModel.self) private var VM: ContentView.ViewModel
+    @Environment(NavigationPaths.self) private var navigationPaths: NavigationPaths
     
     @Bindable var workout: Workout
     @State private var isAddingExercises: Bool = false
     @State private var isShowingCancelWorkoutAlert: Bool = false
     
     var body: some View {
-        @Bindable var VM = VM
+        @Bindable var navigationPaths = navigationPaths
         VStack(spacing: 20) {
             Button {
                 isAddingExercises = true
@@ -31,7 +31,7 @@ struct WorkoutAddCancelButtonsView: View {
             .buttonStyle(BorderedProminentButtonStyle())
             .tint(.primary)
             .sheet(isPresented: $isAddingExercises) {
-                NavigationStack(path: $VM.workoutExercisePath) {
+                NavigationStack(path: $navigationPaths.workoutExercisePath) {
                     AddWorkoutExerciseView(workout: workout)
                         .navigationDestination(for: Exercise.self) { exercise in
                             ExerciseDetailView(exercise: exercise)
@@ -52,7 +52,11 @@ struct WorkoutAddCancelButtonsView: View {
             .alert("Cancel Workout?", isPresented: $isShowingCancelWorkoutAlert) {
                 Button("Cancel Workout", role: .destructive) {
                     modelContext.delete(workout)
-                    VM.currentWorkout = nil
+                    do {
+                        try modelContext.save()
+                    } catch {
+                        print("Error saving after deleting existing workout: \(error)")
+                    }
                     print("Deleted workout: \(workout.name)")
                     dismiss()
                 }

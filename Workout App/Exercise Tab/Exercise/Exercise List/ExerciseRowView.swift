@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ExerciseRowView: View {
-    @Environment(ContentView.ViewModel.self) private var VM: ContentView.ViewModel
+    @Environment(NavigationPaths.self) private var navigationPaths: NavigationPaths
+    
     @Binding var selectedExercises: [Exercise]
     let exercise: Exercise
     let selectable: Bool
@@ -34,9 +35,9 @@ struct ExerciseRowView: View {
             Spacer()
             Button {
                 if selectable {
-                    VM.workoutExercisePath.append(exercise)
+                    navigationPaths.workoutExercisePath.append(exercise)
                 } else {
-                    VM.exercisePath.append(exercise)
+                    navigationPaths.exercisePath.append(exercise)
                 }
             } label: {
                 Image(systemName: "chart.line.text.clipboard")

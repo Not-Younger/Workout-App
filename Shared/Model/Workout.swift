@@ -10,6 +10,7 @@ import SwiftUI
 
 @Model
 class Workout {
+    
     var id: UUID
     var name: String
     var note: String?

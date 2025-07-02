@@ -11,46 +11,46 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var exercises: [Exercise]
-    @State private var VM = ContentView.ViewModel()
+    
+    @AppStorage("selectedTab") private var selectedTab: Int = 3
+    @State private var navigationPaths = NavigationPaths()
+    @State private var currentWorkout: Workout?
     
     var body: some View {
-        @Bindable var VM = VM
-        TabView(selection: $VM.selectedTab) {
+        TabView(selection: $selectedTab) {
             Tab("Profile", systemImage: "person.fill", value: 1) {
                 NavigationStack {
                     
                 }
-                .environment(VM)
             }
             Tab("History", systemImage: "clock.fill", value: 2) {
                 NavigationStack {
                     HistoryTab()
                 }
-                .environment(VM)
             }
             Tab("Workout", systemImage: "plus", value: 3) {
-                NavigationStack(path: $VM.workoutPath) {
-                    WorkoutTab(modelContext: modelContext, VM: VM)
+                NavigationStack(path: $navigationPaths.workoutPath) {
+                    WorkoutTab()
                         .navigationDestination(for: Workout.self) { workout in
                             WorkoutView(workout: workout)
                         }
                 }
-                .environment(VM)
+                .environment(currentWorkout)
+                .environment(navigationPaths)
             }
             Tab("Exercises", systemImage: "dumbbell", value: 4) {
-                NavigationStack(path: $VM.exercisePath) {
+                NavigationStack(path: $navigationPaths.exercisePath) {
                     ExerciseTab()
                         .navigationDestination(for: Exercise.self) { exercise in
                             ExerciseDetailView(exercise: exercise)
                         }
                 }
-                .environment(VM)
+                .environment(navigationPaths)
             }
             Tab("Settings", systemImage: "gear", value: 5) {
                 NavigationStack {
                     
                 }
-                .environment(VM)
             }
         }
         .onAppear {

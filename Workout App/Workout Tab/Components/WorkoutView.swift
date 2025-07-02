@@ -11,7 +11,6 @@ import SwiftUI
 struct WorkoutView: View {
     @Environment(\.editMode) private var editMode
     @Environment(\.dismiss) private var dismiss
-    @Environment(ContentView.ViewModel.self) private var VM: ContentView.ViewModel
     
     @Bindable var workout: Workout
     
@@ -42,7 +41,6 @@ struct WorkoutView: View {
                 .tint(.secondary)
                 Button("Finish") {
                     workout.finishDate = Date()
-                    VM.currentWorkout = nil
                     print("Finished workout: \(workout.name) at \(workout.finishDate!)")
                     dismiss()
                 }
@@ -54,7 +52,6 @@ struct WorkoutView: View {
 }
 
 #Preview {
-    @Previewable @State var VM = ContentView.ViewModel()
     let workoutConfig = ModelConfiguration(for: Workout.self, isStoredInMemoryOnly: true)
     let exerciseConfig = ModelConfiguration(for: Exercise.self, isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Workout.self, Exercise.self, configurations: workoutConfig, exerciseConfig)
@@ -67,5 +64,4 @@ struct WorkoutView: View {
         WorkoutView(workout: Workout())
     }
     .modelContainer(container)
-    .environment(VM)
 }
