@@ -22,10 +22,8 @@ struct WorkoutView: View {
                 
                 WorkoutExerciseListView(workout: workout)
                 
-                if editMode?.wrappedValue == .inactive {
-                    WorkoutAddCancelButtonsView(workout: workout)
-                        .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
-                }
+                WorkoutAddCancelButtonsView(workout: workout)
+                    .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
             }
             .listStyle(.inset)
             .scrollIndicators(.hidden)
