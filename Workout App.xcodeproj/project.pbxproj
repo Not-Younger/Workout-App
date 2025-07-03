@@ -58,6 +58,10 @@
 		C40A14A62E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */; };
 		C4CC23E42E14B190002E2511 /* NavigationPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC23E32E14B190002E2511 /* NavigationPaths.swift */; };
 		C4CC23FE2E15FA00002E2511 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC23FD2E15FA00002E2511 /* CustomEditButton.swift */; };
+		C4CC24012E161125002E2511 /* WorkoutExerciseSetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24002E161125002E2511 /* WorkoutExerciseSetRow.swift */; };
+		C4CC24032E161BB8002E2511 /* SetTypeIconMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24022E161BB8002E2511 /* SetTypeIconMenuView.swift */; };
+		C4CC24052E161EB2002E2511 /* SetTypeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24042E161EB2002E2511 /* SetTypeInfoView.swift */; };
+		C4CC24072E1622E6002E2511 /* SetTypeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24062E1622E6002E2511 /* SetTypeIconView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +117,10 @@
 		C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseRowSetsView.swift; sourceTree = "<group>"; };
 		C4CC23E32E14B190002E2511 /* NavigationPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPaths.swift; sourceTree = "<group>"; };
 		C4CC23FD2E15FA00002E2511 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
+		C4CC24002E161125002E2511 /* WorkoutExerciseSetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseSetRow.swift; sourceTree = "<group>"; };
+		C4CC24022E161BB8002E2511 /* SetTypeIconMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTypeIconMenuView.swift; sourceTree = "<group>"; };
+		C4CC24042E161EB2002E2511 /* SetTypeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTypeInfoView.swift; sourceTree = "<group>"; };
+		C4CC24062E1622E6002E2511 /* SetTypeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTypeIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,11 +353,23 @@
 		C40A149B2E10AC0B0069F35C /* Workout Exercise Row */ = {
 			isa = PBXGroup;
 			children = (
+				C4CC23FF2E161103002E2511 /* Workout Exercise Set Row */,
 				C40A149A2E10AC0B0069F35C /* WorkoutExerciseRowView.swift */,
 				C40A149D2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift */,
 				C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */,
 			);
 			path = "Workout Exercise Row";
+			sourceTree = "<group>";
+		};
+		C4CC23FF2E161103002E2511 /* Workout Exercise Set Row */ = {
+			isa = PBXGroup;
+			children = (
+				C4CC24002E161125002E2511 /* WorkoutExerciseSetRow.swift */,
+				C4CC24022E161BB8002E2511 /* SetTypeIconMenuView.swift */,
+				C4CC24042E161EB2002E2511 /* SetTypeInfoView.swift */,
+				C4CC24062E1622E6002E2511 /* SetTypeIconView.swift */,
+			);
+			path = "Workout Exercise Set Row";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +470,7 @@
 				C40A13F02E0D7AC00069F35C /* ContentView.swift in Sources */,
 				C40A14A42E10AFF30069F35C /* HeightUnitType.swift in Sources */,
 				C40A13FA2E0D7BCD0069F35C /* DataModel.swift in Sources */,
+				C4CC24052E161EB2002E2511 /* SetTypeInfoView.swift in Sources */,
 				C40A13F12E0D7AC00069F35C /* Workout_AppApp.swift in Sources */,
 				C40A148F2E107C820069F35C /* DefaultSuperSetColors.swift in Sources */,
 				C40A148D2E106FDC0069F35C /* AddWorkoutExerciseView.swift in Sources */,
@@ -462,15 +483,18 @@
 				C40A14242E0E1DC50069F35C /* EquipmentType.swift in Sources */,
 				C40A14042E0E03480069F35C /* ExerciseRowView.swift in Sources */,
 				C40A149C2E10AC0B0069F35C /* WorkoutExerciseRowView.swift in Sources */,
+				C4CC24012E161125002E2511 /* WorkoutExerciseSetRow.swift in Sources */,
 				C40A14512E0F85780069F35C /* AlphabetScrollView.swift in Sources */,
 				C40A14752E1045730069F35C /* WorkoutTab.swift in Sources */,
 				C40A14092E0E061A0069F35C /* MuscleType.swift in Sources */,
 				C40A14022E0D7F810069F35C /* ExerciseListView.swift in Sources */,
 				C40A14062E0E05300069F35C /* ExerciseIconView.swift in Sources */,
 				C40A142E2E0EB91E0069F35C /* MuscleTypeFilterView.swift in Sources */,
+				C4CC24072E1622E6002E2511 /* SetTypeIconView.swift in Sources */,
 				C4CC23FE2E15FA00002E2511 /* CustomEditButton.swift in Sources */,
 				C40A14492E0EBAE10069F35C /* FilterButtonLabel.swift in Sources */,
 				C40A14722E1040DF0069F35C /* ExerciseTab.swift in Sources */,
+				C4CC24032E161BB8002E2511 /* SetTypeIconMenuView.swift in Sources */,
 				C40A142A2E0EB3920069F35C /* EquipmentIconView.swift in Sources */,
 				C40A149E2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift in Sources */,
 				C40A13F92E0D7B250069F35C /* Exercise.swift in Sources */,
