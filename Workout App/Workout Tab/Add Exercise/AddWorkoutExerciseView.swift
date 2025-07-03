@@ -42,8 +42,8 @@ struct AddWorkoutExerciseView: View {
                         let currentSupersetIndex = getMaxSuperSetNumber()
                         for exercise in selectedExercises {
                             let workoutExercise = WorkoutExercise(
-                                order: currentExerciseIndex,
                                 supersetNumber: currentSupersetIndex,
+                                order: currentExerciseIndex,
                                 workout: workout,
                                 exercise: exercise)
                             workout.exercises.append(workoutExercise)

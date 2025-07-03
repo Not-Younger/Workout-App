@@ -37,7 +37,7 @@ struct WorkoutHeaderView: View {
                 }
                 HStack(alignment: .top) {
                     Image(systemName: "text.document.fill")
-                    TextField("Note", text: $note, axis: .vertical)
+                    TextField("Notes", text: $note, axis: .vertical)
                         .scrollDisabled(true)
                         .onChange(of: note) { _, newValue in
                             workout.note = newValue.isEmpty ? nil : newValue

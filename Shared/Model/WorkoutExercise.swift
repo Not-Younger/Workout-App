@@ -11,18 +11,18 @@ import SwiftUI
 @Model
 class WorkoutExercise {
     var id = UUID()
-    var order: Int // Order in Workout
     var notes: String?
     var supersetNumber: Int?
     var weightType: WeightUnitType
     var distanceType: DistanceUnitType
     var heightType: HeightUnitType
+    var order: Int // Order in Workout
 
     @Relationship(deleteRule: .cascade) var sets: [ExerciseSet]
     @Relationship(deleteRule: .nullify) var workout: Workout
     @Relationship(deleteRule: .nullify) var exercise: Exercise
     
-    init(id: UUID = UUID(), order: Int, notes: String? = nil, supersetNumber: Int? = nil, sets: [ExerciseSet] = [], workout: Workout, exercise: Exercise, weightType: WeightUnitType = .imperial, distanceType: DistanceUnitType = .imperial, heightType: HeightUnitType = .imperial) {
+    init(id: UUID = UUID(), notes: String? = nil, supersetNumber: Int? = nil, sets: [ExerciseSet] = [], weightType: WeightUnitType = .imperial, distanceType: DistanceUnitType = .imperial, heightType: HeightUnitType = .imperial, order: Int, workout: Workout, exercise: Exercise) {
         self.id = id
         self.order = order
         self.notes = notes

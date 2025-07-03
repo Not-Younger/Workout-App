@@ -27,6 +27,6 @@ struct WorkoutExerciseRowSetsView: View {
 #Preview {
     let workout = Workout(name: "Test Workout")
     let exercise = DEFAULT_EXERCISES[0]
-    let workoutExercise = WorkoutExercise(order: 0, supersetNumber: nil, sets: [], workout: workout, exercise: exercise)
+    let workoutExercise = WorkoutExercise(supersetNumber: nil, sets: [], order: 0, workout: workout, exercise: exercise)
     WorkoutExerciseRowSetsView(workoutExercise: workoutExercise)
 }
