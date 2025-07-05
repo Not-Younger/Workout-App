@@ -10,6 +10,7 @@ import SwiftUI
 struct SetTypeIconMenuView: View {
     @Environment(\.colorScheme) private var colorScheme
     let exerciseSet: ExerciseSet
+    let size: CGFloat
     
     @State private var isShowingMoreInfo: Bool = false
     
@@ -45,7 +46,7 @@ struct SetTypeIconMenuView: View {
                 Label("More Info", systemImage: "questionmark")
             }
         } label: {
-            SetTypeIconView(order: exerciseSet.order, setType: exerciseSet.type)
+            SetTypeIconView(order: exerciseSet.order, setType: exerciseSet.type, size: size)
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $isShowingMoreInfo) {

@@ -74,7 +74,7 @@ extension ExerciseSet {
         switch self.exercise.exerciseType {
         case .weightedReps:
             if let previousWeight, let previousReps, let weightType {
-                return "\(previousWeight) \(weightType == .imperial ? "lb" : "kg") x \(previousReps)"
+                return "\(GlobalHelpers.formatDouble(previousWeight)) \(weightType == .imperial ? "lb" : "kg") x \(previousReps)"
             }
         case .bodyweightReps:
             if let previousWeight, let previousReps, let weightType {
@@ -107,6 +107,31 @@ extension ExerciseSet {
         case .heightOnly:
             if let previousHeight, let heightType {
                 return "\(previousHeight) \(heightType == .imperial ? "in" : "cm")"
+            }
+        }
+        return nil
+    }
+    
+    func getPreviousSetsWeight() -> Double? {
+        let previousSets: [ExerciseSet] = self.workoutExercise?.sets ?? []
+        // Priority 1: Get most previous set with a weight typed in
+        for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
+            if let previousWeight = previousSet.weight {
+                // If using previous values, skip
+                if let previousSetPreviousWeight = previousSet.previousWeight, previousWeight == previousSetPreviousWeight {
+                    continue
+                }
+                return previousWeight
+            }
+        }
+        // Priority 2: Use own previous weight
+        if let previousWeight = self.previousWeight {
+            return previousWeight
+        }
+        // Priority 3: Use the previous set's previous weight
+        for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
+            if let previousWeight = previousSet.previousWeight {
+                return previousWeight
             }
         }
         return nil

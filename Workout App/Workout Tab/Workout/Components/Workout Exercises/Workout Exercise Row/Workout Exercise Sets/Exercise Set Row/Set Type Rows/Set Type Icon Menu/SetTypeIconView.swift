@@ -11,6 +11,7 @@ struct SetTypeIconView: View {
     @Environment(\.colorScheme) private var colorScheme
     let order: Int
     let setType: SetType
+    let size: CGFloat
     
     var body: some View {
         Group {
@@ -19,7 +20,7 @@ struct SetTypeIconView: View {
                 Text("W")
                     .foregroundStyle(.orange)
             case .normal:
-                Text("\(order)")
+                Text("\(order + 1)")
                     .foregroundStyle(.primary)
             case .dropSet:
                 Text("D")
@@ -30,7 +31,7 @@ struct SetTypeIconView: View {
             }
         }
         .font(.subheadline)
-        .frame(width: 25, height: 25)
+        .frame(width: size, height: size)
         .background(getBackgroundColor())
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
@@ -50,5 +51,5 @@ struct SetTypeIconView: View {
 }
 
 #Preview {
-    SetTypeIconView(order: 1, setType: .normal)
+    SetTypeIconView(order: 1, setType: .normal, size: 25)
 }

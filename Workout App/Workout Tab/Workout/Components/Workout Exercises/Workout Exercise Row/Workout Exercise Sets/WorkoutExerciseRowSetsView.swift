@@ -20,7 +20,7 @@ struct WorkoutExerciseRowSetsView: View {
         Button {
             let index = workoutExercise.sets.count
             if index < workoutExercise.exercise.previousSets.count {
-                let previousSet = workoutExercise.exercise.previousSets[index]
+                let previousSet = workoutExercise.exercise.previousSets.sorted(by: { $0.order < $1.order })[index]
                 let newSet = ExerciseSet(
                     type: previousSet.type,
                     order: index,

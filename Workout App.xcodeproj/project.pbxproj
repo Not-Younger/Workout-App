@@ -316,7 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				C40A148B2E106FCA0069F35C /* Add Exercise */,
-				C40A14802E10660E0069F35C /* Components */,
+				C40A14802E10660E0069F35C /* Workout */,
 				C40A14742E1045730069F35C /* WorkoutTab.swift */,
 			);
 			path = "Workout Tab";
@@ -338,16 +338,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C40A14802E10660E0069F35C /* Components */ = {
+		C40A14802E10660E0069F35C /* Workout */ = {
 			isa = PBXGroup;
 			children = (
+				C4CC242B2E19753A002E2511 /* Components */,
 				C40A14792E1047230069F35C /* WorkoutView.swift */,
-				C4CC242A2E197499002E2511 /* Workout Header */,
-				C40A14892E106E3D0069F35C /* WorkoutExerciseListView.swift */,
-				C40A149B2E10AC0B0069F35C /* Workout Exercise Row */,
-				C40A14832E10692F0069F35C /* WorkoutAddCancelButtonsView.swift */,
 			);
-			path = Components;
+			path = Workout;
 			sourceTree = "<group>";
 		};
 		C40A148B2E106FCA0069F35C /* Add Exercise */ = {
@@ -370,19 +367,19 @@
 		C40A149B2E10AC0B0069F35C /* Workout Exercise Row */ = {
 			isa = PBXGroup;
 			children = (
+				C4CC24292E197425002E2511 /* Workout Exercise Sets */,
 				C40A149A2E10AC0B0069F35C /* WorkoutExerciseRowView.swift */,
-				C4CC24292E197425002E2511 /* Sets */,
 			);
 			path = "Workout Exercise Row";
 			sourceTree = "<group>";
 		};
-		C4CC23FF2E161103002E2511 /* Set Row */ = {
+		C4CC23FF2E161103002E2511 /* Exercise Set Row */ = {
 			isa = PBXGroup;
 			children = (
 				C4CC24162E1972B4002E2511 /* Set Type Rows */,
 				C4CC24002E161125002E2511 /* WorkoutExerciseSetRow.swift */,
 			);
-			path = "Set Row";
+			path = "Exercise Set Row";
 			sourceTree = "<group>";
 		};
 		C4CC24152E19728B002E2511 /* Set Type Icon Menu */ = {
@@ -412,14 +409,14 @@
 			path = "Set Type Rows";
 			sourceTree = "<group>";
 		};
-		C4CC24292E197425002E2511 /* Sets */ = {
+		C4CC24292E197425002E2511 /* Workout Exercise Sets */ = {
 			isa = PBXGroup;
 			children = (
-				C40A149D2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift */,
+				C4CC242E2E197606002E2511 /* Workout Exercise Header */,
+				C4CC23FF2E161103002E2511 /* Exercise Set Row */,
 				C40A14A52E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift */,
-				C4CC23FF2E161103002E2511 /* Set Row */,
 			);
-			path = Sets;
+			path = "Workout Exercise Sets";
 			sourceTree = "<group>";
 		};
 		C4CC242A2E197499002E2511 /* Workout Header */ = {
@@ -429,6 +426,41 @@
 				C4CC23FD2E15FA00002E2511 /* CustomEditButton.swift */,
 			);
 			path = "Workout Header";
+			sourceTree = "<group>";
+		};
+		C4CC242B2E19753A002E2511 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C4CC242A2E197499002E2511 /* Workout Header */,
+				C4CC242C2E197565002E2511 /* Workout Exercises */,
+				C4CC242D2E197596002E2511 /* Workout Footer */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C4CC242C2E197565002E2511 /* Workout Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				C40A149B2E10AC0B0069F35C /* Workout Exercise Row */,
+				C40A14892E106E3D0069F35C /* WorkoutExerciseListView.swift */,
+			);
+			path = "Workout Exercises";
+			sourceTree = "<group>";
+		};
+		C4CC242D2E197596002E2511 /* Workout Footer */ = {
+			isa = PBXGroup;
+			children = (
+				C40A14832E10692F0069F35C /* WorkoutAddCancelButtonsView.swift */,
+			);
+			path = "Workout Footer";
+			sourceTree = "<group>";
+		};
+		C4CC242E2E197606002E2511 /* Workout Exercise Header */ = {
+			isa = PBXGroup;
+			children = (
+				C40A149D2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift */,
+			);
+			path = "Workout Exercise Header";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

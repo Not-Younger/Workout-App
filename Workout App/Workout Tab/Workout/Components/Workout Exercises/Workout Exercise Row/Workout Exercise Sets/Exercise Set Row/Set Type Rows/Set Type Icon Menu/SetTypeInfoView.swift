@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SetTypeInfoView: View {
     @Environment(\.dismiss) private var dismiss
+    
+    let size: CGFloat = 25
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 25) {
@@ -17,7 +20,7 @@ struct SetTypeInfoView: View {
                     .padding(.bottom)
                 VStack(spacing: 15) {
                     HStack {
-                        SetTypeIconView(order: 1, setType: .warmup)
+                        SetTypeIconView(order: 1, setType: .warmup, size: size)
                         Text("About Warm Up Sets").bold()
                     }
                     Text("Warm Up sets are intended to prepare the body for heavier weight loads. They are not counted in metrics or charts.")
@@ -25,7 +28,7 @@ struct SetTypeInfoView: View {
                 }
                 VStack(spacing: 15) {
                     HStack {
-                        SetTypeIconView(order: 1, setType: .dropSet)
+                        SetTypeIconView(order: 1, setType: .dropSet, size: size)
                         Text("About Drop Sets").bold()
                     }
                     Text("Drop Sets are sets in which the weight is lowered ('Dropped') in order to perform additional reps a lower weight (with no rest), typically after muscular failure has been reached.")
@@ -33,7 +36,7 @@ struct SetTypeInfoView: View {
                 }
                 VStack(spacing: 15) {
                     HStack {
-                        SetTypeIconView(order: 1, setType: .failure)
+                        SetTypeIconView(order: 1, setType: .failure, size: size)
                         Text("About Failure Sets").bold()
                     }
                     Text("If a set is marked as Failure, all reps will still count in charts and records. Mark a set as Failure if an additional rep was attempted, but not completed successfully.")
