@@ -136,4 +136,29 @@ extension ExerciseSet {
         }
         return nil
     }
+    
+    func getSuggestedReps() -> Int? {
+        let previousSets: [ExerciseSet] = self.workoutExercise?.sets ?? []
+        // Priority 1: Get most previous set with a reps typed in
+        for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
+            if let previousReps = previousSet.reps {
+                // If using previous values, skip
+                if let previousSetPreviousReps = previousSet.previousReps, previousReps == previousSetPreviousReps {
+                    continue
+                }
+                return previousReps
+            }
+        }
+        // Priority 2: Use own previous reps
+        if let previousReps = self.previousReps {
+            return previousReps
+        }
+        // Priority 3: Use the previous set's previous reps
+        for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
+            if let previousReps = previousSet.previousReps {
+                return previousReps
+            }
+        }
+        return nil
+    }
 }

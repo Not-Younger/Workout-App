@@ -14,6 +14,7 @@ struct WeightedRepsSetRowView: View {
     @State private var weight: String
     let suggestedWeight: Double?
     @State private var reps: String
+    let suggestedReps: Int?
     
     let weightType: WeightUnitType
     
@@ -25,6 +26,7 @@ struct WeightedRepsSetRowView: View {
         self.weight = GlobalHelpers.formatDouble(exerciseSet.weight)
         self.suggestedWeight = exerciseSet.getSuggestedWeight()
         self.reps = GlobalHelpers.formatInt(exerciseSet.reps)
+        self.suggestedReps = exerciseSet.getSuggestedReps()
         
         self.weightType = workoutExercise.weightType
         
@@ -43,6 +45,7 @@ struct WeightedRepsSetRowView: View {
                         weight = GlobalHelpers.formatDouble(previousWeight)
                         exerciseSet.reps = previousReps
                         reps = String(previousReps)
+                        exerciseSet.isCompleted = false
                     }
                 } label: {
                     Text(previousString ?? "-")
@@ -73,7 +76,13 @@ struct WeightedRepsSetRowView: View {
                                 exerciseSet.weight = Double(newValue)
                             }
                         }
-                    TextField("", text: $reps)
+                    var suggestedRepsString: String {
+                        if let suggestedReps {
+                            return GlobalHelpers.formatInt(suggestedReps)
+                        }
+                        return "-"
+                    }
+                    TextField(suggestedRepsString, text: $reps)
                         .keyboardType(.numberPad)
                         .foregroundStyle(exerciseSet.reps == nil ? .secondary : .primary)
                         .onChange(of: reps) { _, newValue in
@@ -93,8 +102,9 @@ struct WeightedRepsSetRowView: View {
             .frame(maxWidth: .infinity)
             
             Button {
-                if let suggestedWeight {
+                if let suggestedWeight, let suggestedReps {
                     weight = GlobalHelpers.formatDouble(suggestedWeight)
+                    reps = GlobalHelpers.formatInt(suggestedReps)
                 }
             } label: {
                 Image(systemName: "checkmark")
