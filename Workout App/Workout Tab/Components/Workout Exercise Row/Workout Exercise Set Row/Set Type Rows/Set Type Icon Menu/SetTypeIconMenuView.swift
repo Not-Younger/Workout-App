@@ -45,7 +45,7 @@ struct SetTypeIconMenuView: View {
                 Label("More Info", systemImage: "questionmark")
             }
         } label: {
-            SetTypeIconView(setType: exerciseSet.type)
+            SetTypeIconView(order: exerciseSet.order, setType: exerciseSet.type)
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $isShowingMoreInfo) {
@@ -65,12 +65,4 @@ struct SetTypeIconMenuView: View {
             return .red
         }
     }
-}
-
-#Preview {
-    let workout = Workout(name: "Test Workout")
-    let exercise = DEFAULT_EXERCISES[0]
-    let workoutExercise = WorkoutExercise(supersetNumber: nil, sets: [], order: 0, workout: workout, exercise: exercise)
-    let exerciseSet = ExerciseSet(type: .normal, order: 0, workoutExercise: workoutExercise)
-    SetTypeIconMenuView(exerciseSet: exerciseSet)
 }
