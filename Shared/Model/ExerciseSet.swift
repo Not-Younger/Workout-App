@@ -112,7 +112,7 @@ extension ExerciseSet {
         return nil
     }
     
-    func getPreviousSetsWeight() -> Double? {
+    func getSuggestedWeight() -> Double? {
         let previousSets: [ExerciseSet] = self.workoutExercise?.sets ?? []
         // Priority 1: Get most previous set with a weight typed in
         for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {

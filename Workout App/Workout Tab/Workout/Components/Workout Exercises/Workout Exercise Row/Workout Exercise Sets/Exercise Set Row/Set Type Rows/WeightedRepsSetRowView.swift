@@ -9,26 +9,24 @@ import SwiftUI
 
 struct WeightedRepsSetRowView: View {
     @Environment(\.colorScheme) private var colorScheme
-    let exerciseSet: ExerciseSet
     
-    @State private var weight: String = ""
-    @State private var duration: String = ""
-    @State private var distance: String = ""
-    @State private var height: String = ""
-    @State private var reps: String = ""
+    let exerciseSet: ExerciseSet
+    @State private var weight: String
+    let suggestedWeight: Double?
+    @State private var reps: String
+    
     let weightType: WeightUnitType
-    let distanceType: DistanceUnitType
-    let heightType: HeightUnitType
     
     let rowHeight: CGFloat
     let fontSize: CGFloat
     
     init(workoutExercise: WorkoutExercise, exerciseSet: ExerciseSet, rowHeight: CGFloat, fontSize: CGFloat) {
         self.exerciseSet = exerciseSet
+        self.weight = GlobalHelpers.formatDouble(exerciseSet.weight)
+        self.suggestedWeight = exerciseSet.getSuggestedWeight()
+        self.reps = GlobalHelpers.formatInt(exerciseSet.reps)
         
         self.weightType = workoutExercise.weightType
-        self.distanceType = workoutExercise.distanceType
-        self.heightType = workoutExercise.heightType
         
         self.rowHeight = rowHeight
         self.fontSize = fontSize
@@ -58,12 +56,9 @@ struct WeightedRepsSetRowView: View {
             .frame(maxWidth: .infinity)
             HStack {
                 Group {
-                    let previousSetsWeight = exerciseSet.getPreviousSetsWeight()
                     var suggestedWeightString: String {
-                        if let previousSetsWeight {
-                            return GlobalHelpers.formatDouble(previousSetsWeight)
-                        } else if let previousWeight = exerciseSet.previousWeight {
-                            return GlobalHelpers.formatDouble(previousWeight)
+                        if let suggestedWeight {
+                            return GlobalHelpers.formatDouble(suggestedWeight)
                         }
                         return "-"
                     }
@@ -98,7 +93,9 @@ struct WeightedRepsSetRowView: View {
             .frame(maxWidth: .infinity)
             
             Button {
-                
+                if let suggestedWeight {
+                    weight = GlobalHelpers.formatDouble(suggestedWeight)
+                }
             } label: {
                 Image(systemName: "checkmark")
                     .font(.system(size: fontSize))
