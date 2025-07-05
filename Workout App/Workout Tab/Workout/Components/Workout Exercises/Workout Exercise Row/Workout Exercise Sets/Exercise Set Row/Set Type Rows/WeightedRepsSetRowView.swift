@@ -54,7 +54,6 @@ struct WeightedRepsSetRowView: View {
                 .disabled(disablePreviousButton())
                 .frame(maxWidth: .infinity)
                 .frame(height: rowHeight)
-                .background(.gray.opacity(0.3))
             }
             .frame(maxWidth: .infinity)
             HStack {
@@ -97,7 +96,6 @@ struct WeightedRepsSetRowView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: rowHeight)
                 .multilineTextAlignment(.center)
-                .background(.gray.opacity(0.3))
             }
             .frame(maxWidth: .infinity)
             
@@ -105,12 +103,10 @@ struct WeightedRepsSetRowView: View {
                 if let suggestedWeight, let suggestedReps {
                     weight = GlobalHelpers.formatDouble(suggestedWeight)
                     reps = GlobalHelpers.formatInt(suggestedReps)
+                    exerciseSet.isCompleted.toggle()
                 }
             } label: {
-                Image(systemName: "checkmark")
-                    .font(.system(size: fontSize))
-                    .frame(width: rowHeight, height: rowHeight)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                CompleteSetButtonLabelView(isComplete: exerciseSet.isCompleted, rowHeight: rowHeight, fontSize: fontSize)
             }
             .buttonStyle(PlainButtonStyle())
         }

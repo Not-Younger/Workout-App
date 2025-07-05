@@ -12,8 +12,8 @@ struct WorkoutExerciseSetRow: View {
     let workoutExercise: WorkoutExercise
     let exerciseSet: ExerciseSet
     
-    let rowHeight: CGFloat = 25
-    let fontSize: CGFloat = 12
+    let rowHeight: CGFloat
+    let fontSize: CGFloat
     
     var body: some View {
         switch exerciseSet.exercise.exerciseType {

@@ -10,38 +10,38 @@ import SwiftUI
 struct WorkoutExerciseRowColumnsHeaderView: View {
     let workoutExercise: WorkoutExercise
     
+    let rowHeight: CGFloat
+    let fontSize: CGFloat
+    
     var body: some View {
         HStack {
             HStack {
-                Text("Set")
-                    .frame(width: 25)
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.3))
-                Text("Previous")
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.3))
+                Group {
+                    Text("Set")
+                        .frame(width: rowHeight)
+                    Text("Previous")
+                        .frame(maxWidth: .infinity)
+                }
+                .frame(height: rowHeight)
+                .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
             HStack {
-                Text(workoutExercise.firstHeader)
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.3))
-                if let secondHeader = workoutExercise.secondHeader {
-                    Text(secondHeader)
-                        .frame(maxWidth: .infinity)
-                        .multilineTextAlignment(.center)
-                        .background(Color.gray.opacity(0.3))
+                Group {
+                    Text(workoutExercise.firstHeader)
+                    if let secondHeader = workoutExercise.secondHeader {
+                        Text(secondHeader)
+                    }
                 }
+                .frame(maxWidth: .infinity)
+                .frame(height: rowHeight)
+                .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
             Image(systemName: "checkmark")
-                .font(.subheadline)
-                .frame(width: 25, height: 25)
-                .background(Color.gray.opacity(0.3))
+                .frame(width: rowHeight, height: rowHeight)
         }
-        .font(.subheadline)
+        .font(.system(size: fontSize))
         .fontWeight(.medium)
     }
 }
@@ -50,5 +50,5 @@ struct WorkoutExerciseRowColumnsHeaderView: View {
     let workout = Workout(name: "Test Workout")
     let exercise = DEFAULT_EXERCISES[0]
     let workoutExercise = WorkoutExercise(supersetNumber: nil, order: 0, sets: [], workout: workout, exercise: exercise)
-    WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise)
+    WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise, rowHeight: 25, fontSize: 12)
 }

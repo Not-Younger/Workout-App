@@ -11,6 +11,9 @@ struct WorkoutExerciseRowView: View {
     @Environment(\.editMode) private var editMode
     @Bindable var workoutExercise: WorkoutExercise
     
+    let rowHeight: CGFloat = 25
+    let fontSize: CGFloat = 16
+    
     var body: some View {
         HStack(spacing: 5) {
             RoundedRectangle(cornerRadius: 8)
@@ -26,9 +29,9 @@ struct WorkoutExerciseRowView: View {
                 }
                 
                 if editMode?.wrappedValue == .inactive {
-                    WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise)
+                    WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise, rowHeight: rowHeight, fontSize: fontSize)
                     
-                    WorkoutExerciseRowSetsView(workoutExercise: workoutExercise)
+                    WorkoutExerciseRowSetsView(workoutExercise: workoutExercise, rowHeight: rowHeight, fontSize: fontSize)
                 }
             }
             RoundedRectangle(cornerRadius: 8)
