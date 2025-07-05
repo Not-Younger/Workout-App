@@ -22,17 +22,17 @@ class WorkoutExercise {
     @Relationship(deleteRule: .nullify) var workout: Workout
     @Relationship(deleteRule: .nullify) var exercise: Exercise
     
-    init(id: UUID = UUID(), notes: String? = nil, supersetNumber: Int? = nil, sets: [ExerciseSet] = [], weightType: WeightUnitType = .imperial, distanceType: DistanceUnitType = .imperial, heightType: HeightUnitType = .imperial, order: Int, workout: Workout, exercise: Exercise) {
+    init(id: UUID = UUID(), notes: String? = nil, supersetNumber: Int? = nil, weightType: WeightUnitType = .imperial, distanceType: DistanceUnitType = .imperial, heightType: HeightUnitType = .imperial, order: Int, sets: [ExerciseSet] = [], workout: Workout, exercise: Exercise) {
         self.id = id
-        self.order = order
         self.notes = notes
         self.supersetNumber = supersetNumber
-        self.sets = sets
-        self.workout = workout
-        self.exercise = exercise
         self.weightType = weightType
         self.distanceType = distanceType
         self.heightType = heightType
+        self.order = order
+        self.sets = sets
+        self.workout = workout
+        self.exercise = exercise
     }
 }
 

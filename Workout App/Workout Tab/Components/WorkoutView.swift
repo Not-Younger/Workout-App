@@ -41,6 +41,30 @@ struct WorkoutView: View {
                 Button("Finish") {
                     workout.finishDate = Date()
                     print("Finished workout: \(workout.name) at \(workout.finishDate!)")
+                    
+                    // Update exercise previous sets
+                    for workoutExercise in workout.exercises {
+                        var previousSets: [ExerciseSet] = []
+                        for set in workoutExercise.sets.sorted(by: { $0.order < $1.order }) {
+                            let previousSet = ExerciseSet(
+                                weight: set.weight,
+                                duration: set.distance,
+                                distance: set.duration,
+                                height: set.height,
+                                reps: set.reps,
+                                type: set.type,
+                                order: set.order,
+                                previousWeight: set.previousWeight,
+                                previousDuration: set.previousDuration,
+                                previousDistance: set.previousDistance,
+                                previousHeight: set.previousHeight,
+                                previousReps: set.previousReps,
+                                exercise: workoutExercise.exercise
+                            )
+                            previousSets.append(previousSet)
+                        }
+                        workoutExercise.exercise.previousSets = previousSets
+                    }
                     dismiss()
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
@@ -48,19 +72,4 @@ struct WorkoutView: View {
             }
         }
     }
-}
-
-#Preview {
-    let workoutConfig = ModelConfiguration(for: Workout.self, isStoredInMemoryOnly: true)
-    let exerciseConfig = ModelConfiguration(for: Exercise.self, isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Workout.self, Exercise.self, configurations: workoutConfig, exerciseConfig)
-    
-    for exercise in DEFAULT_EXERCISES {
-        container.mainContext.insert(exercise)
-    }
-
-    return NavigationStack {
-        WorkoutView(workout: Workout())
-    }
-    .modelContainer(container)
 }

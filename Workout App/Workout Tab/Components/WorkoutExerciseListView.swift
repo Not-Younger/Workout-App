@@ -53,7 +53,3 @@ struct WorkoutExerciseListView: View {
         }
     }
 }
-
-#Preview {
-    WorkoutExerciseListView(workout: Workout())
-}

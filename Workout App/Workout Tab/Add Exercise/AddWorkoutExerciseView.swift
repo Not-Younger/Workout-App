@@ -41,12 +41,31 @@ struct AddWorkoutExerciseView: View {
                         var currentExerciseIndex = workout.exercises.count
                         let currentSupersetIndex = getMaxSuperSetNumber()
                         for exercise in selectedExercises {
+                            // Create workout exerise
                             let workoutExercise = WorkoutExercise(
                                 supersetNumber: currentSupersetIndex,
                                 order: currentExerciseIndex,
                                 workout: workout,
-                                exercise: exercise)
+                                exercise: exercise
+                            )
+                            // Add to workout / SwiftData
                             workout.exercises.append(workoutExercise)
+                            // Add any preivous set data to sets
+                            let previousSets = exercise.previousSets.sorted { $0.order < $1.order }
+                            for previousSet in previousSets {
+                                let newPreviousSet = ExerciseSet(
+                                    type: previousSet.type,
+                                    order: previousSet.order,
+                                    previousWeight: previousSet.weight,
+                                    previousDuration: previousSet.duration,
+                                    previousDistance: previousSet.distance,
+                                    previousHeight: previousSet.height,
+                                    previousReps: previousSet.reps,
+                                    exercise: workoutExercise.exercise,
+                                    workoutExercise: workoutExercise
+                                )
+                                workoutExercise.sets.append(newPreviousSet)
+                            }
                             print("Superset number: \(workoutExercise.supersetNumber ?? -1)")
                             print("Order: \(workoutExercise.order)")
                             currentExerciseIndex += 1
@@ -57,10 +76,29 @@ struct AddWorkoutExerciseView: View {
                     Button("Add") {
                         var currentExerciseIndex = workout.exercises.count
                         for exercise in selectedExercises {
+                            // Create workout exercise
                             let workoutExercise = WorkoutExercise(
                                 order: currentExerciseIndex,
                                 workout: workout,
-                                exercise: exercise)
+                                exercise: exercise
+                            )
+                            // Add any preivous set data to sets
+                            let previousSets = exercise.previousSets.sorted { $0.order < $1.order }
+                            for previousSet in previousSets {
+                                let newPreviousSet = ExerciseSet(
+                                    type: previousSet.type,
+                                    order: previousSet.order,
+                                    previousWeight: previousSet.weight,
+                                    previousDuration: previousSet.duration,
+                                    previousDistance: previousSet.distance,
+                                    previousHeight: previousSet.height,
+                                    previousReps: previousSet.reps,
+                                    exercise: workoutExercise.exercise,
+                                    workoutExercise: workoutExercise
+                                )
+                                workoutExercise.sets.append(newPreviousSet)
+                            }
+                            // Add to workout / SwiftData
                             workout.exercises.append(workoutExercise)
                             print(workoutExercise.order)
                             currentExerciseIndex += 1

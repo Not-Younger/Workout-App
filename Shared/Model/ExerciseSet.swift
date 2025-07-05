@@ -21,12 +21,35 @@ class ExerciseSet {
     var height: Double?
     var reps: Int?
     var type: SetType
+    var isCompleted: Bool
     var order: Int  // Order in the exercise
+    
+    // Previous
+    var previousWeight: Double?
+    var previousDuration: TimeInterval?
+    var previousDistance: Double?
+    var previousHeight: Double?
+    var previousReps: Int?
 
     @Relationship(deleteRule: .nullify) var exercise: Exercise
-    @Relationship(deleteRule: .nullify) var workoutExercise: WorkoutExercise
+    @Relationship(deleteRule: .nullify) var workoutExercise: WorkoutExercise?
     
-    init(id: UUID = UUID(), weight: Double? = nil, duration: TimeInterval? = nil, distance: Double? = nil, height: Double? = nil, reps: Int? = nil, type: SetType, order: Int, workoutExercise: WorkoutExercise) {
+    init(id: UUID = UUID(),
+         weight: Double? = nil,
+         duration: TimeInterval? = nil,
+         distance: Double? = nil,
+         height: Double? = nil,
+         reps: Int? = nil,
+         type: SetType,
+         isCompleted: Bool = false,
+         order: Int,
+         previousWeight: Double? = nil,
+         previousDuration: TimeInterval? = nil,
+         previousDistance: Double? = nil,
+         previousHeight: Double? = nil,
+         previousReps: Int? = nil,
+         exercise: Exercise,
+         workoutExercise: WorkoutExercise? = nil) {
         self.id = id
         self.weight = weight
         self.duration = duration
@@ -34,8 +57,58 @@ class ExerciseSet {
         self.height = height
         self.reps = reps
         self.type = type
+        self.isCompleted = isCompleted
         self.order = order
-        self.exercise = workoutExercise.exercise
+        self.previousWeight = previousWeight
+        self.previousDuration = previousDuration
+        self.previousDistance = previousDistance
+        self.previousHeight = previousHeight
+        self.previousReps = previousReps
+        self.exercise = exercise
         self.workoutExercise = workoutExercise
+    }
+}
+
+extension ExerciseSet {
+    func previousString(weightType: WeightUnitType? = nil, distanceType: DistanceUnitType? = nil, heightType: HeightUnitType? = nil) -> String? {
+        switch self.exercise.exerciseType {
+        case .weightedReps:
+            if let previousWeight, let previousReps, let weightType {
+                return "\(previousWeight) \(weightType == .imperial ? "lb" : "kg") x \(previousReps)"
+            }
+        case .bodyweightReps:
+            if let previousWeight, let previousReps, let weightType {
+                return "+\(previousWeight) \(weightType == .imperial ? "lb" : "kg") x \(previousReps)"
+            }
+        case .timeBased:
+            if let previousWeight, let previousDuration, let weightType {
+                return "+\(previousWeight) \(weightType == .imperial ? "lb" : "kg") x \(previousDuration)"
+            }
+        case .distanceTime:
+            if let previousDistance, let previousDuration, let distanceType {
+                return "\(previousDistance) \(distanceType == .imperial ? "mi" : "km") in \(previousDuration)"
+            }
+        case .distanceOnly:
+            if let previousDistance, let distanceType {
+                return "\(previousDistance) \(distanceType == .imperial ? "mi" : "km")"
+            }
+        case .timeOnly:
+            if let previousDuration {
+                return "\(previousDuration)"
+            }
+        case .repsOnly:
+            if let previousReps {
+                return "\(previousReps)"
+            }
+        case .heightReps:
+            if let previousHeight, let previousReps, let heightType {
+                return "\(previousHeight) \(heightType == .imperial ? "in" : "cm") x \(previousReps)"
+            }
+        case .heightOnly:
+            if let previousHeight, let heightType {
+                return "\(previousHeight) \(heightType == .imperial ? "in" : "cm")"
+            }
+        }
+        return nil
     }
 }

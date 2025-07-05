@@ -20,9 +20,9 @@ class Exercise: Alphabetizable {
     var equipmentType: EquipmentType
     var exerciseType: ExerciseType
     
-    @Relationship(deleteRule: .cascade) var sets: [ExerciseSet] = []
+    @Relationship(deleteRule: .cascade) var previousSets: [ExerciseSet] = []
     
-    init(name: String, exerciseDescription: String? = nil, imageString: String? = nil, muscleType: MuscleType, secondaryMuscleTypes: [MuscleType] = [], equipmentType: EquipmentType, exerciseType: ExerciseType) {
+    init(name: String, exerciseDescription: String? = nil, imageString: String? = nil, muscleType: MuscleType, secondaryMuscleTypes: [MuscleType] = [], equipmentType: EquipmentType, exerciseType: ExerciseType, previousSets: [ExerciseSet] = []) {
         self.name = name
         self.exerciseDescription = exerciseDescription
         self.imageString = imageString
@@ -30,5 +30,6 @@ class Exercise: Alphabetizable {
         self.secondaryMuscleTypes = secondaryMuscleTypes
         self.equipmentType = equipmentType
         self.exerciseType = exerciseType
+        self.previousSets = previousSets
     }
 }
