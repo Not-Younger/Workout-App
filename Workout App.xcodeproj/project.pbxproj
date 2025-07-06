@@ -76,6 +76,7 @@
 		C4CC24512E1AD4F2002E2511 /* WorkoutExerciseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24502E1AD4F2002E2511 /* WorkoutExerciseMenuView.swift */; };
 		C4CC24532E1ADB58002E2511 /* WorkoutExerciseNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24522E1ADB58002E2511 /* WorkoutExerciseNote.swift */; };
 		C4CC24572E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24562E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift */; };
+		C4CC24592E1AE392002E2511 /* ExerciseNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24582E1AE392002E2511 /* ExerciseNoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +150,7 @@
 		C4CC24502E1AD4F2002E2511 /* WorkoutExerciseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseMenuView.swift; sourceTree = "<group>"; };
 		C4CC24522E1ADB58002E2511 /* WorkoutExerciseNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseNote.swift; sourceTree = "<group>"; };
 		C4CC24562E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseNoteView.swift; sourceTree = "<group>"; };
+		C4CC24582E1AE392002E2511 /* ExerciseNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +476,7 @@
 			children = (
 				C40A149D2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift */,
 				C4CC24562E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift */,
+				C4CC24582E1AE392002E2511 /* ExerciseNoteView.swift */,
 			);
 			path = "Workout Exercise Header";
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				C4CC24322E19CE76002E2511 /* CompleteSetButtonLabelView.swift in Sources */,
 				C40A14A02E10AE9B0069F35C /* WeightUnitType.swift in Sources */,
 				C4CC241C2E197336002E2511 /* TimeBasedSetRowView.swift in Sources */,
+				C4CC24592E1AE392002E2511 /* ExerciseNoteView.swift in Sources */,
 				C4CC24262E1973C8002E2511 /* HeightRepsSetRowView.swift in Sources */,
 				C40A14302E0EB97D0069F35C /* MuscleTypeFilterRowView.swift in Sources */,
 				C4CC24182E1972D7002E2511 /* WeightedRepsSetRowView.swift in Sources */,

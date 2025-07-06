@@ -13,6 +13,7 @@ struct WorkoutExerciseMenuView: View {
     
     let workoutExercise: WorkoutExercise
     @Binding var notes: [WorkoutExerciseNote]
+    @Binding var showStickyNote: Bool
     @Binding var isShowingDeleteExerciseAlert: Bool
     let fontSize: CGFloat
     let size: CGFloat
@@ -29,12 +30,15 @@ struct WorkoutExerciseMenuView: View {
             } label: {
                 Label("Add Note", systemImage: "document")
             }
-            Button {
-                withAnimation {
-                    workoutExercise.exercise.note = ""
+            if !showStickyNote {
+                Button {
+                    withAnimation {
+                        workoutExercise.exercise.note = ""
+                        showStickyNote = true
+                    }
+                } label: {
+                    Label("Add Sticky Note", systemImage: "pin")
                 }
-            } label: {
-                Label("Add Sticky Note", systemImage: "pin")
             }
             Button(role: .destructive) {
                 isShowingDeleteExerciseAlert = true

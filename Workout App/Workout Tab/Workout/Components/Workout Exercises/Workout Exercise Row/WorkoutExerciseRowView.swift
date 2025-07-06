@@ -15,6 +15,7 @@ struct WorkoutExerciseRowView: View {
     @Binding var workoutExercises: [WorkoutExercise]
     @Binding var editMode: Bool
     
+    @State private var showStickyNote: Bool
     @State private var notes: [WorkoutExerciseNote]
     
     init(workout: Workout, workoutExercise: WorkoutExercise, workoutExercises: Binding<[WorkoutExercise]>, editMode: Binding<Bool>) {
@@ -22,6 +23,7 @@ struct WorkoutExerciseRowView: View {
         self.workoutExercise = workoutExercise
         _workoutExercises = workoutExercises
         _editMode = editMode
+        self.showStickyNote = workoutExercise.exercise.note == "" ? false : true
         self.notes = workoutExercise.notes.sorted(by: { $0.order < $1.order })
     }
     
@@ -61,7 +63,7 @@ struct WorkoutExerciseRowView: View {
                 ExerciseDetailView(exercise: workoutExercise.exercise)
             }
             Spacer()
-            WorkoutExerciseMenuView(workoutExercise: workoutExercise, notes: $notes, isShowingDeleteExerciseAlert: $isShowingDeleteExerciseAlert, fontSize: fontSize, size: rowHeight)
+            WorkoutExerciseMenuView(workoutExercise: workoutExercise, notes: $notes, showStickyNote: $showStickyNote, isShowingDeleteExerciseAlert: $isShowingDeleteExerciseAlert, fontSize: fontSize, size: rowHeight)
                 .alert("Remove Exercise?", isPresented: $isShowingDeleteExerciseAlert) {
                     Button("Remove", role: .destructive) {
                         withAnimation {
@@ -83,6 +85,17 @@ struct WorkoutExerciseRowView: View {
         .moveDisabled(!editMode)
         .deleteDisabled(!editMode)
         .listRowSeparator(.hidden, edges: .all)
+        
+        if !editMode, showStickyNote {
+            ExerciseNoteView(exercise: workoutExercise.exercise, supersetColor: workoutExercise.supersetColor)
+                .moveDisabled(true)
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button("Delete", role: .destructive) {
+                        workoutExercise.exercise.note = ""
+                        showStickyNote = false
+                    }
+                }
+        }
         
         if !editMode, !workoutExercise.notes.isEmpty {
             ForEach(notes) { note in
