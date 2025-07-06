@@ -17,13 +17,13 @@ struct WorkoutExerciseRowView: View {
     var body: some View {
         HStack {
             Text(workoutExercise.exercise.name)
-                .font(.subheadline)
+                .font(.system(size: fontSize))
                 .fontWeight(.bold)
             Spacer()
         }
-        .id(workoutExercise.id)
         .moveDisabled(!editMode)
         .deleteDisabled(!editMode)
+        .listRowSeparator(.hidden, edges: .all)
         
         if !editMode {
             WorkoutExerciseRowColumnsHeaderView(workoutExercise: workoutExercise, rowHeight: rowHeight, fontSize: fontSize)

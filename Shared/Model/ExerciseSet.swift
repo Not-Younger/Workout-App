@@ -115,23 +115,25 @@ extension ExerciseSet {
     func getSuggestedWeight() -> Double? {
         let previousSets: [ExerciseSet] = self.workoutExercise?.sets ?? []
         // Priority 1: Get most previous set with a weight typed in
-        for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
-            if let previousWeight = previousSet.weight {
-                // If using previous values, skip
-                if let previousSetPreviousWeight = previousSet.previousWeight, previousWeight == previousSetPreviousWeight {
-                    continue
+        if self.order < previousSets.count {
+            for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
+                if let previousWeight = previousSet.weight {
+                    // If using previous values, skip
+                    if let previousSetPreviousWeight = previousSet.previousWeight, previousWeight == previousSetPreviousWeight {
+                        continue
+                    }
+                    return previousWeight
                 }
+            }
+            // Priority 2: Use own previous weight
+            if let previousWeight = self.previousWeight {
                 return previousWeight
             }
-        }
-        // Priority 2: Use own previous weight
-        if let previousWeight = self.previousWeight {
-            return previousWeight
-        }
-        // Priority 3: Use the previous set's previous weight
-        for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
-            if let previousWeight = previousSet.previousWeight {
-                return previousWeight
+            // Priority 3: Use the previous set's previous weight
+            for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
+                if let previousWeight = previousSet.previousWeight {
+                    return previousWeight
+                }
             }
         }
         return nil
@@ -140,23 +142,25 @@ extension ExerciseSet {
     func getSuggestedReps() -> Int? {
         let previousSets: [ExerciseSet] = self.workoutExercise?.sets ?? []
         // Priority 1: Get most previous set with a reps typed in
-        for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
-            if let previousReps = previousSet.reps {
-                // If using previous values, skip
-                if let previousSetPreviousReps = previousSet.previousReps, previousReps == previousSetPreviousReps {
-                    continue
+        if self.order < previousSets.count {
+            for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
+                if let previousReps = previousSet.reps {
+                    // If using previous values, skip
+                    if let previousSetPreviousReps = previousSet.previousReps, previousReps == previousSetPreviousReps {
+                        continue
+                    }
+                    return previousReps
                 }
+            }
+            // Priority 2: Use own previous reps
+            if let previousReps = self.previousReps {
                 return previousReps
             }
-        }
-        // Priority 2: Use own previous reps
-        if let previousReps = self.previousReps {
-            return previousReps
-        }
-        // Priority 3: Use the previous set's previous reps
-        for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
-            if let previousReps = previousSet.previousReps {
-                return previousReps
+            // Priority 3: Use the previous set's previous reps
+            for previousSet in previousSets.sorted(by: { $0.order < $1.order })[..<self.order].reversed() {
+                if let previousReps = previousSet.previousReps {
+                    return previousReps
+                }
             }
         }
         return nil

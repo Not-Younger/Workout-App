@@ -71,7 +71,8 @@
 		C4CC24242E1973B2002E2511 /* RepsOnlySetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24232E1973B2002E2511 /* RepsOnlySetRowView.swift */; };
 		C4CC24262E1973C8002E2511 /* HeightRepsSetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24252E1973C8002E2511 /* HeightRepsSetRowView.swift */; };
 		C4CC24282E1973D9002E2511 /* HeightOnlySetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24272E1973D9002E2511 /* HeightOnlySetRowView.swift */; };
-		C4CC24322E19CE76002E2511 /* CompleteSetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24312E19CE76002E2511 /* CompleteSetButtonView.swift */; };
+		C4CC24322E19CE76002E2511 /* CompleteSetButtonLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24312E19CE76002E2511 /* CompleteSetButtonLabelView.swift */; };
+		C4CC24442E1AB936002E2511 /* AddSetButtonLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24432E1AB936002E2511 /* AddSetButtonLabelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,7 +141,8 @@
 		C4CC24232E1973B2002E2511 /* RepsOnlySetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOnlySetRowView.swift; sourceTree = "<group>"; };
 		C4CC24252E1973C8002E2511 /* HeightRepsSetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightRepsSetRowView.swift; sourceTree = "<group>"; };
 		C4CC24272E1973D9002E2511 /* HeightOnlySetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightOnlySetRowView.swift; sourceTree = "<group>"; };
-		C4CC24312E19CE76002E2511 /* CompleteSetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSetButtonView.swift; sourceTree = "<group>"; };
+		C4CC24312E19CE76002E2511 /* CompleteSetButtonLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSetButtonLabelView.swift; sourceTree = "<group>"; };
+		C4CC24432E1AB936002E2511 /* AddSetButtonLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetButtonLabelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +399,7 @@
 		C4CC24162E1972B4002E2511 /* Set Type Rows */ = {
 			isa = PBXGroup;
 			children = (
+				C4CC24422E1AB905002E2511 /* Add Set Button */,
 				C4CC24302E19CE61002E2511 /* Complete Set Button */,
 				C4CC24152E19728B002E2511 /* Set Type Icon Menu */,
 				C4CC24172E1972D7002E2511 /* WeightedRepsSetRowView.swift */,
@@ -469,9 +472,17 @@
 		C4CC24302E19CE61002E2511 /* Complete Set Button */ = {
 			isa = PBXGroup;
 			children = (
-				C4CC24312E19CE76002E2511 /* CompleteSetButtonView.swift */,
+				C4CC24312E19CE76002E2511 /* CompleteSetButtonLabelView.swift */,
 			);
 			path = "Complete Set Button";
+			sourceTree = "<group>";
+		};
+		C4CC24422E1AB905002E2511 /* Add Set Button */ = {
+			isa = PBXGroup;
+			children = (
+				C4CC24432E1AB936002E2511 /* AddSetButtonLabelView.swift */,
+			);
+			path = "Add Set Button";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -569,7 +580,7 @@
 				C40A14322E0EB9CC0069F35C /* MuscleIconView.swift in Sources */,
 				C40A14782E10458F0069F35C /* HistoryTab.swift in Sources */,
 				C40A14822E1066200069F35C /* WorkoutHeaderView.swift in Sources */,
-				C4CC24322E19CE76002E2511 /* CompleteSetButtonView.swift in Sources */,
+				C4CC24322E19CE76002E2511 /* CompleteSetButtonLabelView.swift in Sources */,
 				C40A14A02E10AE9B0069F35C /* WeightUnitType.swift in Sources */,
 				C4CC241C2E197336002E2511 /* TimeBasedSetRowView.swift in Sources */,
 				C4CC24262E1973C8002E2511 /* HeightRepsSetRowView.swift in Sources */,
@@ -581,6 +592,7 @@
 				C40A13FA2E0D7BCD0069F35C /* DataModel.swift in Sources */,
 				C4CC24052E161EB2002E2511 /* SetTypeInfoView.swift in Sources */,
 				C40A13F12E0D7AC00069F35C /* Workout_AppApp.swift in Sources */,
+				C4CC24442E1AB936002E2511 /* AddSetButtonLabelView.swift in Sources */,
 				C40A148F2E107C820069F35C /* DefaultSuperSetColors.swift in Sources */,
 				C4CC24222E197398002E2511 /* TimeOnlySetRowView.swift in Sources */,
 				C40A148D2E106FDC0069F35C /* AddWorkoutExerciseView.swift in Sources */,

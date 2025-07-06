@@ -17,35 +17,40 @@ struct WorkoutExerciseRowSetsView: View {
     var body: some View {
         ForEach(workoutExercise.sets.sorted(by: { $0.order < $1.order })) { set in
             WorkoutExerciseSetRow(workoutExercise: workoutExercise, exerciseSet: set, rowHeight: rowHeight, fontSize: fontSize)
+                .listRowBackground(set.isCompleted ? Color.green.opacity(0.15) : Color.clear)
+                .alignmentGuide(.listRowSeparatorLeading) { _ in
+                    return 0
+                }
         }
         .onDelete(perform: deleteSet)
         Button {
-            let index = workoutExercise.sets.count
-            if index < workoutExercise.exercise.previousSets.count {
-                let previousSet = workoutExercise.exercise.previousSets.sorted(by: { $0.order < $1.order })[index]
-                let newSet = ExerciseSet(
-                    type: previousSet.type,
-                    order: index,
-                    previousWeight: previousSet.weight,
-                    previousDuration: previousSet.duration,
-                    previousDistance: previousSet.distance,
-                    previousHeight: previousSet.height,
-                    previousReps: previousSet.reps,
-                    exercise: workoutExercise.exercise,
-                    workoutExercise: workoutExercise
-                )
-                workoutExercise.sets.append(newSet)
-            } else {
-                let newSet = ExerciseSet(type: .normal, order: index, exercise: workoutExercise.exercise, workoutExercise: workoutExercise)
-                workoutExercise.sets.append(newSet)
+            withAnimation {
+                let index = workoutExercise.sets.count
+                if index < workoutExercise.exercise.previousSets.count {
+                    let previousSet = workoutExercise.exercise.previousSets.sorted(by: { $0.order < $1.order })[index]
+                    let newSet = ExerciseSet(
+                        type: previousSet.type,
+                        order: index,
+                        previousWeight: previousSet.weight,
+                        previousDuration: previousSet.duration,
+                        previousDistance: previousSet.distance,
+                        previousHeight: previousSet.height,
+                        previousReps: previousSet.reps,
+                        exercise: workoutExercise.exercise,
+                        workoutExercise: workoutExercise
+                    )
+                    workoutExercise.sets.append(newSet)
+                } else {
+                    let newSet = ExerciseSet(type: .normal, order: index, exercise: workoutExercise.exercise, workoutExercise: workoutExercise)
+                    workoutExercise.sets.append(newSet)
+                }
             }
         } label: {
-            Text("Add Set")
-                .font(.subheadline)
+            AddSetButtonLabelView(fontSize: fontSize, rowHeight: rowHeight)
         }
-        .buttonStyle(PlainButtonStyle())
         .moveDisabled(true)
         .deleteDisabled(true)
+        .buttonStyle(PlainButtonStyle())
     }
     
     func deleteSet(at offsets: IndexSet) {
