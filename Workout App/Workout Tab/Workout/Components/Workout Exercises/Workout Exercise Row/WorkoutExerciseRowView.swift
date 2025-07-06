@@ -16,6 +16,22 @@ struct WorkoutExerciseRowView: View {
     
     var body: some View {
         HStack {
+            ZStack {
+                Group {
+                    if editMode {
+                        RoundedRectangle(cornerRadius: 8)
+                    } else {
+                        Rectangle()
+                    }
+                }
+                .frame(width: 3)
+                .foregroundStyle(workoutExercise.supersetColor)
+                .padding(.top, 10)
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(width: 3)
+                    .foregroundStyle(workoutExercise.supersetColor)
+                    .padding(.top, 5)
+            }
             Text(workoutExercise.exercise.name)
                 .font(.system(size: fontSize))
                 .fontWeight(.bold)

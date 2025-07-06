@@ -37,7 +37,7 @@ class WorkoutExercise {
 }
 
 extension WorkoutExercise {
-    var superSetColor: Color {
+    var supersetColor: Color {
         if let supersetNumber, !DEFAULT_SUPER_SET_COLORS.isEmpty {
             let index = supersetNumber % DEFAULT_SUPER_SET_COLORS.count
             return DEFAULT_SUPER_SET_COLORS[index]

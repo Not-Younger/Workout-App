@@ -15,6 +15,9 @@ struct WorkoutExerciseRowColumnsHeaderView: View {
     
     var body: some View {
         HStack {
+            Rectangle()
+                .frame(width: 3)
+                .foregroundStyle(workoutExercise.supersetColor)
             HStack {
                 Group {
                     Text("Set")
@@ -40,6 +43,9 @@ struct WorkoutExerciseRowColumnsHeaderView: View {
             .frame(maxWidth: .infinity)
             Image(systemName: "checkmark")
                 .frame(width: rowHeight, height: rowHeight)
+            Rectangle()
+                .frame(width: 3)
+                .foregroundStyle(Color.clear)
         }
         .font(.system(size: fontSize))
         .fontWeight(.medium)

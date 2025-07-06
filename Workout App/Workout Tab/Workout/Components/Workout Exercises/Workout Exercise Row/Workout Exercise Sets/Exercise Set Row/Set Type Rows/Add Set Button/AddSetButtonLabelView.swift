@@ -11,14 +11,36 @@ struct AddSetButtonLabelView: View {
     @Environment(\.colorScheme) private var colorScheme
     let fontSize: CGFloat
     let rowHeight: CGFloat
+    let supersetColor: Color?
+    
+    init(fontSize: CGFloat, rowHeight: CGFloat, supersetColor: Color? = nil) {
+        self.fontSize = fontSize
+        self.rowHeight = rowHeight
+        self.supersetColor = supersetColor
+    }
     
     var body: some View {
-        Text("+ Add Set")
-            .font(.system(size: fontSize))
-            .frame(maxWidth: .infinity)
-            .frame(height: rowHeight)
-            .background(colorScheme == .dark ? Color(.systemGray4) : Color(.systemGray5))
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+        HStack {
+            ZStack {
+                Rectangle()
+                    .frame(width: 3)
+                    .foregroundStyle(supersetColor ?? Color.clear)
+                    .padding(.bottom, 10)
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(width: 3)
+                    .foregroundStyle(supersetColor ?? Color.clear)
+                    .padding(.bottom, 5)
+            }
+            Text("+ Add Set")
+                .font(.system(size: fontSize))
+                .frame(maxWidth: .infinity)
+                .frame(height: rowHeight)
+                .background(colorScheme == .dark ? Color(.systemGray4) : Color(.systemGray5))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            Rectangle()
+                .frame(width: 3)
+                .foregroundStyle(Color.clear)
+        }
     }
 }
 

@@ -19,7 +19,7 @@ struct WorkoutExerciseRowSetsView: View {
             WorkoutExerciseSetRow(workoutExercise: workoutExercise, exerciseSet: set, rowHeight: rowHeight, fontSize: fontSize)
                 .listRowBackground(set.isCompleted ? Color.green.opacity(0.15) : Color.clear)
                 .alignmentGuide(.listRowSeparatorLeading) { _ in
-                    return 0
+                    return 10
                 }
         }
         .onDelete(perform: deleteSet)
@@ -46,7 +46,7 @@ struct WorkoutExerciseRowSetsView: View {
                 }
             }
         } label: {
-            AddSetButtonLabelView(fontSize: fontSize, rowHeight: rowHeight)
+            AddSetButtonLabelView(fontSize: fontSize, rowHeight: rowHeight, supersetColor: workoutExercise.supersetColor)
         }
         .moveDisabled(true)
         .deleteDisabled(true)

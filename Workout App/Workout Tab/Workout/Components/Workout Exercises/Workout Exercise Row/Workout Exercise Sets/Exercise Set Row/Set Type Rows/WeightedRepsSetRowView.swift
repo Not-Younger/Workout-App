@@ -10,6 +10,7 @@ import SwiftUI
 struct WeightedRepsSetRowView: View {
     @Environment(\.colorScheme) private var colorScheme
     
+    let workoutExercise: WorkoutExercise
     let exerciseSet: ExerciseSet
     @State private var weight: String
     let suggestedWeight: Double?
@@ -22,6 +23,7 @@ struct WeightedRepsSetRowView: View {
     let fontSize: CGFloat
     
     init(workoutExercise: WorkoutExercise, exerciseSet: ExerciseSet, rowHeight: CGFloat, fontSize: CGFloat) {
+        self.workoutExercise = workoutExercise
         self.exerciseSet = exerciseSet
         self.weight = GlobalHelpers.formatDouble(exerciseSet.weight)
         self.suggestedWeight = exerciseSet.getSuggestedWeight()
@@ -36,9 +38,12 @@ struct WeightedRepsSetRowView: View {
     
     var body: some View {
         HStack {
+            Rectangle()
+                .frame(width: 3)
+                .foregroundStyle(workoutExercise.supersetColor)
             let previousString = exerciseSet.previousString(weightType: weightType)
             HStack {
-                SetTypeIconMenuView(exerciseSet: exerciseSet, size: rowHeight)
+                SetTypeIconMenuView(exerciseSet: exerciseSet, fontSize: fontSize, size: rowHeight)
                 Button {
                     if let previousWeight = exerciseSet.previousWeight, let previousReps = exerciseSet.previousReps {
                         exerciseSet.weight = previousWeight
@@ -111,6 +116,9 @@ struct WeightedRepsSetRowView: View {
                 CompleteSetButtonLabelView(isComplete: exerciseSet.isCompleted, rowHeight: rowHeight, fontSize: fontSize)
             }
             .buttonStyle(PlainButtonStyle())
+            Rectangle()
+                .frame(width: 3)
+                .foregroundStyle(Color.clear)
         }
         .font(.system(size: fontSize))
     }

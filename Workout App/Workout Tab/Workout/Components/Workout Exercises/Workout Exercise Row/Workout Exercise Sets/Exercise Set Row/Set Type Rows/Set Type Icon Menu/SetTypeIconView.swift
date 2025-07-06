@@ -11,6 +11,7 @@ struct SetTypeIconView: View {
     @Environment(\.colorScheme) private var colorScheme
     let order: Int
     let setType: SetType
+    let fontSize: CGFloat
     let size: CGFloat
     
     var body: some View {
@@ -30,7 +31,7 @@ struct SetTypeIconView: View {
                     .foregroundStyle(.red)
             }
         }
-        .font(.subheadline)
+        .font(.system(size: fontSize, weight: .semibold))
         .frame(width: size, height: size)
         .background(getBackgroundColor())
         .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -39,17 +40,17 @@ struct SetTypeIconView: View {
     func getBackgroundColor() -> Color {
         switch  setType {
         case .warmup:
-            return .orange.opacity(0.2)
+            return .orange.opacity(0.4)
         case .normal:
-            return colorScheme == .dark ? Color(.systemGray4).opacity(0.2) : Color(.systemGray5).opacity(0.2)
+            return colorScheme == .dark ? Color(.systemGray5) : Color(.systemGray6)
         case .dropSet:
-            return .purple.opacity(0.2)
+            return .purple.opacity(0.4)
         case .failure:
-            return .red.opacity(0.2)
+            return .red.opacity(0.4)
         }
     }
 }
 
 #Preview {
-    SetTypeIconView(order: 1, setType: .normal, size: 25)
+    SetTypeIconView(order: 1, setType: .normal, fontSize: 16, size: 25)
 }
