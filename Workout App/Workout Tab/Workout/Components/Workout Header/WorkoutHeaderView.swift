@@ -29,15 +29,18 @@ struct WorkoutHeaderView: View {
             Group {
                 HStack {
                     Image(systemName: "calendar")
+                        .frame(width: 15)
                     Text(workout.date.formatted(date: .abbreviated, time: .omitted))
                 }
                 HStack {
                     Image(systemName: "clock")
+                        .frame(width: 15)
                     Text(formatElapsedTime(elapsedTime))
                         .monospacedDigit()
                 }
                 HStack(alignment: .top) {
                     Image(systemName: "text.document.fill")
+                        .frame(width: 15)
                     TextField("Notes", text: $note, axis: .vertical)
                         .scrollDisabled(true)
                         .onChange(of: note) { _, newValue in
