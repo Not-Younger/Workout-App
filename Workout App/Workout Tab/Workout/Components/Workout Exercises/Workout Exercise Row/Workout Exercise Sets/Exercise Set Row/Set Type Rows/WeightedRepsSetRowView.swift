@@ -43,7 +43,7 @@ struct WeightedRepsSetRowView: View {
                 .foregroundStyle(workoutExercise.supersetColor)
             let previousString = exerciseSet.previousString(weightType: weightType)
             HStack {
-                SetTypeIconMenuView(exerciseSet: exerciseSet, fontSize: fontSize, size: rowHeight)
+                SetTypeIconMenuView(workoutExercise: workoutExercise, exerciseSet: exerciseSet, fontSize: fontSize, size: rowHeight)
                 Button {
                     if let previousWeight = exerciseSet.previousWeight, let previousReps = exerciseSet.previousReps {
                         exerciseSet.weight = previousWeight
