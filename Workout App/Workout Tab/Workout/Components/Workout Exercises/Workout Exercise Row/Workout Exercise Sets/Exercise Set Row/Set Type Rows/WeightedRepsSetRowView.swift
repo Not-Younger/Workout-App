@@ -100,7 +100,9 @@ struct WeightedRepsSetRowView: View {
             .frame(maxWidth: .infinity)
             
             Button {
-                if let suggestedWeight, let suggestedReps {
+                if !weight.isEmpty, !reps.isEmpty {
+                    exerciseSet.isCompleted.toggle()
+                } else if let suggestedWeight, let suggestedReps {
                     weight = GlobalHelpers.formatDouble(suggestedWeight)
                     reps = GlobalHelpers.formatInt(suggestedReps)
                     exerciseSet.isCompleted.toggle()
