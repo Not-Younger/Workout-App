@@ -35,7 +35,7 @@ struct AddSetButtonLabelView: View {
                 .font(.system(size: fontSize))
                 .frame(maxWidth: .infinity)
                 .frame(height: rowHeight)
-                .background(colorScheme == .dark ? Color(.systemGray4) : Color(.systemGray5))
+                .background(colorScheme == .dark ? Color(.systemGray5) : Color(.systemGray6))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             Rectangle()
                 .frame(width: 3)

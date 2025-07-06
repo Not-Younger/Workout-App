@@ -14,6 +14,8 @@ struct WorkoutExerciseRowView: View {
     let rowHeight: CGFloat = 25
     let fontSize: CGFloat = 16
     
+    @State private var isShowingExerciseDetails: Bool = false
+    
     var body: some View {
         HStack {
             ZStack {
@@ -32,10 +34,19 @@ struct WorkoutExerciseRowView: View {
                     .foregroundStyle(workoutExercise.supersetColor)
                     .padding(.top, 5)
             }
-            Text(workoutExercise.exercise.name)
-                .font(.system(size: fontSize))
-                .fontWeight(.bold)
+            Button {
+                isShowingExerciseDetails = true
+            } label: {
+                Text(workoutExercise.exercise.name)
+                    .font(.system(size: fontSize))
+                    .fontWeight(.bold)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .sheet(isPresented: $isShowingExerciseDetails) {
+                ExerciseDetailView(exercise: workoutExercise.exercise)
+            }
             Spacer()
+            
         }
         .moveDisabled(!editMode)
         .deleteDisabled(!editMode)

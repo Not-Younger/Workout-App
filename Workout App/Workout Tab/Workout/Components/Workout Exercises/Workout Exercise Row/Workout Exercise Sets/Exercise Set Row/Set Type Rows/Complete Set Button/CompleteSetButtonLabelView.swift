@@ -25,7 +25,7 @@ struct CompleteSetButtonLabelView: View {
     
     func getBackgroundColor() -> Color {
         if isComplete { return Color.green }
-        return colorScheme == .dark ? Color(.systemGray4) : Color(.systemGray5)
+        return colorScheme == .dark ? Color(.systemGray5) : Color(.systemGray6)
     }
     
     func getForegroundColor() -> Color {
