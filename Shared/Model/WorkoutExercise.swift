@@ -11,20 +11,20 @@ import SwiftUI
 @Model
 class WorkoutExercise {
     var id = UUID()
-    var notes: String?
     var supersetNumber: Int?
     var weightType: WeightUnitType
     var distanceType: DistanceUnitType
     var heightType: HeightUnitType
     var order: Int // Order in Workout
 
-    @Relationship(deleteRule: .cascade) var sets: [ExerciseSet]
     @Relationship(deleteRule: .nullify) var workout: Workout
     @Relationship(deleteRule: .nullify) var exercise: Exercise
+    @Relationship(deleteRule: .cascade) var sets: [ExerciseSet]
+    @Relationship(deleteRule: .cascade) var notes: [WorkoutExerciseNote]
     
-    init(id: UUID = UUID(), notes: String? = nil, supersetNumber: Int? = nil, weightType: WeightUnitType = .imperial, distanceType: DistanceUnitType = .imperial, heightType: HeightUnitType = .imperial, order: Int, sets: [ExerciseSet] = [], workout: Workout, exercise: Exercise) {
+    
+    init(id: UUID = UUID(), supersetNumber: Int? = nil, weightType: WeightUnitType = .imperial, distanceType: DistanceUnitType = .imperial, heightType: HeightUnitType = .imperial, order: Int, sets: [ExerciseSet] = [], workout: Workout, exercise: Exercise, notes: [WorkoutExerciseNote] = []) {
         self.id = id
-        self.notes = notes
         self.supersetNumber = supersetNumber
         self.weightType = weightType
         self.distanceType = distanceType
@@ -33,6 +33,7 @@ class WorkoutExercise {
         self.sets = sets
         self.workout = workout
         self.exercise = exercise
+        self.notes = notes
     }
 }
 

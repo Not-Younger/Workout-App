@@ -73,6 +73,9 @@
 		C4CC24282E1973D9002E2511 /* HeightOnlySetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24272E1973D9002E2511 /* HeightOnlySetRowView.swift */; };
 		C4CC24322E19CE76002E2511 /* CompleteSetButtonLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24312E19CE76002E2511 /* CompleteSetButtonLabelView.swift */; };
 		C4CC24442E1AB936002E2511 /* AddSetButtonLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24432E1AB936002E2511 /* AddSetButtonLabelView.swift */; };
+		C4CC24512E1AD4F2002E2511 /* WorkoutExerciseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24502E1AD4F2002E2511 /* WorkoutExerciseMenuView.swift */; };
+		C4CC24532E1ADB58002E2511 /* WorkoutExerciseNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24522E1ADB58002E2511 /* WorkoutExerciseNote.swift */; };
+		C4CC24572E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24562E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +146,9 @@
 		C4CC24272E1973D9002E2511 /* HeightOnlySetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightOnlySetRowView.swift; sourceTree = "<group>"; };
 		C4CC24312E19CE76002E2511 /* CompleteSetButtonLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSetButtonLabelView.swift; sourceTree = "<group>"; };
 		C4CC24432E1AB936002E2511 /* AddSetButtonLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetButtonLabelView.swift; sourceTree = "<group>"; };
+		C4CC24502E1AD4F2002E2511 /* WorkoutExerciseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseMenuView.swift; sourceTree = "<group>"; };
+		C4CC24522E1ADB58002E2511 /* WorkoutExerciseNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseNote.swift; sourceTree = "<group>"; };
+		C4CC24562E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +222,7 @@
 				C40A14872E106D410069F35C /* WorkoutExercise.swift */,
 				C40A14852E106C420069F35C /* ExerciseSet.swift */,
 				C40A13F82E0D7B250069F35C /* Exercise.swift */,
+				C4CC24522E1ADB58002E2511 /* WorkoutExerciseNote.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +380,7 @@
 			children = (
 				C4CC24292E197425002E2511 /* Workout Exercise Sets */,
 				C40A149A2E10AC0B0069F35C /* WorkoutExerciseRowView.swift */,
+				C4CC24502E1AD4F2002E2511 /* WorkoutExerciseMenuView.swift */,
 			);
 			path = "Workout Exercise Row";
 			sourceTree = "<group>";
@@ -465,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				C40A149D2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift */,
+				C4CC24562E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift */,
 			);
 			path = "Workout Exercise Header";
 			sourceTree = "<group>";
@@ -579,6 +588,7 @@
 				C40A14862E106C420069F35C /* ExerciseSet.swift in Sources */,
 				C40A14322E0EB9CC0069F35C /* MuscleIconView.swift in Sources */,
 				C40A14782E10458F0069F35C /* HistoryTab.swift in Sources */,
+				C4CC24512E1AD4F2002E2511 /* WorkoutExerciseMenuView.swift in Sources */,
 				C40A14822E1066200069F35C /* WorkoutHeaderView.swift in Sources */,
 				C4CC24322E19CE76002E2511 /* CompleteSetButtonLabelView.swift in Sources */,
 				C40A14A02E10AE9B0069F35C /* WeightUnitType.swift in Sources */,
@@ -592,8 +602,10 @@
 				C40A13FA2E0D7BCD0069F35C /* DataModel.swift in Sources */,
 				C4CC24052E161EB2002E2511 /* SetTypeInfoView.swift in Sources */,
 				C40A13F12E0D7AC00069F35C /* Workout_AppApp.swift in Sources */,
+				C4CC24532E1ADB58002E2511 /* WorkoutExerciseNote.swift in Sources */,
 				C4CC24442E1AB936002E2511 /* AddSetButtonLabelView.swift in Sources */,
 				C40A148F2E107C820069F35C /* DefaultSuperSetColors.swift in Sources */,
+				C4CC24572E1ADC9E002E2511 /* WorkoutExerciseNoteView.swift in Sources */,
 				C4CC24222E197398002E2511 /* TimeOnlySetRowView.swift in Sources */,
 				C40A148D2E106FDC0069F35C /* AddWorkoutExerciseView.swift in Sources */,
 				C40A147F2E10649B0069F35C /* GlobalHelpers.swift in Sources */,

@@ -18,7 +18,7 @@ struct WorkoutExerciseListView: View {
     
     var body: some View {
         ForEach(workoutExercises) { workoutExercise in
-            WorkoutExerciseRowView(workoutExercise: workoutExercise, editMode: $editMode)
+            WorkoutExerciseRowView(workout: workout, workoutExercise: workoutExercise, workoutExercises: $workoutExercises, editMode: $editMode)
                 .listRowInsets(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         }
         .onMove(perform: moveWorkoutExercise)
