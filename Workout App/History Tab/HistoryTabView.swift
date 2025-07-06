@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct HistoryTab: View {
+struct HistoryTabView: View {
     @Query(filter: #Predicate<Workout> { workout in
         workout.finishDate != nil
     }, sort: \.date) var completedWorkouts: [Workout]
@@ -27,5 +27,5 @@ struct HistoryTab: View {
 }
 
 #Preview {
-    HistoryTab()
+    HistoryTabView()
 }

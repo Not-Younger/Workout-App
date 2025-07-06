@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExerciseTab: View {
+struct ExerciseTabView: View {
     @State private var searchString: String = ""
     @State private var isSearchFocused: Bool = false
     @State private var selectedExercises: [Exercise] = []
@@ -30,6 +30,6 @@ struct ExerciseTab: View {
 
 #Preview {
     return NavigationStack {
-        ExerciseTab()
+        ExerciseTabView()
     }
 }

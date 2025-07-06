@@ -20,17 +20,17 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             Tab("Profile", systemImage: "person.fill", value: 1) {
                 NavigationStack {
-                    
+                    ProfileTabView()
                 }
             }
             Tab("History", systemImage: "clock.fill", value: 2) {
                 NavigationStack {
-                    HistoryTab()
+                    HistoryTabView()
                 }
             }
             Tab("Workout", systemImage: "plus", value: 3) {
                 NavigationStack(path: $navigationPaths.workoutPath) {
-                    WorkoutTab()
+                    WorkoutTabView()
                         .navigationDestination(for: Workout.self) { workout in
                             WorkoutView(workout: workout)
                         }
@@ -40,7 +40,7 @@ struct ContentView: View {
             }
             Tab("Exercises", systemImage: "dumbbell", value: 4) {
                 NavigationStack(path: $navigationPaths.exercisePath) {
-                    ExerciseTab()
+                    ExerciseTabView()
                         .navigationDestination(for: Exercise.self) { exercise in
                             ExerciseDetailView(exercise: exercise)
                         }

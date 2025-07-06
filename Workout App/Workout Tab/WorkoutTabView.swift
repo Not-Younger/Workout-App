@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct WorkoutTab: View {
+struct WorkoutTabView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(NavigationPaths.self) private var navigationPaths: NavigationPaths
     
