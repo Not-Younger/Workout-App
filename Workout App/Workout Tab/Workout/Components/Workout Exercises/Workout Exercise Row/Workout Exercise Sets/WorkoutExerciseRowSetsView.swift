@@ -17,7 +17,6 @@ struct WorkoutExerciseRowSetsView: View {
     var body: some View {
         ForEach(workoutExercise.sets.sorted(by: { $0.order < $1.order })) { set in
             WorkoutExerciseSetRow(workoutExercise: workoutExercise, exerciseSet: set, rowHeight: rowHeight, fontSize: fontSize)
-                .deleteDisabled(false)
         }
         .onDelete(perform: deleteSet)
         Button {
@@ -45,6 +44,8 @@ struct WorkoutExerciseRowSetsView: View {
                 .font(.subheadline)
         }
         .buttonStyle(PlainButtonStyle())
+        .moveDisabled(true)
+        .deleteDisabled(true)
     }
     
     func deleteSet(at offsets: IndexSet) {

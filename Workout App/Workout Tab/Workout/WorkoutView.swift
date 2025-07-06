@@ -9,25 +9,34 @@ import SwiftData
 import SwiftUI
 
 struct WorkoutView: View {
-    @Environment(\.editMode) private var editMode
     @Environment(\.dismiss) private var dismiss
     
     @Bindable var workout: Workout
+    @State private var workoutExercises: [WorkoutExercise]
+    
+    @State private var editMode: Bool = false
+    
+    init(workout: Workout) {
+        self.workout = workout
+        self.workoutExercises = workout.workoutExercises.sorted { $0.order < $1.order }
+    }
     
     var body: some View {
-        GeometryReader { geometry in
-            List {
-                WorkoutHeaderView(workout: workout)
-                    .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
-                
-                WorkoutExerciseListView(workout: workout)
-                
-                WorkoutAddCancelButtonsView(workout: workout)
-                    .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
-            }
-            .listStyle(.inset)
-            .scrollIndicators(.hidden)
+        List {
+            WorkoutHeaderView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode)
+                .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+                .deleteDisabled(true)
+                .moveDisabled(true)
+            
+            WorkoutExerciseListView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode)
+            
+            WorkoutAddCancelButtonsView(workout: workout, workoutExercises: $workoutExercises)
+                .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+                .deleteDisabled(true)
+                .moveDisabled(true)
         }
+        .listStyle(.inset)
+        .scrollIndicators(.hidden)
         .fontDesign(.rounded)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
@@ -43,7 +52,7 @@ struct WorkoutView: View {
                     print("Finished workout: \(workout.name) at \(workout.finishDate!)")
                     
                     // Update exercise previous sets
-                    for workoutExercise in workout.exercises {
+                    for workoutExercise in workout.workoutExercises {
                         var previousSets: [ExerciseSet] = []
                         for set in workoutExercise.sets.sorted(by: { $0.order < $1.order }) {
                             let previousSet = ExerciseSet(

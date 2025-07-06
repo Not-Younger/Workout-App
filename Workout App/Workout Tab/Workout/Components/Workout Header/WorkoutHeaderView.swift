@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct WorkoutHeaderView: View {
-    @Environment(\.editMode) private var editMode
     @Bindable var workout: Workout
+    @Binding var workoutExercises: [WorkoutExercise]
+    @Binding var editMode: Bool
     
     @State private var elapsedTime: TimeInterval = 0
     @State private var timer: Timer?
@@ -20,8 +21,8 @@ struct WorkoutHeaderView: View {
             HStack {
                 TextField("Workout Name", text: $workout.name)
                     .font(.title2.bold())
-                if !workout.exercises.isEmpty {
-                    CustomEditButton()
+                if !workoutExercises.isEmpty {
+                    CustomEditButton(editMode: $editMode)
                 }
             }
             .padding(.bottom, 10)
@@ -66,8 +67,4 @@ struct WorkoutHeaderView: View {
         let seconds = totalSeconds % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
-}
-
-#Preview {
-    WorkoutHeaderView(workout: Workout())
 }

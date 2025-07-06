@@ -13,6 +13,8 @@ struct WorkoutAddCancelButtonsView: View {
     @Environment(NavigationPaths.self) private var navigationPaths: NavigationPaths
     
     @Bindable var workout: Workout
+    @Binding var workoutExercises: [WorkoutExercise]
+    
     @State private var isAddingExercises: Bool = false
     @State private var isShowingCancelWorkoutAlert: Bool = false
     
@@ -32,7 +34,7 @@ struct WorkoutAddCancelButtonsView: View {
             .tint(.primary)
             .sheet(isPresented: $isAddingExercises) {
                 NavigationStack(path: $navigationPaths.workoutExercisePath) {
-                    AddWorkoutExerciseView(workout: workout)
+                    AddWorkoutExerciseView(workout: workout, workoutExercises: $workoutExercises)
                         .navigationDestination(for: Exercise.self) { exercise in
                             ExerciseDetailView(exercise: exercise)
                         }
@@ -68,8 +70,4 @@ struct WorkoutAddCancelButtonsView: View {
         .listRowSeparator(.hidden)
         .padding(.top, 30)
     }
-}
-
-#Preview {
-    WorkoutAddCancelButtonsView(workout: Workout())
 }

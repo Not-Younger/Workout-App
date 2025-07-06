@@ -10,6 +10,7 @@ import SwiftUI
 struct AddWorkoutExerciseView: View {
     @Environment(\.dismiss) private var dismiss
     @Bindable var workout: Workout
+    @Binding var workoutExercises: [WorkoutExercise]
     
     @State private var searchString: String = ""
     @State private var isSearchFocused: Bool = false
@@ -38,7 +39,7 @@ struct AddWorkoutExerciseView: View {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 HStack(spacing: 5) {
                     Button("Superset") {
-                        var currentExerciseIndex = workout.exercises.count
+                        var currentExerciseIndex = workoutExercises.count
                         let currentSupersetIndex = getMaxSuperSetNumber()
                         for exercise in selectedExercises {
                             // Create workout exerise
@@ -48,8 +49,6 @@ struct AddWorkoutExerciseView: View {
                                 workout: workout,
                                 exercise: exercise
                             )
-                            // Add to workout / SwiftData
-                            workout.exercises.append(workoutExercise)
                             // Add any preivous set data to sets
                             let previousSets = exercise.previousSets.sorted { $0.order < $1.order }
                             for previousSet in previousSets {
@@ -66,6 +65,9 @@ struct AddWorkoutExerciseView: View {
                                 )
                                 workoutExercise.sets.append(newPreviousSet)
                             }
+                            // Add to workout
+                            workoutExercises.append(workoutExercise)
+                            workout.workoutExercises.append(workoutExercise)
                             print("Superset number: \(workoutExercise.supersetNumber ?? -1)")
                             print("Order: \(workoutExercise.order)")
                             currentExerciseIndex += 1
@@ -74,7 +76,7 @@ struct AddWorkoutExerciseView: View {
                     }
                     .disabled(selectedExercises.count < 2)
                     Button("Add") {
-                        var currentExerciseIndex = workout.exercises.count
+                        var currentExerciseIndex = workoutExercises.count
                         for exercise in selectedExercises {
                             // Create workout exercise
                             let workoutExercise = WorkoutExercise(
@@ -98,8 +100,9 @@ struct AddWorkoutExerciseView: View {
                                 )
                                 workoutExercise.sets.append(newPreviousSet)
                             }
-                            // Add to workout / SwiftData
-                            workout.exercises.append(workoutExercise)
+                            // Add to workout
+                            workoutExercises.append(workoutExercise)
+                            workout.workoutExercises.append(workoutExercise)
                             print(workoutExercise.order)
                             currentExerciseIndex += 1
                         }
@@ -115,7 +118,7 @@ struct AddWorkoutExerciseView: View {
     
     func getMaxSuperSetNumber() -> Int {
         var maxSupersetNumber = 0
-        for exercise in workout.exercises {
+        for exercise in workoutExercises {
             if let supersetNumber = exercise.supersetNumber {
                 maxSupersetNumber = max(supersetNumber, maxSupersetNumber)
             }
@@ -124,6 +127,3 @@ struct AddWorkoutExerciseView: View {
     }
 }
 
-#Preview {
-    AddWorkoutExerciseView(workout: Workout())
-}

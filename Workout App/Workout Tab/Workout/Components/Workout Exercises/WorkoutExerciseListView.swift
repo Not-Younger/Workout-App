@@ -9,46 +9,44 @@ import SwiftUI
 
 struct WorkoutExerciseListView: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(\.editMode) private var editMode
+    
     @Bindable var workout: Workout
+    @Binding var workoutExercises: [WorkoutExercise]
+    @Binding var editMode: Bool
     
     @State var hasPressed = false
     
     var body: some View {
-        ForEach(workout.exercises) { workoutExercise in
-            WorkoutExerciseRowView(workoutExercise: workoutExercise)
-                .moveDisabled(editMode?.wrappedValue == .inactive)
-                .deleteDisabled(editMode?.wrappedValue == .inactive)
+        ForEach(workoutExercises) { workoutExercise in
+            WorkoutExerciseRowView(workoutExercise: workoutExercise, editMode: $editMode)
         }
-        .onMove(perform: move)
+        .onMove(perform: moveWorkoutExercise)
         .onDelete(perform: deleteWorkoutExercise)
-        .animation(nil, value: editMode?.wrappedValue)
-        .onAppear() {
-            workout.exercises.sort { $0.order < $1.order }
-        }
+        .animation(nil, value: editMode)
     }
     
-    func move(from source: IndexSet, to destination: Int) {
-        workout.exercises.move(fromOffsets: source, toOffset: destination)
+    func moveWorkoutExercise(from source: IndexSet, to destination: Int) {
+        workoutExercises.move(fromOffsets: source, toOffset: destination)
+        // Update order
         resetIndices()
     }
     
     func deleteWorkoutExercise(at offsets: IndexSet) {
         for offset in offsets {
             // find this book in our query
-            let workoutExercise = workout.exercises[offset]
-
-            // delete it from the context
-            workout.exercises.remove(at: offset)
+            let workoutExercise = workoutExercises[offset]
+            // Delete it from local state, workout state, and the context
+            workoutExercises.remove(at: offset)
+            workout.workoutExercises.removeAll(where: { $0.id == workoutExercise.id })
             modelContext.delete(workoutExercise)
-            
+            // Update order
             resetIndices()
         }
     }
     
     func resetIndices() {
-        for i in workout.exercises.indices {
-            let workoutExercise = workout.exercises[i]
+        for i in workoutExercises.indices {
+            let workoutExercise = workoutExercises[i]
             workoutExercise.order = i
         }
     }

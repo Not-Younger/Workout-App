@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct CustomEditButton: View {
-    @Environment(\.editMode) private var editMode
+    @Binding var editMode: Bool
     
     var body: some View {
         Button {
             withAnimation {
-                if editMode?.wrappedValue == .active {
-                    editMode?.wrappedValue = .inactive
+                if editMode {
+                    editMode = false
                 } else {
-                    editMode?.wrappedValue = .active
+                    editMode = true
                 }
             }
         } label: {
-            if editMode?.wrappedValue == .active {
+            if editMode {
                 Text("Done")
             } else {
                 Text("Edit")
@@ -28,8 +28,4 @@ struct CustomEditButton: View {
         }
         .buttonStyle(PlainButtonStyle())
     }
-}
-
-#Preview {
-    CustomEditButton()
 }
