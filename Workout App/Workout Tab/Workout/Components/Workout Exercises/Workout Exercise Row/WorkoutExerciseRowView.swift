@@ -63,20 +63,27 @@ struct WorkoutExerciseRowView: View {
                 ExerciseDetailView(exercise: workoutExercise.exercise)
             }
             Spacer()
-            WorkoutExerciseMenuView(workoutExercise: workoutExercise, notes: $notes, showStickyNote: $showStickyNote, isShowingDeleteExerciseAlert: $isShowingDeleteExerciseAlert, fontSize: fontSize, size: rowHeight)
-                .alert("Remove Exercise?", isPresented: $isShowingDeleteExerciseAlert) {
-                    Button("Remove", role: .destructive) {
-                        withAnimation {
-                            workout.workoutExercises.removeAll(where: { $0.id == workoutExercise.id })
-                            workoutExercises.removeAll(where: { $0.id == workoutExercise.id })
-                            modelContext.delete(workoutExercise)
+            if editMode {
+                Image(systemName: "line.3.horizontal")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: rowHeight, height: rowHeight)
+                    .foregroundStyle(.secondary)
+            } else {
+                WorkoutExerciseMenuView(workoutExercise: workoutExercise, notes: $notes, showStickyNote: $showStickyNote, isShowingDeleteExerciseAlert: $isShowingDeleteExerciseAlert, fontSize: fontSize, size: rowHeight)
+                    .alert("Remove Exercise?", isPresented: $isShowingDeleteExerciseAlert) {
+                        Button("Remove", role: .destructive) {
+                            withAnimation {
+                                workout.workoutExercises.removeAll(where: { $0.id == workoutExercise.id })
+                                workoutExercises.removeAll(where: { $0.id == workoutExercise.id })
+                                modelContext.delete(workoutExercise)
+                            }
                         }
+                        Button("Cancel", role: .cancel) { }
+                    } message: {
+                        Text("This removes '\(workoutExercise.exercise.name)' and all of its sets from your workout. You cannot undo this action.")
                     }
-                    Button("Cancel", role: .cancel) { }
-                } message: {
-                    Text("This removes '\(workoutExercise.exercise.name)' and all of its sets from your workout. You cannot undo this action.")
-                }
-
+            }
             RoundedRectangle(cornerRadius: 8)
                 .frame(width: 3)
                 .foregroundStyle(Color.clear)
@@ -122,11 +129,11 @@ struct WorkoutExerciseRowView: View {
             workoutExercise.notes.removeAll(where: { $0.id == note.id })
             modelContext.delete(note)
             // Update order
-            resetIndices()
+            resetNoteIndices()
         }
     }
     
-    func resetIndices() {
+    func resetNoteIndices() {
         for i in notes.indices {
             let note = notes[i]
             note.order = i

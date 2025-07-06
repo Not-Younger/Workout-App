@@ -118,6 +118,7 @@ struct WeightedRepsSetRowView: View {
                 CompleteSetButtonLabelView(isComplete: exerciseSet.isCompleted, rowHeight: rowHeight, fontSize: fontSize)
             }
             .buttonStyle(PlainButtonStyle())
+            .disabled(disableCompleteButton())
             Rectangle()
                 .frame(width: 3)
                 .foregroundStyle(Color.clear)
@@ -132,6 +133,16 @@ struct WeightedRepsSetRowView: View {
             return true
         }
         return false
+    }
+    
+    func disableCompleteButton() -> Bool {
+        if !weight.isEmpty, !reps.isEmpty {
+            return false
+        }
+        if suggestedWeight != nil, suggestedReps != nil {
+            return false
+        }
+        return true
     }
 }
 

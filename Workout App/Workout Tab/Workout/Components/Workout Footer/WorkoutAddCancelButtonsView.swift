@@ -27,7 +27,6 @@ struct WorkoutAddCancelButtonsView: View {
                 Text("Add Exercises")
                     .fontDesign(.rounded)
                     .bold()
-                    .padding(.vertical, 5)
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(BorderedProminentButtonStyle())
@@ -44,7 +43,6 @@ struct WorkoutAddCancelButtonsView: View {
                 isShowingCancelWorkoutAlert = true
             } label: {
                 Text("Cancel Workout")
-                    .padding(.vertical, 5)
                     .frame(maxWidth: .infinity)
                     .fontDesign(.rounded)
                     .bold()
