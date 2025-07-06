@@ -105,12 +105,14 @@ struct WeightedRepsSetRowView: View {
             .frame(maxWidth: .infinity)
             
             Button {
-                if !weight.isEmpty, !reps.isEmpty {
-                    exerciseSet.isCompleted.toggle()
-                } else if let suggestedWeight, let suggestedReps {
-                    weight = GlobalHelpers.formatDouble(suggestedWeight)
-                    reps = GlobalHelpers.formatInt(suggestedReps)
-                    exerciseSet.isCompleted.toggle()
+                withAnimation {
+                    if !weight.isEmpty, !reps.isEmpty {
+                        exerciseSet.isCompleted.toggle()
+                    } else if let suggestedWeight, let suggestedReps {
+                        weight = GlobalHelpers.formatDouble(suggestedWeight)
+                        reps = GlobalHelpers.formatInt(suggestedReps)
+                        exerciseSet.isCompleted.toggle()
+                    }
                 }
             } label: {
                 CompleteSetButtonLabelView(isComplete: exerciseSet.isCompleted, rowHeight: rowHeight, fontSize: fontSize)

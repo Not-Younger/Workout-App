@@ -47,7 +47,7 @@ struct SetTypeIconMenuView: View {
                 Label("More Info", systemImage: "questionmark")
             }
         } label: {
-            SetTypeIconView(order: exerciseSet.order, setType: exerciseSet.type, fontSize: fontSize, size: size)
+            SetTypeIconView(isCompleted: exerciseSet.isCompleted, order: exerciseSet.order, setType: exerciseSet.type, fontSize: fontSize, size: size)
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $isShowingMoreInfo) {

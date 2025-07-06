@@ -9,10 +9,19 @@ import SwiftUI
 
 struct SetTypeIconView: View {
     @Environment(\.colorScheme) private var colorScheme
+    let isCompleted: Bool
     let order: Int
     let setType: SetType
     let fontSize: CGFloat
     let size: CGFloat
+    
+    init(isCompleted: Bool = false, order: Int, setType: SetType, fontSize: CGFloat, size: CGFloat) {
+        self.isCompleted = isCompleted
+        self.order = order
+        self.setType = setType
+        self.fontSize = fontSize
+        self.size = size
+    }
     
     var body: some View {
         Group {
@@ -38,6 +47,7 @@ struct SetTypeIconView: View {
     }
     
     func getBackgroundColor() -> Color {
+        if isCompleted { return .clear }
         switch  setType {
         case .warmup:
             return .orange.opacity(0.4)
