@@ -35,3 +35,16 @@ class Exercise: Alphabetizable {
         self.previousSets = previousSets
     }
 }
+
+extension Exercise {
+    func getStringSecondaryMuscleTypes() -> String {
+        var stringSecondaryMuscleTypes: String = ""
+        for (i, secondaryMuscleType) in self.secondaryMuscleTypes.enumerated() {
+            stringSecondaryMuscleTypes += secondaryMuscleType.rawValue
+            if i != self.secondaryMuscleTypes.count - 1 {
+                stringSecondaryMuscleTypes += ", "
+            }
+        }
+        return stringSecondaryMuscleTypes
+    }
+}
