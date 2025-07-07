@@ -10,7 +10,7 @@ import SwiftUI
 struct ExerciseDetailView: View {
     let exercise: Exercise
     
-    @State private var selectedTab: ExerciseDetailTab = .summary
+    @State private var selectedTab: ExerciseDetailTab = .howTo
     
     var body: some View {
         VStack {
@@ -34,7 +34,7 @@ struct ExerciseDetailView: View {
 }
 
 #Preview {
-    let exercise = Exercise(name: "Bench Press (Barbell)", note: "Suffered a minor injury during the last workout. Rest for 2 weeks.", exerciseDescription: "A compound chest exercise where you press a barbell upward from a lying position to target the pectorals, triceps, and shoulders.", muscleType: .chest, secondaryMuscleTypes: [.triceps, .shoulders], equipmentType: .barbell, exerciseType: .weightedReps)
+    let exercise = Exercise(name: "Bench Press (Barbell)", note: "Suffered a minor injury during the last workout. Rest for 2 weeks.", exerciseDescription: "A compound chest exercise where you press a barbell upward from a lying position to target the pectorals, triceps, and shoulders.", howTo: ["Lie on the bench", "Extend your arms and grab the bar evenly, having your hands slightly wider than shoulder-width apart.", "Bring your shoulder blades back and dig them into the bench.", "Arch you lower back and plant your feet flat on the floor.", "Take a breath, unrack the bar, and bring it over your chest.", "Inhale again and lower the barbell to your lwer chest, tapping it slightly.", "Hold for a moment and press the bar until your elbows are straight. Exhale."], muscleType: .chest, secondaryMuscleTypes: [.triceps, .shoulders], equipmentType: .barbell, exerciseType: .weightedReps)
     NavigationStack {
         ExerciseDetailView(exercise: exercise)
     }

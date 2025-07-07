@@ -1,5 +1,5 @@
 //
-//  ExerciseDetailPersonalRecordsView.swift
+//  SummaryPersonalRecordsView.swift
 //  Workout App
 //
 //  Created by Jonathan Young on 7/6/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExerciseDetailPersonalRecordsView: View {
+struct SummaryPersonalRecordsView: View {
     let exercise: Exercise
     
     @State private var isShowingPersonalRecordInfoSheet: Bool = false

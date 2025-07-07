@@ -12,12 +12,12 @@ struct ExerciseDetailSummaryView: View {
     
     var body: some View {
         VStack(spacing: 25) {
-            ExerciseDetailMediaView(exercise: exercise)
+            SummaryMediaView(exercise: exercise)
             VStack(spacing: 10) {
-                ExerciseDetailHeaderView(exercise: exercise)
-                ExerciseDetailExerciseDetailsView(exercise: exercise)
+                SummaryHeaderView(exercise: exercise)
+                SummaryExerciseDetailsView(exercise: exercise)
             }
-            ExerciseDetailPersonalRecordsView(exercise: exercise)
+            SummaryPersonalRecordsView(exercise: exercise)
         }
     }
 }

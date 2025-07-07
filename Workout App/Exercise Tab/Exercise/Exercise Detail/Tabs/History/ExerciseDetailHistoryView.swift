@@ -12,7 +12,7 @@ struct ExerciseDetailHistoryView: View {
     
     var body: some View {
         VStack(spacing: 25) {
-            ExerciseDetailMediaView(exercise: exercise)
+            SummaryMediaView(exercise: exercise)
             
         }
     }

@@ -15,6 +15,7 @@ class Exercise: Alphabetizable {
     var name: String
     var note: String
     var exerciseDescription: String?
+    var howTo: [String]?
     var imageString: String?
     var muscleType: MuscleType
     var secondaryMuscleTypes: [MuscleType]
@@ -23,10 +24,11 @@ class Exercise: Alphabetizable {
     
     @Relationship(deleteRule: .cascade) var previousSets: [ExerciseSet] = []
     
-    init(name: String, note: String = "", exerciseDescription: String? = nil, imageString: String? = nil, muscleType: MuscleType, secondaryMuscleTypes: [MuscleType] = [], equipmentType: EquipmentType, exerciseType: ExerciseType, previousSets: [ExerciseSet] = []) {
+    init(name: String, note: String = "", exerciseDescription: String? = nil, howTo: [String]? = nil, imageString: String? = nil, muscleType: MuscleType, secondaryMuscleTypes: [MuscleType] = [], equipmentType: EquipmentType, exerciseType: ExerciseType, previousSets: [ExerciseSet] = []) {
         self.name = name
         self.note = note
         self.exerciseDescription = exerciseDescription
+        self.howTo = howTo
         self.imageString = imageString
         self.muscleType = muscleType
         self.secondaryMuscleTypes = secondaryMuscleTypes

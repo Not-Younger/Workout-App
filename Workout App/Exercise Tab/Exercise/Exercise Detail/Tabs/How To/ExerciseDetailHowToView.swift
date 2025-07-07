@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ExerciseDetailHowToView: View {
-    
     let exercise: Exercise
+    
     var body: some View {
-        Text("How To")
+        VStack(spacing: 25) {
+            SummaryMediaView(exercise: exercise)
+            SummaryHeaderView(exercise: exercise)
+            HowToExerciseStepsView(exercise: exercise)
+        }
     }
 }
