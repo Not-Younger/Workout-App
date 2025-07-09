@@ -11,6 +11,8 @@ struct ExerciseDetailChartsView: View {
     let exercise: Exercise
     
     var body: some View {
-        Text("Charts")
+        ScrollView {
+            Text("Charts")
+        }
     }
 }

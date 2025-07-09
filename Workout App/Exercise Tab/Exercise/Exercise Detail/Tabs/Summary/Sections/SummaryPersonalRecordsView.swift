@@ -110,6 +110,5 @@ struct SummaryPersonalRecordsView: View {
             }
         }
         .font(.system(size: 16))
-        .padding(.horizontal)
     }
 }

@@ -44,6 +44,9 @@ struct ContentView: View {
                         .navigationDestination(for: Exercise.self) { exercise in
                             ExerciseDetailView(exercise: exercise)
                         }
+                        .navigationDestination(for: Workout.self) { workout in
+                            WorkoutDetailView(workout: workout)
+                        }
                 }
                 .environment(navigationPaths)
             }

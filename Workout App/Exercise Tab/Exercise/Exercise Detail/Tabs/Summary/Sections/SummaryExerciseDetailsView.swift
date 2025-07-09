@@ -21,7 +21,6 @@ struct SummaryExerciseDetailsView: View {
             }
             .fontDesign(.rounded)
             .frame(maxWidth: .infinity)
-            .padding(.horizontal)
         }
     }
 }

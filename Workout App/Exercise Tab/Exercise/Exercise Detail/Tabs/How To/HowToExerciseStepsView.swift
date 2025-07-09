@@ -24,7 +24,6 @@ struct HowToExerciseStepsView: View {
             }
             Spacer()
         }
-        .padding(.horizontal)
         .font(.system(size: 16))
         .fontDesign(.rounded)
     }

@@ -11,13 +11,21 @@ struct ExerciseDetailSummaryView: View {
     let exercise: Exercise
     
     var body: some View {
-        VStack(spacing: 25) {
-            SummaryMediaView(exercise: exercise)
-            VStack(spacing: 10) {
-                SummaryHeaderView(exercise: exercise)
-                SummaryExerciseDetailsView(exercise: exercise)
+        ScrollView {
+            VStack(spacing: 25) {
+                CardView(padding: 0) {
+                    SummaryMediaView(exercise: exercise)
+                    VStack(spacing: 15) {
+                        SummaryHeaderView(exercise: exercise)
+                        SummaryExerciseDetailsView(exercise: exercise)
+                    }
+                    .padding([.leading, .bottom, .trailing])
+                }
+                CardView {
+                    SummaryPersonalRecordsView(exercise: exercise)
+                }
             }
-            SummaryPersonalRecordsView(exercise: exercise)
+            .padding()
         }
     }
 }

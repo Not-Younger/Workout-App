@@ -15,17 +15,15 @@ struct ExerciseDetailView: View {
     var body: some View {
         VStack {
             ExerciseDetailTabView(selectedTab: $selectedTab)
-            ScrollView {
-                switch selectedTab {
-                case .summary:
-                    ExerciseDetailSummaryView(exercise: exercise)
-                case .history:
-                    ExerciseDetailHistoryView(exercise: exercise)
-                case .howTo:
-                    ExerciseDetailHowToView(exercise: exercise)
-                case .charts:
-                    ExerciseDetailChartsView(exercise: exercise)
-                }
+            switch selectedTab {
+            case .summary:
+                ExerciseDetailSummaryView(exercise: exercise)
+            case .history:
+                ExerciseDetailHistoryView(exercise: exercise)
+            case .howTo:
+                ExerciseDetailHowToView(exercise: exercise)
+            case .charts:
+                ExerciseDetailChartsView(exercise: exercise)
             }
         }
         .navigationTitle(exercise.name)
@@ -34,8 +32,10 @@ struct ExerciseDetailView: View {
 }
 
 #Preview {
+    @Previewable @State var navigationPaths = NavigationPaths()
     let exercise = Exercise(name: "Bench Press (Barbell)", note: "Suffered a minor injury during the last workout. Rest for 2 weeks.", exerciseDescription: "A compound chest exercise where you press a barbell upward from a lying position to target the pectorals, triceps, and shoulders.", howTo: ["Lie on the bench", "Extend your arms and grab the bar evenly, having your hands slightly wider than shoulder-width apart.", "Bring your shoulder blades back and dig them into the bench.", "Arch you lower back and plant your feet flat on the floor.", "Take a breath, unrack the bar, and bring it over your chest.", "Inhale again and lower the barbell to your lwer chest, tapping it slightly.", "Hold for a moment and press the bar until your elbows are straight. Exhale."], muscleType: .chest, secondaryMuscleTypes: [.triceps, .shoulders], equipmentType: .barbell, exerciseType: .weightedReps)
-    NavigationStack {
+    return NavigationStack {
         ExerciseDetailView(exercise: exercise)
     }
+    .environment(navigationPaths)
 }

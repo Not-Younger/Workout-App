@@ -70,6 +70,55 @@ class ExerciseSet {
 }
 
 extension ExerciseSet {
+    func currentString(weightType: WeightUnitType? = nil, distanceType: DistanceUnitType? = nil, heightType: HeightUnitType? = nil) -> String? {
+        switch self.exercise.exerciseType {
+        case .weightedReps:
+            if let weight, let reps, let weightType {
+                return "\(GlobalHelpers.formatDouble(weight)) \(weightType == .imperial ? "lb" : "kg") x \(reps)"
+            }
+        case .bodyweightReps:
+            if let weight, let reps, let weightType {
+                return "+\(weight) \(weightType == .imperial ? "lb" : "kg") x \(reps)"
+            }
+        case .timeBased:
+            if let weight, let duration, let weightType {
+                return "+\(weight) \(weightType == .imperial ? "lb" : "kg") x \(duration)"
+            }
+        case .distanceTime:
+            if let distance, let duration, let distanceType {
+                return "\(distance) \(distanceType == .imperial ? "mi" : "km") in \(duration)"
+            }
+        case .distanceOnly:
+            if let distance, let distanceType {
+                return "\(distance) \(distanceType == .imperial ? "mi" : "km")"
+            }
+        case .timeOnly:
+            if let duration {
+                return "\(duration)"
+            }
+        case .repsOnly:
+            if let reps {
+                return "\(reps)"
+            }
+        case .heightReps:
+            if let height, let reps, let heightType {
+                return "\(height) \(heightType == .imperial ? "in" : "cm") x \(reps)"
+            }
+        case .heightOnly:
+            if let height, let heightType {
+                return "\(height) \(heightType == .imperial ? "in" : "cm")"
+            }
+        }
+        return nil
+    }
+    
+    func get1RepMaxString(weightType: WeightUnitType) -> Int? {
+        if let weight, let reps {
+            return Int(weight * (1 + Double(reps) / 30.0))
+        }
+        return nil
+    }
+    
     func previousString(weightType: WeightUnitType? = nil, distanceType: DistanceUnitType? = nil, heightType: HeightUnitType? = nil) -> String? {
         switch self.exercise.exerciseType {
         case .weightedReps:

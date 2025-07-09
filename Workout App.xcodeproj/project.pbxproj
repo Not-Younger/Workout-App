@@ -93,6 +93,10 @@
 		C4CC24822E1B5385002E2511 /* ExerciseDetailChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24812E1B5385002E2511 /* ExerciseDetailChartsView.swift */; };
 		C4CC24842E1B548C002E2511 /* SummaryExerciseDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24832E1B548C002E2511 /* SummaryExerciseDetailsView.swift */; };
 		C4CC24862E1BF855002E2511 /* HowToExerciseStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24852E1BF855002E2511 /* HowToExerciseStepsView.swift */; };
+		C4CC24892E1D40F2002E2511 /* HistoryWorkoutExerciseCardSetsPerformedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24882E1D40F2002E2511 /* HistoryWorkoutExerciseCardSetsPerformedView.swift */; };
+		C4CC248B2E1D4843002E2511 /* HistoryWorkoutExerciseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC248A2E1D4843002E2511 /* HistoryWorkoutExerciseCardView.swift */; };
+		C4CC248E2E1DF446002E2511 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC248D2E1DF446002E2511 /* WorkoutDetailView.swift */; };
+		C4CC24912E1DF4AD002E2511 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24902E1DF4AD002E2511 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,6 +187,10 @@
 		C4CC24812E1B5385002E2511 /* ExerciseDetailChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailChartsView.swift; sourceTree = "<group>"; };
 		C4CC24832E1B548C002E2511 /* SummaryExerciseDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryExerciseDetailsView.swift; sourceTree = "<group>"; };
 		C4CC24852E1BF855002E2511 /* HowToExerciseStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToExerciseStepsView.swift; sourceTree = "<group>"; };
+		C4CC24882E1D40F2002E2511 /* HistoryWorkoutExerciseCardSetsPerformedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryWorkoutExerciseCardSetsPerformedView.swift; sourceTree = "<group>"; };
+		C4CC248A2E1D4843002E2511 /* HistoryWorkoutExerciseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryWorkoutExerciseCardView.swift; sourceTree = "<group>"; };
+		C4CC248D2E1DF446002E2511 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
+		C4CC24902E1DF4AD002E2511 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +232,8 @@
 		C40A13EF2E0D7AC00069F35C /* Workout App */ = {
 			isa = PBXGroup;
 			children = (
+				C4CC248F2E1DF4A0002E2511 /* Components */,
+				C4CC248C2E1DF41C002E2511 /* Workout Detail */,
 				C4CC245A2E1B1EF3002E2511 /* Profile Tab */,
 				C40A14762E1045860069F35C /* History Tab */,
 				C40A14732E1045660069F35C /* Workout Tab */,
@@ -612,6 +622,8 @@
 			isa = PBXGroup;
 			children = (
 				C4CC247D2E1B5367002E2511 /* ExerciseDetailHistoryView.swift */,
+				C4CC24882E1D40F2002E2511 /* HistoryWorkoutExerciseCardSetsPerformedView.swift */,
+				C4CC248A2E1D4843002E2511 /* HistoryWorkoutExerciseCardView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -631,6 +643,22 @@
 				C4CC24812E1B5385002E2511 /* ExerciseDetailChartsView.swift */,
 			);
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		C4CC248C2E1DF41C002E2511 /* Workout Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C4CC248D2E1DF446002E2511 /* WorkoutDetailView.swift */,
+			);
+			path = "Workout Detail";
+			sourceTree = "<group>";
+		};
+		C4CC248F2E1DF4A0002E2511 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C4CC24902E1DF4AD002E2511 /* CardView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -713,6 +741,7 @@
 				C40A14532E0F85800069F35C /* Alphabetizable.swift in Sources */,
 				C40A14982E108D1C0069F35C /* ExerciseType.swift in Sources */,
 				C40A146D2E103DBD0069F35C /* Workout.swift in Sources */,
+				C4CC248E2E1DF446002E2511 /* WorkoutDetailView.swift in Sources */,
 				C40A14572E0F858A0069F35C /* SectionIndexTitles.swift in Sources */,
 				C40A14922E107CEA0069F35C /* Color+Extension.swift in Sources */,
 				C40A142C2E0EB4E30069F35C /* EquipmentTypeFilterRowView.swift in Sources */,
@@ -747,6 +776,7 @@
 				C4CC24792E1B52EA002E2511 /* ExerciseDetailSummaryView.swift in Sources */,
 				C40A13F02E0D7AC00069F35C /* ContentView.swift in Sources */,
 				C40A14A42E10AFF30069F35C /* HeightUnitType.swift in Sources */,
+				C4CC248B2E1D4843002E2511 /* HistoryWorkoutExerciseCardView.swift in Sources */,
 				C4CC24762E1B4D54002E2511 /* PersonalRecordInfoView.swift in Sources */,
 				C40A13FA2E0D7BCD0069F35C /* DataModel.swift in Sources */,
 				C4CC24052E161EB2002E2511 /* SetTypeInfoView.swift in Sources */,
@@ -762,6 +792,7 @@
 				C4CC24222E197398002E2511 /* TimeOnlySetRowView.swift in Sources */,
 				C40A148D2E106FDC0069F35C /* AddWorkoutExerciseView.swift in Sources */,
 				C40A147F2E10649B0069F35C /* GlobalHelpers.swift in Sources */,
+				C4CC24892E1D40F2002E2511 /* HistoryWorkoutExerciseCardSetsPerformedView.swift in Sources */,
 				C4CC24282E1973D9002E2511 /* HeightOnlySetRowView.swift in Sources */,
 				C40A148A2E106E3D0069F35C /* WorkoutExerciseListView.swift in Sources */,
 				C40A14842E10692F0069F35C /* WorkoutAddCancelButtonsView.swift in Sources */,
@@ -789,6 +820,7 @@
 				C4CC24032E161BB8002E2511 /* SetTypeIconMenuView.swift in Sources */,
 				C40A142A2E0EB3920069F35C /* EquipmentIconView.swift in Sources */,
 				C40A149E2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift in Sources */,
+				C4CC24912E1DF4AD002E2511 /* CardView.swift in Sources */,
 				C40A13F92E0D7B250069F35C /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

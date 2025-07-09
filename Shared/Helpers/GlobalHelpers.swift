@@ -41,4 +41,10 @@ class GlobalHelpers {
         }
         return ""
     }
+    
+    static func formattedLongDate(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a, EEEE, MMM d yyyy"
+        return formatter.string(from: date)
+    }
 }

@@ -28,6 +28,5 @@ struct SummaryHeaderView: View {
         }
         .fontDesign(.rounded)
         .frame(maxWidth: .infinity)
-        .padding(.horizontal)
     }
 }
