@@ -11,7 +11,7 @@ struct ExerciseDetailTabView: View {
     @Binding var selectedTab: ExerciseDetailTab
     
     var body: some View {
-        Picker("Tab", selection: $selectedTab) {
+        Picker("Tab", selection: $selectedTab.animation()) {
             ForEach(ExerciseDetailTab.allCases, id: \.self) { tab in
                 Text(tab.rawValue)
             }

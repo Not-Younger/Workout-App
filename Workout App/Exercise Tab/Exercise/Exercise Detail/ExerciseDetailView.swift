@@ -15,16 +15,20 @@ struct ExerciseDetailView: View {
     var body: some View {
         VStack {
             ExerciseDetailTabView(selectedTab: $selectedTab)
-            switch selectedTab {
-            case .summary:
+            TabView(selection: $selectedTab) {
                 ExerciseDetailSummaryView(exercise: exercise)
-            case .history:
+                    .tag(ExerciseDetailTab.summary)
+                
                 ExerciseDetailHistoryView(exercise: exercise)
-            case .howTo:
+                    .tag(ExerciseDetailTab.history)
+                
                 ExerciseDetailHowToView(exercise: exercise)
-            case .charts:
+                    .tag(ExerciseDetailTab.howTo)
+                
                 ExerciseDetailChartsView(exercise: exercise)
+                    .tag(ExerciseDetailTab.charts)
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
         }
         .navigationTitle(exercise.name)
         .navigationBarTitleDisplayMode(.inline)

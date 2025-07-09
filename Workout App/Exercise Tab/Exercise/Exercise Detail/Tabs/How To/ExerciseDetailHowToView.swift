@@ -19,7 +19,7 @@ struct ExerciseDetailHowToView: View {
                         .padding([.leading, .bottom, .trailing])
                 }
                 CardView {
-                    if let exerciseSteps = exercise.howTo {
+                    if exercise.howTo != nil {
                         HStack {
                             Text("Instructions")
                                 .font(.system(size: 16, weight: .bold))
