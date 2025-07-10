@@ -25,12 +25,13 @@ struct WorkoutAddCancelButtonsView: View {
                 isAddingExercises = true
             } label: {
                 Text("Add Exercises")
+                    .foregroundStyle(.white)
                     .fontDesign(.rounded)
                     .bold()
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(BorderedProminentButtonStyle())
-            .tint(.primary)
+            .tint(.black)
             .sheet(isPresented: $isAddingExercises) {
                 NavigationStack(path: $navigationPaths.workoutExercisePath) {
                     AddWorkoutExerciseView(workout: workout, workoutExercises: $workoutExercises)

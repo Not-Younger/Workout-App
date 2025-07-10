@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExerciseRowView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(NavigationPaths.self) private var navigationPaths: NavigationPaths
     
     @Binding var selectedExercises: [Exercise]
@@ -47,7 +48,7 @@ struct ExerciseRowView: View {
         }
         .contentShape(Rectangle())
         .fontDesign(.rounded)
-        .listRowBackground(isSelected ? Color.green.opacity(0.1) : Color.clear)
+        .listRowBackground(getRowBackground(isSelected: isSelected))
         .alignmentGuide(.listRowSeparatorLeading) { _ in
             return 0
         }
@@ -58,6 +59,18 @@ struct ExerciseRowView: View {
                 } else {
                     selectedExercises.removeAll(where: { $0.id == exercise.id })
                 }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func getRowBackground(isSelected: Bool) -> some View {
+        let baseColor = colorScheme == .dark ? Color.black : Color.white
+        ZStack {
+            baseColor
+            if isSelected {
+                let greenOpacity = colorScheme == .dark ? 0.3: 0.1
+                Color.green.opacity(greenOpacity)
             }
         }
     }
