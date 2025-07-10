@@ -43,6 +43,7 @@ struct ExerciseListView: View {
         }
         .listStyle(.plain)
         .scrollIndicators(.hidden)
+        .background(.background)
     }
     
     func matchesSearchString(_ exercise: Exercise) -> Bool {

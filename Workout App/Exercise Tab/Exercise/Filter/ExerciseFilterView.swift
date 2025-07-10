@@ -88,6 +88,9 @@ struct ExerciseFilterView: View {
             
         }
         .frame(height: 40)
+        .padding(.horizontal)
+        .padding(.bottom, 10)
+        .background(.white)
     }
     
     func getEquipmentLabelFontColor(_ equipmentType: EquipmentType? = nil) -> Color {

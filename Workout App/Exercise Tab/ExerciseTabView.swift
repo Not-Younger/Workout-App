@@ -17,14 +17,14 @@ struct ExerciseTabView: View {
     @State private var sortType: ExerciseSortType = .nameAscending
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ExerciseFilterView(equipmentType: $equipmentType, muscleType: $muscleType, sortType: $sortType)
-                .padding(.horizontal)
             ExerciseListView(selectedExercises: $selectedExercises, searchString: searchString, equipmentType: equipmentType, muscleType: muscleType, sortType: sortType)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.secondarySystemBackground))
         .searchable(text: $searchString, isPresented: $isSearchFocused, prompt: "Find an exercise...")
+        .background(.white)
     }
 }
 
