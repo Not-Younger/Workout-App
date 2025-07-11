@@ -10,10 +10,14 @@ import SwiftUI
 struct ExerciseNoteView: View {
     @Bindable var exercise: Exercise
     let supersetColor: Color?
+    @Binding var isTextFocused: Bool
     
-    init(exercise: Exercise, supersetColor: Color? = nil) {
+    @FocusState private var isFocused: Bool
+    
+    init(exercise: Exercise, supersetColor: Color? = nil, isTextFocused: Binding<Bool>) {
         self.exercise = exercise
         self.supersetColor = supersetColor
+        _isTextFocused = isTextFocused
     }
     
     var body: some View {
@@ -23,6 +27,12 @@ struct ExerciseNoteView: View {
                 .foregroundStyle(supersetColor ?? Color.clear)
             TextField("Sticky Note", text: $exercise.note, axis: .vertical)
                 .scrollDisabled(true)
+                .focused($isFocused)
+                .onChange(of: isFocused) { _, newValue in
+                    if newValue {
+                        isTextFocused = newValue
+                    }
+                }
             Rectangle()
                 .frame(width: 3)
                 .foregroundStyle(Color.clear)

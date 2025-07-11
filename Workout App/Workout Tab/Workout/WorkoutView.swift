@@ -15,6 +15,7 @@ struct WorkoutView: View {
     @State private var workoutExercises: [WorkoutExercise]
     
     @State private var editMode: Bool = false
+    @State private var isTextFocused: Bool = false
     
     init(workout: Workout) {
         self.workout = workout
@@ -23,12 +24,12 @@ struct WorkoutView: View {
     
     var body: some View {
         List {
-            WorkoutHeaderView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode)
+            WorkoutHeaderView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode, isTextFocused: $isTextFocused.animation())
                 .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 .deleteDisabled(true)
                 .moveDisabled(true)
             
-            WorkoutExerciseListView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode)
+            WorkoutExerciseListView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode, isTextFocused: $isTextFocused.animation())
             
             WorkoutAddCancelButtonsView(workout: workout, workoutExercises: $workoutExercises)
                 .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
@@ -78,6 +79,16 @@ struct WorkoutView: View {
                 }
                 .buttonStyle(BorderedProminentButtonStyle())
                 .tint(.primary)
+            }
+        }
+        .safeAreaInset(edge: .bottom) {
+            if isTextFocused {
+                HStack {
+                    Spacer()
+                    HideKeyboardButtonView(isTextFocused: $isTextFocused.animation())
+                }
+                .padding(.trailing)
+                .padding(.bottom, 10)
             }
         }
     }

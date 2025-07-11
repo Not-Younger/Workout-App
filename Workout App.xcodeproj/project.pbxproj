@@ -99,6 +99,8 @@
 		C4CC24912E1DF4AD002E2511 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24902E1DF4AD002E2511 /* CardView.swift */; };
 		C4CC24A92E213A56002E2511 /* ExerciseRowWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24A82E213A56002E2511 /* ExerciseRowWorkoutView.swift */; };
 		C4CC24AB2E2140A3002E2511 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24AA2E2140A3002E2511 /* SearchBarView.swift */; };
+		C4CC24AD2E21AF26002E2511 /* HideKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24AC2E21AF26002E2511 /* HideKeyboardButtonView.swift */; };
+		C4CC24B12E21B184002E2511 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24B02E21B184002E2511 /* View+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,6 +197,8 @@
 		C4CC24902E1DF4AD002E2511 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		C4CC24A82E213A56002E2511 /* ExerciseRowWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRowWorkoutView.swift; sourceTree = "<group>"; };
 		C4CC24AA2E2140A3002E2511 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		C4CC24AC2E21AF26002E2511 /* HideKeyboardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardButtonView.swift; sourceTree = "<group>"; };
+		C4CC24B02E21B184002E2511 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +427,7 @@
 			children = (
 				C40A14932E107D140069F35C /* UIColor+Extension.swift */,
 				C40A14912E107CEA0069F35C /* Color+Extension.swift */,
+				C4CC24B02E21B184002E2511 /* View+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 			isa = PBXGroup;
 			children = (
 				C4CC24902E1DF4AD002E2511 /* CardView.swift */,
+				C4CC24AC2E21AF26002E2511 /* HideKeyboardButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -762,6 +768,7 @@
 				C40A14942E107D140069F35C /* UIColor+Extension.swift in Sources */,
 				C4CC24202E197386002E2511 /* DistanceOnlySetRowView.swift in Sources */,
 				C40A14552E0F85850069F35C /* CollectionDisplayMode.swift in Sources */,
+				C4CC24B12E21B184002E2511 /* View+Extension.swift in Sources */,
 				C4CC241A2E197314002E2511 /* BodyweightRepsSetRowView.swift in Sources */,
 				C40A14862E106C420069F35C /* ExerciseSet.swift in Sources */,
 				C40A14322E0EB9CC0069F35C /* MuscleIconView.swift in Sources */,
@@ -829,6 +836,7 @@
 				C40A142A2E0EB3920069F35C /* EquipmentIconView.swift in Sources */,
 				C40A149E2E10AC1F0069F35C /* WorkoutExerciseRowColumnsHeaderView.swift in Sources */,
 				C4CC24912E1DF4AD002E2511 /* CardView.swift in Sources */,
+				C4CC24AD2E21AF26002E2511 /* HideKeyboardButtonView.swift in Sources */,
 				C40A13F92E0D7B250069F35C /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

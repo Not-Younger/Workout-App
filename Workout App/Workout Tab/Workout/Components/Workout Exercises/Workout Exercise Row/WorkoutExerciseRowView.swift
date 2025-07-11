@@ -14,15 +14,17 @@ struct WorkoutExerciseRowView: View {
     @Bindable var workoutExercise: WorkoutExercise
     @Binding var workoutExercises: [WorkoutExercise]
     @Binding var editMode: Bool
+    @Binding var isTextFocused: Bool
     
     @State private var showStickyNote: Bool
     @State private var notes: [WorkoutExerciseNote]
     
-    init(workout: Workout, workoutExercise: WorkoutExercise, workoutExercises: Binding<[WorkoutExercise]>, editMode: Binding<Bool>) {
+    init(workout: Workout, workoutExercise: WorkoutExercise, workoutExercises: Binding<[WorkoutExercise]>, editMode: Binding<Bool>, isTextFocused: Binding<Bool>) {
         self.workout = workout
         self.workoutExercise = workoutExercise
         _workoutExercises = workoutExercises
         _editMode = editMode
+        _isTextFocused = isTextFocused
         self.showStickyNote = workoutExercise.exercise.note == "" ? false : true
         self.notes = workoutExercise.notes.sorted(by: { $0.order < $1.order })
     }
@@ -94,7 +96,7 @@ struct WorkoutExerciseRowView: View {
         .listRowSeparator(.hidden, edges: .all)
         
         if !editMode, showStickyNote {
-            ExerciseNoteView(exercise: workoutExercise.exercise, supersetColor: workoutExercise.supersetColor)
+            ExerciseNoteView(exercise: workoutExercise.exercise, supersetColor: workoutExercise.supersetColor, isTextFocused: $isTextFocused)
                 .moveDisabled(true)
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button("Delete", role: .destructive) {
@@ -106,7 +108,7 @@ struct WorkoutExerciseRowView: View {
         
         if !editMode, !workoutExercise.notes.isEmpty {
             ForEach(notes) { note in
-                WorkoutExerciseNoteView(note: note, supersetColor: workoutExercise.supersetColor)
+                WorkoutExerciseNoteView(note: note, supersetColor: workoutExercise.supersetColor, isTextFocused: $isTextFocused)
             }
             .onDelete(perform: deleteNote)
         }

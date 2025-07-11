@@ -13,12 +13,13 @@ struct WorkoutExerciseListView: View {
     @Bindable var workout: Workout
     @Binding var workoutExercises: [WorkoutExercise]
     @Binding var editMode: Bool
+    @Binding var isTextFocused: Bool
     
     @State var hasPressed = false
     
     var body: some View {
         ForEach(workoutExercises) { workoutExercise in
-            WorkoutExerciseRowView(workout: workout, workoutExercise: workoutExercise, workoutExercises: $workoutExercises, editMode: $editMode)
+            WorkoutExerciseRowView(workout: workout, workoutExercise: workoutExercise, workoutExercises: $workoutExercises, editMode: $editMode, isTextFocused: $isTextFocused)
                 .listRowInsets(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         }
         .onMove(perform: moveWorkoutExercise)

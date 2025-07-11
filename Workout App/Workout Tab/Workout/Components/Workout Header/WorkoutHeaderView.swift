@@ -11,6 +11,8 @@ struct WorkoutHeaderView: View {
     @Bindable var workout: Workout
     @Binding var workoutExercises: [WorkoutExercise]
     @Binding var editMode: Bool
+    @Binding var isTextFocused: Bool
+    @FocusState private var isNoteFocused: Bool
     
     @State private var elapsedTime: TimeInterval = 0
     @State private var timer: Timer?
@@ -43,8 +45,14 @@ struct WorkoutHeaderView: View {
                         .frame(width: 15)
                     TextField("Notes", text: $note, axis: .vertical)
                         .scrollDisabled(true)
+                        .focused($isNoteFocused)
                         .onChange(of: note) { _, newValue in
                             workout.note = newValue.isEmpty ? nil : newValue
+                        }
+                        .onChange(of: isNoteFocused) { _, newValue in
+                            if newValue {
+                                isTextFocused = newValue
+                            }
                         }
                 }
             }
