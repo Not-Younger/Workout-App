@@ -72,6 +72,7 @@ struct ContentView: View {
                 .padding(.horizontal)
             }
         }
+        .ignoresSafeArea(.keyboard)
         .fontDesign(.rounded)
         .onAppear {
             seedDefaultExercisesIfNeeded()
