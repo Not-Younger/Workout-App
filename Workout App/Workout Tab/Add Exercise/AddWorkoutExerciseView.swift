@@ -21,14 +21,12 @@ struct AddWorkoutExerciseView: View {
     @State private var selectedExercises: [Exercise] = []
     
     var body: some View {
-        VStack {
-            ExerciseFilterView(equipmentType: $equipmentType, muscleType: $muscleType, sortType: $sortType)
-                .padding(.horizontal)
+        VStack(spacing: 0) {
+            ExerciseFilterView(searchString: $searchString, equipmentType: $equipmentType, muscleType: $muscleType, sortType: $sortType)
             ExerciseListView(selectedExercises: $selectedExercises, searchString: searchString, equipmentType: equipmentType, muscleType: muscleType, sortType: sortType, selectable: true)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.secondarySystemBackground))
-        .searchable(text: $searchString, isPresented: $isSearchFocused, prompt: "Find an exercise...")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Close") {

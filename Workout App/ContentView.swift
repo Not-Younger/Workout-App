@@ -25,8 +25,8 @@ struct ContentView: View {
     
     @Query private var exercises: [Exercise]
     
-    @State private var selectedTab: TabType = .profile
-    @State private var previousTab: TabType = .profile
+    @State private var selectedTab: TabType = .exercise
+    @State private var previousTab: TabType = .exercise
     @State private var currentTransition: AnyTransition = .identity
     
     @State private var navigationPaths = NavigationPaths()
@@ -78,8 +78,6 @@ struct ContentView: View {
         }
     }
     
-    // MARK: - Tab View
-    
     @ViewBuilder
     private func tabView(for tab: TabType) -> some View {
         Group {
@@ -109,8 +107,6 @@ struct ContentView: View {
             }
         }
     }
-    
-    // MARK: - Tab Button
     
     private func tabButton(icon: String, name: String, tab: TabType) -> some View {
         let baseIcon = icon.replacingOccurrences(of: ".fill", with: "")
@@ -162,8 +158,6 @@ struct ContentView: View {
         }
         .buttonStyle(PlainButtonStyle())
     }
-    
-    // MARK: - Seed Default Data
     
     private func seedDefaultExercisesIfNeeded() {
         guard exercises.isEmpty else { return }

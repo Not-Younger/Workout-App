@@ -39,7 +39,11 @@ struct ExerciseListView: View {
             sectionHeaderFont: .headline.bold(),
             sectionHeaderForegroundColor: .primary,
             resultAnchor: .top) { exercise in
-                ExerciseRowView(selectedExercises: $selectedExercises, exercise: exercise, selectable: selectable)
+                if selectable {
+                    ExerciseRowWorkoutView(selectedExercises: $selectedExercises, exercise: exercise)
+                } else {
+                    ExerciseRowView(selectedExercises: $selectedExercises, exercise: exercise)
+                }
         }
         .listStyle(.plain)
         .scrollIndicators(.hidden)

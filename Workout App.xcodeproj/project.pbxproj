@@ -97,6 +97,8 @@
 		C4CC248B2E1D4843002E2511 /* HistoryWorkoutExerciseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC248A2E1D4843002E2511 /* HistoryWorkoutExerciseCardView.swift */; };
 		C4CC248E2E1DF446002E2511 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC248D2E1DF446002E2511 /* WorkoutDetailView.swift */; };
 		C4CC24912E1DF4AD002E2511 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24902E1DF4AD002E2511 /* CardView.swift */; };
+		C4CC24A92E213A56002E2511 /* ExerciseRowWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24A82E213A56002E2511 /* ExerciseRowWorkoutView.swift */; };
+		C4CC24AB2E2140A3002E2511 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CC24AA2E2140A3002E2511 /* SearchBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -191,6 +193,8 @@
 		C4CC248A2E1D4843002E2511 /* HistoryWorkoutExerciseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryWorkoutExerciseCardView.swift; sourceTree = "<group>"; };
 		C4CC248D2E1DF446002E2511 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
 		C4CC24902E1DF4AD002E2511 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		C4CC24A82E213A56002E2511 /* ExerciseRowWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRowWorkoutView.swift; sourceTree = "<group>"; };
+		C4CC24AA2E2140A3002E2511 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +314,7 @@
 		C40A144A2E0F7D360069F35C /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				C4CC24AA2E2140A3002E2511 /* SearchBarView.swift */,
 				C40A14482E0EBAE10069F35C /* FilterButtonLabel.swift */,
 				C40A14252E0EB1650069F35C /* ExerciseFilterView.swift */,
 				C40A144C2E0F7D4B0069F35C /* Muscle Filter */,
@@ -345,6 +350,7 @@
 				C40A14012E0D7F810069F35C /* ExerciseListView.swift */,
 				C40A14032E0E03480069F35C /* ExerciseRowView.swift */,
 				C40A14052E0E05300069F35C /* ExerciseIconView.swift */,
+				C4CC24A82E213A56002E2511 /* ExerciseRowWorkoutView.swift */,
 			);
 			path = "Exercise List";
 			sourceTree = "<group>";
@@ -737,12 +743,14 @@
 				C40A14A62E10BBBB0069F35C /* WorkoutExerciseRowSetsView.swift in Sources */,
 				C40A140B2E0E07EC0069F35C /* MuscleRegion.swift in Sources */,
 				C4CC247E2E1B5367002E2511 /* ExerciseDetailHistoryView.swift in Sources */,
+				C4CC24A92E213A56002E2511 /* ExerciseRowWorkoutView.swift in Sources */,
 				C40A140F2E0E0F770069F35C /* ExerciseDetailView.swift in Sources */,
 				C40A14532E0F85800069F35C /* Alphabetizable.swift in Sources */,
 				C40A14982E108D1C0069F35C /* ExerciseType.swift in Sources */,
 				C40A146D2E103DBD0069F35C /* Workout.swift in Sources */,
 				C4CC248E2E1DF446002E2511 /* WorkoutDetailView.swift in Sources */,
 				C40A14572E0F858A0069F35C /* SectionIndexTitles.swift in Sources */,
+				C4CC24AB2E2140A3002E2511 /* SearchBarView.swift in Sources */,
 				C40A14922E107CEA0069F35C /* Color+Extension.swift in Sources */,
 				C40A142C2E0EB4E30069F35C /* EquipmentTypeFilterRowView.swift in Sources */,
 				C4CC24842E1B548C002E2511 /* SummaryExerciseDetailsView.swift in Sources */,

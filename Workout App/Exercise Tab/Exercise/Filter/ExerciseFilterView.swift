@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExerciseFilterView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Binding var searchString: String
     @Binding var equipmentType: EquipmentType?
     @Binding var muscleType: MuscleType?
     @Binding var sortType: ExerciseSortType
@@ -17,80 +18,81 @@ struct ExerciseFilterView: View {
     @State private var isShowingMuscleFilter: Bool = false
     
     var body: some View {
-        HStack(spacing: 10) {
-            Button {
-                isShowingEquipmentFilter = true
-            } label: {
-                if let equipmentType {
-                    FilterButtonLabel(equipmentType.rawValue)
-                } else {
-                    FilterButtonLabel("All Equipment")
-                }
-            }
-            .buttonStyle(BorderedProminentButtonStyle())
-            .tint(getEquipmentLabelBackgroundColor(equipmentType))
-            .foregroundStyle(getEquipmentLabelFontColor(equipmentType))
-            .sheet(isPresented: $isShowingEquipmentFilter) {
-                EquipmentTypeFilterView(equipmentType: $equipmentType)
-            }
-            Button {
-                isShowingMuscleFilter = true
-            } label: {
-                if let muscleType {
-                    FilterButtonLabel(muscleType.rawValue)
-                } else {
-                    FilterButtonLabel("All Muscles")
-                }
-            }
-            .buttonStyle(BorderedProminentButtonStyle())
-            .tint(getMuscleLabelBackgroundColor(muscleType))
-            .foregroundStyle(getMuscleLabelFontColor(muscleType))
-            .sheet(isPresented: $isShowingMuscleFilter) {
-                MuscleTypeFilterView(muscleType: $muscleType)
-            }
-            Menu {
+        VStack {
+            SearchBarView(text: $searchString, prompt: "Find an exercise...")
+            HStack(spacing: 10) {
                 Button {
-                    if sortType == .nameAscending {
-                        sortType = .nameDescending
-                    } else {
-                        sortType = .nameAscending
-                    }
+                    isShowingEquipmentFilter = true
                 } label: {
-                    Label("Name", systemImage: sortType == .nameAscending ? "arrow.down" : "arrow.up")
+                    if let equipmentType {
+                        FilterButtonLabel(equipmentType.rawValue)
+                    } else {
+                        FilterButtonLabel("All Equipment")
+                    }
+                }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .tint(getEquipmentLabelBackgroundColor(equipmentType))
+                .foregroundStyle(getEquipmentLabelFontColor(equipmentType))
+                .sheet(isPresented: $isShowingEquipmentFilter) {
+                    EquipmentTypeFilterView(equipmentType: $equipmentType)
                 }
                 Button {
-                    if sortType == .frequencyAscending {
-                        sortType = .frequencyDescending
+                    isShowingMuscleFilter = true
+                } label: {
+                    if let muscleType {
+                        FilterButtonLabel(muscleType.rawValue)
                     } else {
-                        sortType = .frequencyAscending
+                        FilterButtonLabel("All Muscles")
+                    }
+                }
+                .buttonStyle(BorderedProminentButtonStyle())
+                .tint(getMuscleLabelBackgroundColor(muscleType))
+                .foregroundStyle(getMuscleLabelFontColor(muscleType))
+                .sheet(isPresented: $isShowingMuscleFilter) {
+                    MuscleTypeFilterView(muscleType: $muscleType)
+                }
+                Menu {
+                    Button {
+                        if sortType == .nameAscending {
+                            sortType = .nameDescending
+                        } else {
+                            sortType = .nameAscending
+                        }
+                    } label: {
+                        Label("Name", systemImage: sortType == .nameAscending ? "arrow.down" : "arrow.up")
+                    }
+                    Button {
+                        if sortType == .frequencyAscending {
+                            sortType = .frequencyDescending
+                        } else {
+                            sortType = .frequencyAscending
+                        }
+                    } label: {
+                        Label("Frequency", systemImage: sortType == .frequencyAscending ? "arrow.down" : "arrow.up")
+                    }
+                    Button {
+                        if sortType == .lastPerformedAscending {
+                            sortType = .lastPerformedDescending
+                        } else {
+                            sortType = .lastPerformedAscending
+                        }
+                    } label: {
+                        Label("Last Performed", systemImage: sortType == .lastPerformedAscending ? "arrow.down" : "arrow.up")
                     }
                 } label: {
-                    Label("Frequency", systemImage: sortType == .frequencyAscending ? "arrow.down" : "arrow.up")
+                    Image(systemName: "arrow.up.arrow.down")
+                        .font(.system(size: 12, weight: .bold))
+                        .frame(height: 15)
                 }
-                Button {
-                    if sortType == .lastPerformedAscending {
-                        sortType = .lastPerformedDescending
-                    } else {
-                        sortType = .lastPerformedAscending
-                    }
-                } label: {
-                    Label("Last Performed", systemImage: sortType == .lastPerformedAscending ? "arrow.down" : "arrow.up")
-                }
-            } label: {
-                Image(systemName: "arrow.up.arrow.down")
-                    .font(.subheadline)
-                    .frame(maxHeight: .infinity)
+                .menuStyle(.automatic)
+                .buttonStyle(BorderedProminentButtonStyle())
+                .tint(getSortLabelBackgroundColor(sortType))
+                .foregroundStyle(getSortLabelFontColor(sortType))
             }
-            .menuStyle(.automatic)
-            .buttonStyle(BorderedProminentButtonStyle())
-            .tint(getSortLabelBackgroundColor(sortType))
-            .foregroundStyle(getSortLabelFontColor(sortType))
-            
         }
-        .frame(height: 40)
         .padding(.horizontal)
-        .padding(.bottom, 10)
-        .background(.white)
+        .padding(.bottom, 5)
+        .background(colorScheme == .dark ? .black : .white)
     }
     
     func getEquipmentLabelFontColor(_ equipmentType: EquipmentType? = nil) -> Color {
@@ -102,13 +104,13 @@ struct ExerciseFilterView: View {
             if equipmentType != nil {
                 return .white
             } else {
-                return Color(.systemGray4)
+                return Color(.systemGray6)
             }
         } else {
             if equipmentType != nil {
                 return .black
             } else {
-                return Color(.systemGray5)
+                return Color(.systemGray6)
             }
         }
     }
@@ -121,13 +123,13 @@ struct ExerciseFilterView: View {
             if muscleType != nil {
                 return .white
             } else {
-                return Color(.systemGray4)
+                return Color(.systemGray6)
             }
         } else {
             if muscleType != nil {
                 return .black
             } else {
-                return Color(.systemGray5)
+                return Color(.systemGray6)
             }
         }
     }
@@ -140,21 +142,22 @@ struct ExerciseFilterView: View {
             if sortType != .nameAscending {
                 return .white
             } else {
-                return Color(.systemGray4)
+                return Color(.systemGray6)
             }
         } else {
             if sortType != .nameAscending {
                 return .black
             } else {
-                return Color(.systemGray5)
+                return Color(.systemGray6)
             }
         }
     }
 }
 
 #Preview {
+    @Previewable @State var searchString: String = ""
     @Previewable @State var equipmentType: EquipmentType?
     @Previewable @State var muscleType: MuscleType?
     @Previewable @State var sortType: ExerciseSortType = .nameAscending
-    ExerciseFilterView(equipmentType: $equipmentType, muscleType: $muscleType, sortType: $sortType)
+    ExerciseFilterView(searchString: $searchString, equipmentType: $equipmentType, muscleType: $muscleType, sortType: $sortType)
 }

@@ -18,12 +18,13 @@ struct FilterButtonLabel: View {
         HStack {
             Text(label)
                 .fontDesign(.rounded)
-                .font(.subheadline)
+                .font(.system(size: 12))
                 .lineLimit(1)
                 .bold()
                 .padding(.horizontal, 10)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
+        .frame(height: 15)
     }
 }
 
