@@ -8,6 +8,12 @@
 import SwiftUI
 
 class GlobalHelpers {
+    static func performHaptic() {
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.prepare()
+        impact.impactOccurred()
+    }
+    
     static func formatInt(_ value: Int?) -> String {
         if let value {
             return String(value)
