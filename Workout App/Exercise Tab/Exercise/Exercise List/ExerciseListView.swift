@@ -81,7 +81,12 @@ struct ExerciseListView: View {
         guard muscleType != nil else {
             return true
         }
-        return exercise.muscleType == muscleType
+        if exercise.muscleType == muscleType {
+            return true
+        } else if let muscleType, exercise.secondaryMuscleTypes.contains(muscleType) {
+            return true
+        }
+        return false
     }
 }
 
