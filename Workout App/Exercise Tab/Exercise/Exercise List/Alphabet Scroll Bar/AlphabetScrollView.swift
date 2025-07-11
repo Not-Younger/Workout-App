@@ -86,6 +86,7 @@ public struct AlphabetScrollView<Element: Alphabetizable, Cell: View>: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(sectionHeaderFont)
                 .foregroundColor(sectionHeaderForegroundColor)
+                .listRowSeparator(.hidden, edges: .top)
             
             ForEach(section.1) { element in
                 cell(element)

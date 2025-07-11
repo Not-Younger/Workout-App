@@ -36,8 +36,8 @@ struct ExerciseListView: View {
         AlphabetScrollView(
             collectionDisplayMode: CollectionDisplayMode.asList,
             collection:  matchingExercises,
-            sectionHeaderFont: .headline.bold(),
-            sectionHeaderForegroundColor: .primary,
+            sectionHeaderFont: .system(size: 16),
+            sectionHeaderForegroundColor: .secondary,
             resultAnchor: .top) { exercise in
                 if selectable {
                     ExerciseRowWorkoutView(selectedExercises: $selectedExercises, exercise: exercise)

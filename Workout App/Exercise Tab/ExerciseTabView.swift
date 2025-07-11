@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ExerciseTabView: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
     @State private var searchString: String = ""
     @State private var isSearchFocused: Bool = false
     @State private var selectedExercises: [Exercise] = []
@@ -24,6 +26,31 @@ struct ExerciseTabView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.secondarySystemBackground))
         .background(.white)
+        .navigationTitle("Exercises")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("New") {
+                    
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Button {
+                        
+                    } label: {
+                        Label("Show Archived", systemImage: "archivebox")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .font(.system(size: 16))
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+        }
     }
 }
 

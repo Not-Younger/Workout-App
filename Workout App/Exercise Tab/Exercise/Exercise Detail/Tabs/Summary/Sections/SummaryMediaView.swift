@@ -13,7 +13,7 @@ struct SummaryMediaView: View {
     var body: some View {
         Rectangle()
             .frame(height: 250)
-            .foregroundStyle(Color.gray)
+            .foregroundStyle(Color(.systemGray6))
             .overlay {
                 Image(systemName: "figure.strengthtraining.traditional")
                     .resizable()

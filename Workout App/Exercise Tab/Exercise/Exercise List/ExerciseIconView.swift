@@ -13,7 +13,7 @@ struct ExerciseIconView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .foregroundStyle(Color(.systemGray5))
+                .foregroundStyle(Color(.systemGray6))
             Image(systemName: "figure.strengthtraining.traditional")
                 .resizable()
                 .scaledToFit()

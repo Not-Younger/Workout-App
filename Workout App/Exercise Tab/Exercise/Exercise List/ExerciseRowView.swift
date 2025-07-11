@@ -20,13 +20,13 @@ struct ExerciseRowView: View {
         } label: {
             HStack {
                 ExerciseIconView(exercise: exercise)
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 5) {
                     Text(exercise.name)
-                        .font(.subheadline)
-                        .bold()
+                        .font(.system(size: 16, weight: .bold))
                         .lineLimit(2)
                     Text(exercise.muscleType.rawValue)
-                        .font(.subheadline)
+                        .font(.system(size: 16))
+                        .foregroundStyle(.secondary)
                 }
                 Spacer()
             }
