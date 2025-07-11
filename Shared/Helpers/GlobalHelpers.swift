@@ -9,7 +9,7 @@ import SwiftUI
 
 class GlobalHelpers {
     static func performHaptic() {
-        let impact = UIImpactFeedbackGenerator(style: .light)
+        let impact = UIImpactFeedbackGenerator(style: .soft)
         impact.prepare()
         impact.impactOccurred()
     }
