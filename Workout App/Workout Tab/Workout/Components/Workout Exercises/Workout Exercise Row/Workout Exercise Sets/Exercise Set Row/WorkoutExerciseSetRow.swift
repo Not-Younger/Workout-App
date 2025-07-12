@@ -11,14 +11,14 @@ struct WorkoutExerciseSetRow: View {
     @Environment(\.colorScheme) private var colorScheme
     let workoutExercise: WorkoutExercise
     let exerciseSet: ExerciseSet
-    
     let rowHeight: CGFloat
     let fontSize: CGFloat
+    @Binding var isTextFocused: Bool
     
     var body: some View {
         switch exerciseSet.exercise.exerciseType {
         case .weightedReps:
-            WeightedRepsSetRowView(workoutExercise: workoutExercise, exerciseSet: exerciseSet, rowHeight: rowHeight, fontSize: fontSize)
+            WeightedRepsSetRowView(workoutExercise: workoutExercise, exerciseSet: exerciseSet, rowHeight: rowHeight, fontSize: fontSize, isTextFocused: $isTextFocused)
         case .bodyweightReps:
             BodyweightRepsSetRowView()
         case .timeBased:

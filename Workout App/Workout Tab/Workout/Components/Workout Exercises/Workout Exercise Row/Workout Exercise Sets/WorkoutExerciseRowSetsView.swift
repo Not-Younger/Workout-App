@@ -10,13 +10,13 @@ import SwiftUI
 struct WorkoutExerciseRowSetsView: View {
     @Environment(\.modelContext) private var modelContext
     @Bindable var workoutExercise: WorkoutExercise
-    
     let rowHeight: CGFloat
     let fontSize: CGFloat
+    @Binding var isTextFocused: Bool
     
     var body: some View {
         ForEach(workoutExercise.sets.sorted(by: { $0.order < $1.order })) { set in
-            WorkoutExerciseSetRow(workoutExercise: workoutExercise, exerciseSet: set, rowHeight: rowHeight, fontSize: fontSize)
+            WorkoutExerciseSetRow(workoutExercise: workoutExercise, exerciseSet: set, rowHeight: rowHeight, fontSize: fontSize, isTextFocused: $isTextFocused)
                 .listRowBackground(set.isCompleted ? Color.green.opacity(0.15) : Color.clear)
                 .alignmentGuide(.listRowSeparatorLeading) { _ in
                     return 10
@@ -75,9 +75,10 @@ struct WorkoutExerciseRowSetsView: View {
 }
 
 #Preview {
+    @Previewable @State var isTextFocused: Bool = false
     let workout = Workout(name: "Test Workout")
     let exercise = DEFAULT_EXERCISES[0]
     exercise.exerciseType = .weightedReps
     let workoutExercise = WorkoutExercise(supersetNumber: nil, order: 0, sets: [], workout: workout, exercise: exercise)
-    return WorkoutExerciseRowSetsView(workoutExercise: workoutExercise, rowHeight: 25, fontSize: 12)
+    return WorkoutExerciseRowSetsView(workoutExercise: workoutExercise, rowHeight: 25, fontSize: 12, isTextFocused: $isTextFocused)
 }

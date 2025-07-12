@@ -21,8 +21,11 @@ struct WeightedRepsSetRowView: View {
     
     let rowHeight: CGFloat
     let fontSize: CGFloat
+    @Binding var isTextFocused: Bool
     
-    init(workoutExercise: WorkoutExercise, exerciseSet: ExerciseSet, rowHeight: CGFloat, fontSize: CGFloat) {
+    @FocusState private var isFocused: Bool
+    
+    init(workoutExercise: WorkoutExercise, exerciseSet: ExerciseSet, rowHeight: CGFloat, fontSize: CGFloat, isTextFocused: Binding<Bool>) {
         self.workoutExercise = workoutExercise
         self.exerciseSet = exerciseSet
         self.weight = GlobalHelpers.formatDouble(exerciseSet.weight)
@@ -34,6 +37,7 @@ struct WeightedRepsSetRowView: View {
         
         self.rowHeight = rowHeight
         self.fontSize = fontSize
+        _isTextFocused = isTextFocused
     }
     
     var body: some View {
@@ -70,7 +74,7 @@ struct WeightedRepsSetRowView: View {
                         return "-"
                     }
                     TextField(suggestedWeightString, text: $weight)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                         .foregroundStyle(exerciseSet.weight == nil ? .secondary : .primary)
                         .onChange(of: weight) { _, newValue in
                             if newValue.isEmpty {
@@ -78,6 +82,12 @@ struct WeightedRepsSetRowView: View {
                                 exerciseSet.isCompleted = false
                             } else {
                                 exerciseSet.weight = Double(newValue)
+                            }
+                        }
+                        .focused($isFocused)
+                        .onChange(of: isFocused) { _, newValue in
+                            if newValue {
+                                isTextFocused = newValue
                             }
                         }
                     var suggestedRepsString: String {
@@ -95,6 +105,12 @@ struct WeightedRepsSetRowView: View {
                                 exerciseSet.isCompleted = false
                             } else {
                                 exerciseSet.reps = Int(newValue)
+                            }
+                        }
+                        .focused($isFocused)
+                        .onChange(of: isFocused) { _, newValue in
+                            if newValue {
+                                isTextFocused = newValue
                             }
                         }
                 }
@@ -147,10 +163,11 @@ struct WeightedRepsSetRowView: View {
 }
 
 #Preview {
+    @Previewable @State var isTextFocused: Bool = false
     let workout = Workout(name: "Test Workout")
     let exercise = DEFAULT_EXERCISES[0]
     let workoutExercise = WorkoutExercise(supersetNumber: nil, order: 0, sets: [], workout: workout, exercise: exercise)
     let exerciseSet = ExerciseSet(type: .normal, order: 0, previousWeight: 225, previousDuration: nil, previousDistance: nil, previousHeight: nil, previousReps: 5, exercise: exercise, workoutExercise: workoutExercise)
     
-    WeightedRepsSetRowView(workoutExercise: workoutExercise, exerciseSet: exerciseSet, rowHeight: 25, fontSize: 16)
+    WeightedRepsSetRowView(workoutExercise: workoutExercise, exerciseSet: exerciseSet, rowHeight: 25, fontSize: 16, isTextFocused: $isTextFocused)
 }

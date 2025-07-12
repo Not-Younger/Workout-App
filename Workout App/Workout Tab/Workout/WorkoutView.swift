@@ -24,12 +24,12 @@ struct WorkoutView: View {
     
     var body: some View {
         List {
-            WorkoutHeaderView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode, isTextFocused: $isTextFocused.animation())
+            WorkoutHeaderView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode, isTextFocused: $isTextFocused)
                 .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 .deleteDisabled(true)
                 .moveDisabled(true)
             
-            WorkoutExerciseListView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode, isTextFocused: $isTextFocused.animation())
+            WorkoutExerciseListView(workout: workout, workoutExercises: $workoutExercises, editMode: $editMode, isTextFocused: $isTextFocused)
             
             WorkoutAddCancelButtonsView(workout: workout, workoutExercises: $workoutExercises)
                 .listRowInsets(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
@@ -85,7 +85,7 @@ struct WorkoutView: View {
             if isTextFocused {
                 HStack {
                     Spacer()
-                    HideKeyboardButtonView(isTextFocused: $isTextFocused.animation())
+                    HideKeyboardButtonView(isTextFocused: $isTextFocused)
                 }
                 .padding(.trailing)
                 .padding(.bottom, 10)
