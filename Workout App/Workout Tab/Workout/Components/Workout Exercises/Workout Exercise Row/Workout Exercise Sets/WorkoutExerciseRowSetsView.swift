@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WorkoutExerciseRowSetsView: View {
     @Environment(\.modelContext) private var modelContext
+    @Binding var workoutExercises: [WorkoutExercise]
     @Bindable var workoutExercise: WorkoutExercise
     let rowHeight: CGFloat
     let fontSize: CGFloat
@@ -72,13 +73,4 @@ struct WorkoutExerciseRowSetsView: View {
             set.order = i
         }
     }
-}
-
-#Preview {
-    @Previewable @State var isTextFocused: Bool = false
-    let workout = Workout(name: "Test Workout")
-    let exercise = DEFAULT_EXERCISES[0]
-    exercise.exerciseType = .weightedReps
-    let workoutExercise = WorkoutExercise(supersetNumber: nil, order: 0, sets: [], workout: workout, exercise: exercise)
-    return WorkoutExerciseRowSetsView(workoutExercise: workoutExercise, rowHeight: 25, fontSize: 12, isTextFocused: $isTextFocused)
 }

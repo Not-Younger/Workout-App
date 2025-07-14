@@ -63,6 +63,17 @@ struct AddWorkoutExerciseView: View {
                                 )
                                 workoutExercise.sets.append(newPreviousSet)
                             }
+                            
+                            if workoutExercise.sets.isEmpty {
+                                let emptySet = ExerciseSet(
+                                    type: .normal,
+                                    order: 0,
+                                    exercise: workoutExercise.exercise,
+                                    workoutExercise: workoutExercise
+                                )
+                                workoutExercise.sets.append(emptySet)
+                            }
+                            
                             // Add to workout
                             workoutExercises.append(workoutExercise)
                             workout.workoutExercises.append(workoutExercise)
@@ -98,6 +109,17 @@ struct AddWorkoutExerciseView: View {
                                 )
                                 workoutExercise.sets.append(newPreviousSet)
                             }
+                            
+                            if workoutExercise.sets.isEmpty {
+                                let emptySet = ExerciseSet(
+                                    type: .normal,
+                                    order: 0,
+                                    exercise: workoutExercise.exercise,
+                                    workoutExercise: workoutExercise
+                                )
+                                workoutExercise.sets.append(emptySet)
+                            }
+                            
                             // Add to workout
                             workoutExercises.append(workoutExercise)
                             workout.workoutExercises.append(workoutExercise)

@@ -118,7 +118,7 @@ struct WorkoutExerciseRowView: View {
                 .deleteDisabled(true)
                 .moveDisabled(true)
             
-            WorkoutExerciseRowSetsView(workoutExercise: workoutExercise, rowHeight: rowHeight, fontSize: fontSize, isTextFocused: $isTextFocused)
+            WorkoutExerciseRowSetsView(workoutExercises: $workoutExercises, workoutExercise: workoutExercise, rowHeight: rowHeight, fontSize: fontSize, isTextFocused: $isTextFocused)
                 .moveDisabled(true)
         }
     }
