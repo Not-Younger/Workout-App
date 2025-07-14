@@ -22,9 +22,11 @@ struct SetTypeIconMenuView: View {
         self.size = size
         
         var numberOfPriorSpecialSets: Int = 0
-        for priorSet in workoutExercise.sets.sorted(by: { $0.order < $1.order })[..<exerciseSet.order] {
-            if priorSet.type == .warmup || priorSet.type == .dropSet {
-                numberOfPriorSpecialSets += 1
+        if exerciseSet.order < workoutExercise.sets.count {
+            for priorSet in workoutExercise.sets.sorted(by: { $0.order < $1.order })[..<exerciseSet.order] {
+                if priorSet.type == .warmup || priorSet.type == .dropSet {
+                    numberOfPriorSpecialSets += 1
+                }
             }
         }
         self.numberOfPriorSpecialSets = numberOfPriorSpecialSets

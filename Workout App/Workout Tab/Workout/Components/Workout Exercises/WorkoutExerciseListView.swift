@@ -21,6 +21,15 @@ struct WorkoutExerciseListView: View {
         ForEach(workoutExercises) { workoutExercise in
             WorkoutExerciseRowView(workout: workout, workoutExercise: workoutExercise, workoutExercises: $workoutExercises, editMode: $editMode, isTextFocused: $isTextFocused)
                 .listRowInsets(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                .onChange(of: workoutExercise.sets) { _, newSets in
+                    if newSets.isEmpty {
+                        withAnimation {
+                            workoutExercises.removeAll { $0 === workoutExercise }
+                            workout.workoutExercises.removeAll(where: { $0 === workoutExercise })
+                            modelContext.delete(workoutExercise)
+                        }
+                    }
+                }
         }
         .onMove(perform: moveWorkoutExercise)
         .onDelete(perform: deleteWorkoutExercise)
