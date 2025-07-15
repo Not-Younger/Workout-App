@@ -81,7 +81,9 @@ struct WeightedRepsSetRowView: View {
                                 exerciseSet.weight = nil
                                 exerciseSet.isCompleted = false
                             } else {
-                                updateWeight(newValue)
+                                let newWeights = GlobalHelpers.cleanDoubleString(newValue)
+                                weight = newWeights.0
+                                exerciseSet.weight = newWeights.1
                             }
                         }
                         .focused($isFocused)
@@ -104,7 +106,9 @@ struct WeightedRepsSetRowView: View {
                                 exerciseSet.reps = nil
                                 exerciseSet.isCompleted = false
                             } else {
-                                updateReps(newValue)
+                                var newReps = GlobalHelpers.cleanIntString(newValue)
+                                reps = newReps.0
+                                exerciseSet.reps = newReps.1
                             }
                         }
                         .focused($isFocused)
@@ -163,69 +167,6 @@ struct WeightedRepsSetRowView: View {
             return false
         }
         return true
-    }
-    
-    func updateWeight(_ newValue: String) {
-        // Filter to allow only digits and at most one decimal point
-        let filtered = newValue.filter { "0123456789.".contains($0) }
-        let components = filtered.split(separator: ".", maxSplits: 2, omittingEmptySubsequences: false)
-        
-        // Helper function to sanitize and handle leading zeros
-        func sanitize(_ string: String) -> String {
-            var result = string
-            
-            // Prepend 0 if it starts with "."
-            if result.first == "." {
-                result = "0" + result
-            }
-            
-            // If it starts with "0" but not "0." (e.g. "007", "0008"), remove leading zeros
-            if result.hasPrefix("0") && !result.hasPrefix("0.") {
-                result = String(result.drop(while: { $0 == "0" }))
-                if result.isEmpty {
-                    result = "0"
-                }
-            }
-            
-            return result
-        }
-        
-        if components.count > 2 {
-            let sanitized = components.prefix(2).joined(separator: ".")
-            weight = sanitize(sanitized)
-        } else {
-            let cleaned = sanitize(filtered)
-            if cleaned != newValue {
-                weight = cleaned
-            } else {
-                weight = newValue
-            }
-        }
-
-        if let doubleValue = Double(weight) {
-            exerciseSet.weight = doubleValue
-        } else {
-            exerciseSet.weight = nil
-        }
-    }
-
-
-    
-    func updateReps(_ newValue: String) {
-        // Allow only digits
-        let filtered = newValue.filter { "0123456789".contains($0) }
-        
-        // Remove leading zeros
-        let cleaned = String(filtered.drop(while: { $0 == "0" }))
-        
-        // Avoid empty string if user deletes everything or enters only zeros
-        reps = cleaned.isEmpty ? "0" : cleaned
-
-        if let intValue = Int(reps) {
-            exerciseSet.reps = intValue
-        } else {
-            exerciseSet.reps = nil
-        }
     }
 }
 
