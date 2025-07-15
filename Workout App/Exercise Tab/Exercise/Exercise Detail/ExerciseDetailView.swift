@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ExerciseDetailView: View {
+    @Environment(\.dismiss) private var dismiss
+    
     let exercise: Exercise
+    let isShownInSheet: Bool
     
     @State private var selectedTab: ExerciseDetailTab = .howTo
+    
+    init(exercise: Exercise, isShownInSheet: Bool = false) {
+        self.exercise = exercise
+        self.isShownInSheet = isShownInSheet
+    }
     
     var body: some View {
         VStack {
@@ -32,6 +40,16 @@ struct ExerciseDetailView: View {
         }
         .navigationTitle(exercise.name)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if isShownInSheet {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Close") {
+                        dismiss()
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+        }
     }
 }
 

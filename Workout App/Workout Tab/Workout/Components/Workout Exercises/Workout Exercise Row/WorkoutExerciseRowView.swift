@@ -62,7 +62,9 @@ struct WorkoutExerciseRowView: View {
             }
             .buttonStyle(PlainButtonStyle())
             .sheet(isPresented: $isShowingExerciseDetails) {
-                ExerciseDetailView(exercise: workoutExercise.exercise)
+                NavigationStack {
+                    ExerciseDetailView(exercise: workoutExercise.exercise, isShownInSheet: true)
+                }
             }
             Spacer()
             if editMode {
