@@ -68,5 +68,6 @@ struct WorkoutAddCancelButtonsView: View {
         }
         .listRowSeparator(.hidden)
         .padding(.top, 30)
+        .padding(.bottom, 100)
     }
 }

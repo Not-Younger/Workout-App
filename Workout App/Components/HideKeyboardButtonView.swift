@@ -25,5 +25,6 @@ struct HideKeyboardButtonView: View {
                 .background(colorScheme == .dark ? .white : .black)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
