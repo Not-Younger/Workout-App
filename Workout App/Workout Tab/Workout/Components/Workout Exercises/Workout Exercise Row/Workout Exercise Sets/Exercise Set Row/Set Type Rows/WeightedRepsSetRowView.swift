@@ -125,8 +125,12 @@ struct WeightedRepsSetRowView: View {
                     if !weight.isEmpty, !reps.isEmpty {
                         exerciseSet.isCompleted.toggle()
                     } else if let suggestedWeight, let suggestedReps {
-                        weight = GlobalHelpers.formatDouble(suggestedWeight)
-                        reps = GlobalHelpers.formatInt(suggestedReps)
+                        if weight.isEmpty {
+                            weight = GlobalHelpers.formatDouble(suggestedWeight)
+                        }
+                        if reps.isEmpty {
+                            reps = GlobalHelpers.formatInt(suggestedReps)
+                        }
                         exerciseSet.isCompleted.toggle()
                     }
                 }
