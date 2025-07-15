@@ -106,7 +106,7 @@ struct WeightedRepsSetRowView: View {
                                 exerciseSet.reps = nil
                                 exerciseSet.isCompleted = false
                             } else {
-                                var newReps = GlobalHelpers.cleanIntString(newValue)
+                                let newReps = GlobalHelpers.cleanIntString(newValue)
                                 reps = newReps.0
                                 exerciseSet.reps = newReps.1
                             }

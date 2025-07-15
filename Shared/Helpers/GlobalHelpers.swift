@@ -16,7 +16,7 @@ class GlobalHelpers {
     
     static func formatInt(_ value: Int?) -> String {
         if let value {
-            return String(value)
+            return cleanNumberString(String(value))
         }
         return ""
     }
@@ -45,7 +45,7 @@ class GlobalHelpers {
             formatter.minimumFractionDigits = 0
             formatter.maximumFractionDigits = 2
             formatter.numberStyle = .decimal
-            return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
+            return cleanNumberString(formatter.string(from: NSNumber(value: value)) ?? "\(value)")
         }
         return ""
     }
@@ -125,4 +125,28 @@ class GlobalHelpers {
         formatter.dateFormat = "h:mm a, EEEE, MMM d yyyy"
         return formatter.string(from: date)
     }
+    
+    static func cleanNumberString(_ input: String) -> String {
+        // Remove all commas
+        var result = input.replacingOccurrences(of: ",", with: "")
+        
+        // If there's a decimal point, truncate decimal places to 2 max
+        if let dotIndex = result.firstIndex(of: ".") {
+            let afterDecimalIndex = result.index(after: dotIndex)
+            let decimalPart = result[afterDecimalIndex...]
+            
+            if decimalPart.count > 2 {
+                let endIndex = result.index(dotIndex, offsetBy: 3)
+                result = String(result[..<endIndex])
+            }
+            
+            // Remove trailing decimal point if nothing follows it (e.g. "12.")
+            if result.last == "." {
+                result.removeLast()
+            }
+        }
+        
+        return result
+    }
+
 }
